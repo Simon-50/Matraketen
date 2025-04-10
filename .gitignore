@@ -1,0 +1,8 @@
+# Node dependencies
+node_modules/
+
+# IDE/editor folders
+.vscode/
+
+# Ignore database files
+*.sql
