@@ -1,0 +1,98 @@
+@use 'variables' as v;
+@use 'colors' as c;
+
+header {
+    height: v.$navbar-height-mobile;
+    background-color: c.$primary;
+
+    display: flex;
+    justify-content: space-between;
+
+    h1 {
+        background-color: white;
+        color: c.$primary;
+        font-family: 'Luckiest Guy';
+
+        margin: auto 0;
+        padding: 0.5rem;
+
+        width: 46vw;
+        border-radius: 1.4rem;
+
+        font-size: 6.5vw;
+        letter-spacing: 0.05rem;
+        align-content: center;
+        text-align: center;
+    }
+
+    // Navbar items
+    img,
+    .hamburger-icon {
+        height: v.$navbar-height-mobile;
+        aspect-ratio: 1;
+    }
+
+    // Toogle icon
+    .hamburger-icon {
+        cursor: pointer;
+
+        background-color: white;
+
+        font-size: 3rem;
+        align-content: center;
+        text-align: center;
+
+        margin: 0.5rem;
+        height: v.$navbar-height-mobile - 1rem;
+        border-radius: 1rem;
+    }
+
+    // Hamburger menu width
+    #hamburger-toggle {
+        &:checked ~ nav {
+            width: 40%;
+        }
+    }
+
+    nav {
+        position: fixed;
+        height: calc(100vh - v.$navbar-height-mobile);
+
+        width: 0;
+        right: 0;
+        bottom: 0;
+
+        background-color: c.$primary;
+        overflow-x: hidden;
+        transition: 0.5s;
+        z-index: 1;
+
+        display: flex;
+        flex-direction: column;
+
+        // Menu options
+        a {
+            color: black;
+            background-color: white;
+
+            text-decoration: none;
+            text-align: center;
+            font-size: 2rem;
+
+            margin-bottom: v.$hamburger-spacing;
+            padding: 2vh 0;
+        }
+    }
+
+    // Hover effect
+    nav > *,
+    .hamburger-icon {
+        transition: 0.3s;
+
+        &:hover,
+        &:focus {
+            outline: 0.3rem solid c.$secondary;
+            outline-offset: -0.29rem;
+        }
+    }
+}

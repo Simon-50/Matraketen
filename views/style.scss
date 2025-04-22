@@ -1,74 +1,11 @@
-@use 'variables' as vars;
-@use 'colors' as c;
+// Style partials
+@use 'global';
+@use 'header';
+
+// Fonts
+@import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lunasima&display=swap');
 
 * {
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0;
-
     outline: 1px solid black;
-}
-
-body {
-    margin: 0;
-}
-
-header {
-    display: flex;
-    height: vars.$navbar-height-mobile;
-
-    // Hamburger menu width
-    #hamburger-toggle {
-        &:checked ~ .hamburger-menu {
-            width: 40%;
-        }
-    }
-
-    // Toogle icon
-    .hamburger-icon {
-        margin: 0 0 0 auto;
-
-        height: vars.$navbar-height-mobile;
-        aspect-ratio: 1;
-        cursor: pointer;
-
-        background-color: white;
-        text-align: center;
-    }
-
-    .hamburger-menu {
-        position: fixed;
-        height: 100vh;
-
-        width: 0;
-        right: 0;
-        top: 0;
-
-        background-color: c.$primary;
-        overflow-x: hidden;
-        transition: 0.5s;
-        z-index: 1;
-
-        display: flex;
-        flex-direction: column;
-
-        // Menu options
-        a {
-            color: black;
-            background-color: white;
-
-            text-decoration: none;
-            text-align: center;
-
-            margin-top: 4vh;
-            padding: 2vh 0;
-
-            transition: 0.3s;
-
-            &:hover,
-            &:focus {
-                color: #f1f1f1;
-            }
-        }
-    }
 }
