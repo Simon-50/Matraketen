@@ -17,7 +17,7 @@ header {
         padding: 0.5rem;
 
         width: 46vw;
-        border-radius: 1.4rem;
+        border-radius: v.$br-md;
 
         font-size: 6.5vw;
         letter-spacing: 0.05rem;
@@ -44,7 +44,7 @@ header {
 
         margin: 0.5rem;
         height: v.$navbar-height-mobile - 1rem;
-        border-radius: 1rem;
+        border-radius: v.$br-md;
     }
 
     // Hamburger menu width
