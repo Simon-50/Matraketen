@@ -1,3 +1,5 @@
+@use 'variables' as v;
+
 * {
     box-sizing: border-box;
     padding: 0;
@@ -5,8 +7,15 @@
 }
 
 body {
+    position: relative;
     min-width: 320px;
+
+    min-height: 100vh;
     overflow-x: auto;
 
     font-family: 'Lunasima';
+}
+
+main {
+    padding-bottom: v.$footer-height-mobile;
 }

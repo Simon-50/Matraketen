@@ -13,13 +13,13 @@ header {
         color: c.$primary;
         font-family: 'Luckiest Guy';
 
-        margin: auto 0;
+        margin: 0.5rem 0;
         padding: 0.5rem;
 
-        width: 46vw;
+        width: 45%;
         border-radius: v.$br-md;
 
-        font-size: 6.5vw;
+        font-size: min(6.5vw, 2.4rem);
         letter-spacing: 0.05rem;
         align-content: center;
         text-align: center;
