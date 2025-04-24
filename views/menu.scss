@@ -1,0 +1,52 @@
+@use 'colors' as c;
+@use "variables" as v;
+
+.resturang {
+    border-radius: v.$br-md;
+    width: 80%;
+    margin-top: 200px;
+    background-color: c.$section-color;
+
+
+    .headbar {
+        display: flex;
+        justify-content: space-between;
+        height: 2.2rem;
+        background-color: c.$primary;
+        border-radius: v.$br-md;
+
+
+        img {
+            width: auto;
+            height: 100%;
+
+            margin: 0 20px;
+        }
+    }
+
+    .menu-items {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        // align-items: center;
+        place-items: center;
+
+        .item {
+            width: 55%;
+
+            img {
+                width: 100%;
+                height: auto;
+                margin-top: 2rem;
+                border-radius: v.$br-lg;
+
+            }
+
+            p {
+                text-align: center;
+            }
+
+        }
+    }
+
+
+}

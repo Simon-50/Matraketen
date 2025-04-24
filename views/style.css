@@ -25,7 +25,7 @@ header h1 {
   margin: auto 0;
   padding: 0.5rem;
   width: 46vw;
-  border-radius: 1.4rem;
+  border-radius: 1rem;
   font-size: 6.5vw;
   letter-spacing: 0.05rem;
   align-content: center;
@@ -84,4 +84,4 @@ header .hamburger-icon:focus {
 
 * {
   outline: 1px solid black;
-}
+}/*# sourceMappingURL=style.css.map */

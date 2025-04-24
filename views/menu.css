@@ -1,0 +1,35 @@
+.resturang {
+  border-radius: 1rem;
+  width: 80%;
+  margin-top: 200px;
+  background-color: #d9d9d9;
+}
+.resturang .headbar {
+  display: flex;
+  justify-content: space-between;
+  height: 2.2rem;
+  background-color: #323c46;
+  border-radius: 1rem;
+}
+.resturang .headbar img {
+  width: auto;
+  height: 100%;
+  margin: 0 20px;
+}
+.resturang .menu-items {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  place-items: center;
+}
+.resturang .menu-items .item {
+  width: 55%;
+}
+.resturang .menu-items .item img {
+  width: 100%;
+  height: auto;
+  margin-top: 2rem;
+  border-radius: 2rem;
+}
+.resturang .menu-items .item p {
+  text-align: center;
+}/*# sourceMappingURL=menu.css.map */
