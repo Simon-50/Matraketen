@@ -29,7 +29,7 @@ header {
     img,
     .hamburger-icon {
         height: v.$navbar-height-mobile;
-        aspect-ratio: 1;
+        aspect-ratio: 1/1;
     }
 
     // Toogle icon
@@ -56,11 +56,11 @@ header {
 
     nav {
         position: fixed;
-        height: calc(100vh - v.$navbar-height-mobile);
+        height: calc(100vh - v.$navbar-height-mobile - v.$footer-height-mobile);
 
         width: 0;
         right: 0;
-        bottom: 0;
+        bottom: v.$footer-height-mobile;
 
         background-color: c.$primary;
         overflow-x: hidden;
@@ -91,8 +91,10 @@ header {
 
         &:hover,
         &:focus {
-            outline: 0.3rem solid c.$secondary;
-            outline-offset: -0.29rem;
+            $outline-width: 0.3rem;
+
+            outline: $outline-width solid c.$secondary;
+            outline-offset: calc($outline-width * -1 + 0.1rem);
         }
     }
 }

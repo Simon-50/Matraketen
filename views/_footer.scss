@@ -2,7 +2,6 @@
 @use 'colors' as c;
 
 footer {
-    width: 100%;
     height: v.$footer-height-mobile;
 
     background-color: c.$primary;
@@ -17,10 +16,16 @@ footer {
     > * {
         align-content: center;
     }
+
+    p {
+        font-size: 2.5vw;
+    }
+
     div {
+        width: 42%;
         img {
-            width: auto;
-            height: 60%;
+            width: 100%;
+            height: auto;
         }
     }
 }

@@ -8,14 +8,15 @@
 
 body {
     position: relative;
-    min-width: 320px;
-
     min-height: 100vh;
+
+    min-width: 300px;
     overflow-x: auto;
 
     font-family: 'Lunasima';
 }
 
 main {
-    padding-bottom: v.$footer-height-mobile;
+    padding: v.$main-edge-padding;
+    padding-bottom: calc(v.$main-edge-padding + v.$footer-height-mobile);
 }

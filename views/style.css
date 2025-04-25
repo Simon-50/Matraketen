@@ -8,14 +8,15 @@
 
 body {
   position: relative;
-  min-width: 320px;
   min-height: 100vh;
+  min-width: 300px;
   overflow-x: auto;
   font-family: "Lunasima";
 }
 
 main {
-  padding-bottom: 3rem;
+  padding: 5vw;
+  padding-bottom: calc(5vw + 3rem);
 }
 
 header {
@@ -40,7 +41,7 @@ header h1 {
 header img,
 header .hamburger-icon {
   height: 5rem;
-  aspect-ratio: 1;
+  aspect-ratio: 1/1;
 }
 header .hamburger-icon {
   cursor: pointer;
@@ -57,10 +58,10 @@ header #hamburger-toggle:checked ~ nav {
 }
 header nav {
   position: fixed;
-  height: calc(100vh - 5rem);
+  height: calc(100vh - 5rem - 3rem);
   width: 0;
   right: 0;
-  bottom: 0;
+  bottom: 3rem;
   background-color: #323c46;
   overflow-x: hidden;
   transition: 0.5s;
@@ -85,11 +86,10 @@ header nav > *:hover, header nav > *:focus,
 header .hamburger-icon:hover,
 header .hamburger-icon:focus {
   outline: 0.3rem solid #bc2632;
-  outline-offset: -0.29rem;
+  outline-offset: -0.2rem;
 }
 
 footer {
-  width: 100%;
   height: 3rem;
   background-color: #323c46;
   color: white;
@@ -101,24 +101,64 @@ footer {
 footer > * {
   align-content: center;
 }
+footer p {
+  font-size: 2.5vw;
+}
+footer div {
+  width: 42%;
+}
 footer div img {
-  width: auto;
-  height: 60%;
+  width: 100%;
+  height: auto;
 }
 
-#index {
-  display: grid;
-}
 #index #name {
   display: none;
 }
-#index div:not(:last-child) {
+#index #info-text {
+  grid-column: span 2;
+  align-content: center;
+  font-size: 6vw;
+}
+#index #brands {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+#index .img-container {
+  width: 50%;
+}
+#index .img-container img {
+  width: 100%;
+  height: auto;
+}
+#index #order-now {
+  background-color: initial;
+  position: relative;
+  padding: 0 15vw;
+}
+#index #order-now img {
+  width: 100%;
+}
+#index #order-now p {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(22deg);
+  font-size: 8vw;
+  color: #65acf4;
+}
+#index > div {
   background-color: #d9d9d9;
   color: #323c46;
-  padding: 0.5rem;
   text-align: center;
+  padding: 0.5rem;
+  border-radius: 1rem;
+}
+#index > div:not(:last-child) {
+  margin-bottom: 5vw;
 }
 
 * {
   outline: 1px solid black;
-}/*# sourceMappingURL=style.css.map */
+}
