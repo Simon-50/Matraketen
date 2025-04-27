@@ -49,10 +49,7 @@
 
 main > div {
     @include components.card;
-
     text-align: center;
-
-    &:not(:last-child) {
-        margin-bottom: base.$main-edge-padding;
-    }
 }
+
+@include components.div-spacing();

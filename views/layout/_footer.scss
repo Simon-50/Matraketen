@@ -1,5 +1,4 @@
-@use '../base/variables' as v;
-@use '../base/colors' as c;
+@use '../base';
 
 // Needed for correct footer positioning
 body {
@@ -8,14 +7,13 @@ body {
 }
 
 main {
-    padding: v.$main-edge-padding;
-    padding-bottom: calc(v.$main-edge-padding + v.$footer-height-mobile);
+    padding-bottom: calc(base.$main-spacing + base.$footer-height-mobile);
 }
 
 footer {
-    height: v.$footer-height-mobile;
+    height: base.$footer-height-mobile;
 
-    background-color: c.$primary;
+    background-color: base.$primary;
     color: white;
 
     position: absolute;

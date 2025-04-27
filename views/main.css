@@ -6,8 +6,16 @@
   margin: 0;
 }
 
+ul {
+  list-style-position: inside;
+}
+
 body {
   font-family: "Lunasima";
+}
+
+main {
+  padding: 4vw;
 }
 
 header {
@@ -86,8 +94,7 @@ body {
 }
 
 main {
-  padding: 5vw;
-  padding-bottom: calc(5vw + 3rem);
+  padding-bottom: calc(4vw + 3rem);
 }
 
 footer {

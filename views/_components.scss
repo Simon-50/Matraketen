@@ -7,3 +7,28 @@
     padding: 0.5rem;
     border-radius: base.$br-md;
 }
+
+@mixin button($type: 'standard') {
+    border: none;
+    border-radius: base.$br-sm;
+
+    padding: 1.6vw 4vw;
+
+    cursor: pointer;
+
+    @if $type == standard {
+        outline: base.$outline-width solid base.$secondary;
+    } @else if $type == inverted {
+        background-color: base.$secondary;
+        color: white;
+    }
+
+    // Don't know why, but the buttons don't get the correct font otherwise
+    font-family: inherit;
+}
+
+@mixin div-spacing() {
+    main > div:not(:last-child) {
+        margin-bottom: base.$main-spacing;
+    }
+}

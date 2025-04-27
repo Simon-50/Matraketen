@@ -1,0 +1,44 @@
+#item {
+  color: #323c46;
+}
+#item img {
+  width: 100%;
+}
+
+#product-contents {
+  background-color: #d9d9d9;
+  color: #323c46;
+  padding: 0.5rem;
+  border-radius: 1rem;
+}
+
+#nav-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+#description {
+  background-color: #d9d9d9;
+  color: #323c46;
+  padding: 0.5rem;
+  border-radius: 1rem;
+}
+
+h1,
+h2 {
+  text-align: center;
+}
+
+button {
+  border: none;
+  border-radius: 0.5rem;
+  padding: 1.6vw 4vw;
+  cursor: pointer;
+  background-color: #bc2632;
+  color: white;
+  font-family: inherit;
+}
+
+main > div:not(:last-child) {
+  margin-bottom: 4vw;
+}

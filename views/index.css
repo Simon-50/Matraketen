@@ -46,6 +46,7 @@ main > div {
   border-radius: 1rem;
   text-align: center;
 }
+
 main > div:not(:last-child) {
-  margin-bottom: 5vw;
+  margin-bottom: 4vw;
 }
