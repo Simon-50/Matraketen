@@ -7,16 +7,7 @@
 }
 
 body {
-  position: relative;
-  min-height: 100vh;
-  min-width: 300px;
-  overflow-x: auto;
   font-family: "Lunasima";
-}
-
-main {
-  padding: 5vw;
-  padding-bottom: calc(5vw + 3rem);
 }
 
 header {
@@ -89,6 +80,16 @@ header .hamburger-icon:focus {
   outline-offset: -0.2rem;
 }
 
+body {
+  position: relative;
+  min-height: 100vh;
+}
+
+main {
+  padding: 5vw;
+  padding-bottom: calc(5vw + 3rem);
+}
+
 footer {
   height: 3rem;
   background-color: #323c46;
@@ -110,53 +111,6 @@ footer div {
 footer div img {
   width: 100%;
   height: auto;
-}
-
-#index #name {
-  display: none;
-}
-#index #info-text {
-  grid-column: span 2;
-  align-content: center;
-  font-size: 6vw;
-}
-#index #brands {
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-}
-#index .img-container {
-  width: 50%;
-}
-#index .img-container img {
-  width: 100%;
-  height: auto;
-}
-#index #order-now {
-  background-color: initial;
-  position: relative;
-  padding: 0 15vw;
-}
-#index #order-now img {
-  width: 100%;
-}
-#index #order-now p {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) rotate(22deg);
-  font-size: 8vw;
-  color: #65acf4;
-}
-#index > div {
-  background-color: #d9d9d9;
-  color: #323c46;
-  text-align: center;
-  padding: 0.5rem;
-  border-radius: 1rem;
-}
-#index > div:not(:last-child) {
-  margin-bottom: 5vw;
 }
 
 * {

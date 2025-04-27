@@ -1,16 +1,6 @@
-//* Style partials
-// General
-@use 'global';
-@use 'header';
-@use 'footer';
-
-// Site specific
-@use 'index';
-
-// Fonts
 @import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lunasima&display=swap');
 
-* {
-    outline: 1px solid black;
+body {
+    font-family: 'Lunasima';
 }

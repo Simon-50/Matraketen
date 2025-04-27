@@ -1,5 +1,16 @@
-@use 'variables' as v;
-@use 'colors' as c;
+@use '../base/variables' as v;
+@use '../base/colors' as c;
+
+// Needed for correct footer positioning
+body {
+    position: relative;
+    min-height: 100vh;
+}
+
+main {
+    padding: v.$main-edge-padding;
+    padding-bottom: calc(v.$main-edge-padding + v.$footer-height-mobile);
+}
 
 footer {
     height: v.$footer-height-mobile;

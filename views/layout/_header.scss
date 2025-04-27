@@ -1,5 +1,5 @@
-@use 'variables' as v;
-@use 'colors' as c;
+@use '../base/variables' as v;
+@use '../base/colors' as c;
 
 header {
     height: v.$navbar-height-mobile;
