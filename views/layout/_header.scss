@@ -1,23 +1,22 @@
-@use 'variables' as v;
-@use 'colors' as c;
+@use '../base';
 
 header {
-    height: v.$navbar-height-mobile;
-    background-color: c.$primary;
+    height: base.$navbar-height-mobile;
+    background-color: base.$primary;
 
     display: flex;
     justify-content: space-between;
 
     h1 {
         background-color: white;
-        color: c.$primary;
+        color: base.$primary;
         font-family: 'Luckiest Guy';
 
         margin: 0.5rem 0;
         padding: 0.5rem;
 
         width: 45%;
-        border-radius: v.$br-md;
+        border-radius: base.$br-md;
 
         font-size: min(6.5vw, 2.4rem);
         letter-spacing: 0.05rem;
@@ -28,8 +27,8 @@ header {
     // Navbar items
     img,
     .hamburger-icon {
-        height: v.$navbar-height-mobile;
-        aspect-ratio: 1;
+        height: base.$navbar-height-mobile;
+        aspect-ratio: 1/1;
     }
 
     // Toogle icon
@@ -43,8 +42,8 @@ header {
         text-align: center;
 
         margin: 0.5rem;
-        height: v.$navbar-height-mobile - 1rem;
-        border-radius: v.$br-md;
+        height: base.$navbar-height-mobile - 1rem;
+        border-radius: base.$br-md;
     }
 
     // Hamburger menu width
@@ -56,13 +55,13 @@ header {
 
     nav {
         position: fixed;
-        height: calc(100vh - v.$navbar-height-mobile);
+        height: calc(100vh - base.$navbar-height-mobile - base.$footer-height-mobile);
 
         width: 0;
         right: 0;
-        bottom: 0;
+        bottom: base.$footer-height-mobile;
 
-        background-color: c.$primary;
+        background-color: base.$primary;
         overflow-x: hidden;
         transition: 0.5s;
         z-index: 1;
@@ -79,7 +78,7 @@ header {
             text-align: center;
             font-size: 2rem;
 
-            margin-bottom: v.$hamburger-spacing;
+            margin-bottom: base.$hamburger-spacing;
             padding: 2vh 0;
         }
     }
@@ -91,8 +90,8 @@ header {
 
         &:hover,
         &:focus {
-            outline: 0.3rem solid c.$secondary;
-            outline-offset: -0.29rem;
+            outline: base.$outline-width solid base.$secondary;
+            outline-offset: calc(base.$outline-width * -1 + 0.1rem);
         }
     }
 }

@@ -1,0 +1,40 @@
+@use '../base';
+
+// Needed for correct footer positioning
+body {
+    position: relative;
+    min-height: 100vh;
+}
+
+main {
+    padding-bottom: calc(base.$main-spacing + base.$footer-height-mobile);
+}
+
+footer {
+    height: base.$footer-height-mobile;
+
+    background-color: base.$primary;
+    color: white;
+
+    position: absolute;
+    bottom: 0;
+
+    display: flex;
+    justify-content: space-between;
+
+    > * {
+        align-content: center;
+    }
+
+    p {
+        font-size: 2.5vw;
+    }
+
+    div {
+        width: 42%;
+        img {
+            width: 100%;
+            height: auto;
+        }
+    }
+}

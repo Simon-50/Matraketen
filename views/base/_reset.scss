@@ -1,0 +1,11 @@
+// Set better defaults
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+// Include list markers in li bounding box
+ul {
+    list-style-position: inside;
+}

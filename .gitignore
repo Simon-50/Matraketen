@@ -7,4 +7,5 @@ node_modules/
 # Ignore database files
 *.sql
 
+# Css maps
 *.map
