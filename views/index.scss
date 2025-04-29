@@ -27,6 +27,8 @@
 }
 
 #order-now {
+    @include components.hover-effect(1.06);
+
     background-color: initial;
     position: relative;
 

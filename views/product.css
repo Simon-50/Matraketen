@@ -30,13 +30,18 @@ h2 {
 }
 
 button {
+  transition: all 0.3s ease-in-out;
   border: none;
   border-radius: 0.5rem;
   padding: 1.6vw 4vw;
+  margin: 0.3rem;
   cursor: pointer;
+  font-family: inherit;
   background-color: #bc2632;
   color: white;
-  font-family: inherit;
+}
+button:hover {
+  transform: scale(1.1);
 }
 
 main > div:not(:last-child) {

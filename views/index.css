@@ -23,9 +23,13 @@
 }
 
 #order-now {
+  transition: all 0.3s ease-in-out;
   background-color: initial;
   position: relative;
   padding: 0 15vw;
+}
+#order-now:hover {
+  transform: scale(1.06);
 }
 #order-now img {
   width: 100%;
