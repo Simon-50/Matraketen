@@ -31,4 +31,6 @@ button {
     @include components.button(inverted);
 }
 
-@include components.div-spacing();
+main {
+    @include components.div-spacing();
+}

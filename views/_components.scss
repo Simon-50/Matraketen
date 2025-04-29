@@ -28,7 +28,7 @@
 }
 
 @mixin div-spacing() {
-    main > div:not(:last-child) {
+    > div:not(:last-child) {
         margin-bottom: base.$main-spacing;
     }
 }

@@ -47,9 +47,11 @@
     }
 }
 
-main > div {
-    @include components.card;
-    text-align: center;
-}
+main {
+    @include components.div-spacing();
 
-@include components.div-spacing();
+    > div {
+        @include components.card;
+        text-align: center;
+    }
+}

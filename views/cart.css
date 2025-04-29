@@ -1,0 +1,65 @@
+#cart-items > div:not(:last-child) {
+  margin-bottom: 4vw;
+}
+
+.item {
+  background-color: #d9d9d9;
+  color: #323c46;
+  padding: 0.5rem;
+  border-radius: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 3vw;
+}
+.item .item-counter {
+  width: 10%;
+  display: flex;
+  flex-direction: column;
+}
+.item .item-counter img {
+  width: 100%;
+}
+.item .item-counter p {
+  margin: 0.2rem 0;
+}
+.item .image-container {
+  display: flex;
+  width: 20%;
+}
+.item .image-container img {
+  width: 100%;
+}
+.item p {
+  text-align: center;
+  min-width: 35%;
+}
+
+#summary {
+  background-color: #d9d9d9;
+  color: #323c46;
+  padding: 0.5rem;
+  border-radius: 1rem;
+  margin-top: 8vw;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+#summary #pricing {
+  text-align: right;
+}
+#summary p {
+  width: 50%;
+  font-size: min(4vw, 2rem);
+}
+#summary button {
+  border: none;
+  border-radius: 0.5rem;
+  padding: 1.6vw 4vw;
+  cursor: pointer;
+  background-color: #bc2632;
+  color: white;
+  font-family: inherit;
+  font-size: min(5vw, 2.5rem);
+  margin-top: 1rem;
+}
