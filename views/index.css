@@ -43,7 +43,7 @@
   color: #65acf4;
 }
 
-main > div:not(:last-child) {
+main > *:not(:last-child) {
   margin-bottom: 4vw;
 }
 main > div {

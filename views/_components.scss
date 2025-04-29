@@ -48,8 +48,8 @@
     border-radius: base.$br-sm;
 }
 
-@mixin div-spacing() {
-    > div:not(:last-child) {
+@mixin element-spacing() {
+    > *:not(:last-child) {
         margin-bottom: base.$main-spacing;
     }
 }

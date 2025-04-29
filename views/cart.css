@@ -1,4 +1,4 @@
-#cart-items > div:not(:last-child) {
+#cart-items > *:not(:last-child) {
   margin-bottom: 4vw;
 }
 

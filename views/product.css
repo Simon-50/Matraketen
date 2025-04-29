@@ -44,6 +44,6 @@ button:hover {
   transform: scale(1.1);
 }
 
-main > div:not(:last-child) {
+main > *:not(:last-child) {
   margin-bottom: 4vw;
 }
