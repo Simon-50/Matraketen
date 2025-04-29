@@ -22,13 +22,14 @@
   place-items: center;
 }
 .resturang .menu-items .item {
-  width: 55%;
+  align-items: center;
 }
 .resturang .menu-items .item img {
-  width: 100%;
-  height: auto;
+  width: auto;
+  height: 15vw;
   margin-top: 2rem;
   border-radius: 2rem;
+  display: block;
 }
 .resturang .menu-items .item p {
   text-align: center;
