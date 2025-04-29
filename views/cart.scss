@@ -14,6 +14,19 @@
 
     font-size: 3vw;
 
+    .image-container {
+        display: flex;
+        width: 30%;
+    }
+
+    .logo {
+        width: 12%;
+
+        img {
+            border-radius: base.$br-sm;
+        }
+    }
+
     .item-counter {
         width: 10%;
 
@@ -22,6 +35,8 @@
 
         img {
             width: 100%;
+
+            cursor: pointer;
         }
 
         p {
@@ -29,19 +44,16 @@
         }
     }
 
-    .image-container {
-        display: flex;
-        width: 20%;
-
-        img {
-            width: 100%;
-        }
-    }
-
     p {
         // Even spacing despite different text lengths
         text-align: center;
         min-width: 35%;
+    }
+
+    img {
+        width: 100%;
+
+        border-radius: base.$br-md;
     }
 }
 
