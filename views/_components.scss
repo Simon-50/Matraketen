@@ -1,5 +1,13 @@
 @use 'base';
 
+@mixin hover-effect($strength: 1.1) {
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+        transform: scale($strength);
+    }
+}
+
 @mixin card() {
     background-color: base.$section-color;
     color: base.$primary;
@@ -9,12 +17,18 @@
 }
 
 @mixin button($type: 'standard') {
+    @include hover-effect();
+
     border: none;
     border-radius: base.$br-sm;
 
     padding: 1.6vw 4vw;
+    margin: base.$outline-width;
 
     cursor: pointer;
+
+    // Don't know why, but the buttons don't get the correct font otherwise
+    font-family: inherit;
 
     @if $type == standard {
         outline: base.$outline-width solid base.$secondary;
@@ -22,9 +36,16 @@
         background-color: base.$secondary;
         color: white;
     }
+}
 
-    // Don't know why, but the buttons don't get the correct font otherwise
-    font-family: inherit;
+@mixin text-input() {
+    text-align: center;
+    color: base.$primary;
+
+    padding: 0.3rem;
+
+    border: none;
+    border-radius: base.$br-sm;
 }
 
 @mixin div-spacing() {
