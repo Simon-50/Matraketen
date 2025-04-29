@@ -1,0 +1,17 @@
+@use "components";
+
+div{
+    @include components.card;
+    text-align: center;
+    justify-items: center;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    
+    width: auto;
+    p{
+        // margin-top: 0.5rem;
+        font-size: 1rem;
+    }
+}
