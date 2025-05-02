@@ -1,0 +1,19 @@
+@use 'components';
+
+main {
+    @include components.element-spacing;
+
+    > div {
+        @include components.card;
+
+        text-align: center;
+    }
+
+    input[type='text'] {
+        @include components.text-input;
+    }
+
+    button {
+        @include components.button;
+    }
+}

@@ -1,0 +1,36 @@
+@use 'base';
+@use 'components';
+
+#item {
+    color: base.$primary;
+
+    img {
+        width: 100%;
+    }
+}
+
+#product-contents {
+    @include components.card;
+}
+
+#nav-buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
+#description {
+    @include components.card;
+}
+
+h1,
+h2 {
+    text-align: center;
+}
+
+button {
+    @include components.button(inverted);
+}
+
+main {
+    @include components.element-spacing();
+}

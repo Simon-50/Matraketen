@@ -1,0 +1,97 @@
+@use '../base';
+
+header {
+    height: base.$navbar-height-mobile;
+    background-color: base.$primary;
+
+    display: flex;
+    justify-content: space-between;
+
+    h1 {
+        background-color: white;
+        color: base.$primary;
+        font-family: 'Luckiest Guy';
+
+        margin: 0.5rem 0;
+        padding: 0.5rem;
+
+        width: 45%;
+        border-radius: base.$br-md;
+
+        font-size: min(6.5vw, 2.4rem);
+        letter-spacing: 0.05rem;
+        align-content: center;
+        text-align: center;
+    }
+
+    // Navbar items
+    img,
+    .hamburger-icon {
+        height: base.$navbar-height-mobile;
+        aspect-ratio: 1/1;
+    }
+
+    // Toogle icon
+    .hamburger-icon {
+        cursor: pointer;
+
+        background-color: white;
+
+        font-size: 3rem;
+        align-content: center;
+        text-align: center;
+
+        margin: 0.5rem;
+        height: base.$navbar-height-mobile - 1rem;
+        border-radius: base.$br-md;
+    }
+
+    // Hamburger menu width
+    #hamburger-toggle {
+        &:checked ~ nav {
+            width: 40%;
+        }
+    }
+
+    nav {
+        position: fixed;
+        height: calc(100vh - base.$navbar-height-mobile - base.$footer-height-mobile);
+
+        width: 0;
+        right: 0;
+        bottom: base.$footer-height-mobile;
+
+        background-color: base.$primary;
+        overflow-x: hidden;
+        transition: 0.5s;
+        z-index: 1;
+
+        display: flex;
+        flex-direction: column;
+
+        // Menu options
+        a {
+            color: black;
+            background-color: white;
+
+            text-decoration: none;
+            text-align: center;
+            font-size: 2rem;
+
+            margin-bottom: base.$hamburger-spacing;
+            padding: 2vh 0;
+        }
+    }
+
+    // Hover effect
+    nav > *,
+    .hamburger-icon {
+        transition: 0.3s;
+
+        &:hover,
+        &:focus {
+            outline: base.$outline-width solid base.$secondary;
+            outline-offset: calc(base.$outline-width * -1 + 0.1rem);
+        }
+    }
+}
