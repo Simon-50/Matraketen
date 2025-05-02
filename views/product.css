@@ -31,10 +31,9 @@ h2 {
 
 button {
   transition: all 0.3s ease-in-out;
-  border: none;
   border-radius: 0.5rem;
-  padding: 1.6vw 4vw;
   margin: 0.3rem;
+  padding: min(1.6vw, 0.6rem) min(5vw, 2.4rem);
   cursor: pointer;
   font-family: inherit;
   background-color: #bc2632;
