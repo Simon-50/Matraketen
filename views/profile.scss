@@ -1,0 +1,15 @@
+@use 'components';
+
+main {
+    @include components.element-spacing();
+
+    > div {
+        @include components.card();
+
+        text-align: center;
+    }
+}
+
+form {
+    @include components.form();
+}
