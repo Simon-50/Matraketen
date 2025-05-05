@@ -1,0 +1,15 @@
+@use '../base';
+
+main {
+    padding: base.$main-spacing;
+}
+
+// Center align text vertically in paragraphs
+p {
+    align-content: center;
+}
+
+// Include list markers in li bounding box
+ul {
+    list-style-position: inside;
+}

@@ -1,0 +1,101 @@
+@use 'sass:color';
+
+@use 'base';
+
+// Generic
+@mixin hover-effect($strength: 1.1) {
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+        transform: scale($strength);
+    }
+}
+
+// Tags
+@mixin button($type: 'standard') {
+    @include hover-effect();
+
+    border-radius: base.$br-sm;
+
+    margin: base.$outline-width;
+    padding: min(1.6vw, 0.6rem) min(5vw, 2.4rem);
+
+    cursor: pointer;
+
+    // Don't know why, but the buttons don't get the correct font otherwise
+    font-family: inherit;
+
+    @if $type == standard {
+        outline: base.$outline-width solid base.$secondary;
+    } @else if $type == inverted {
+        background-color: base.$secondary;
+        color: white;
+    }
+}
+
+@mixin value-input($form: false) {
+    color: base.$primary;
+
+    padding: 0.3rem;
+
+    border-radius: base.$br-sm;
+
+    @if not $form {
+        width: min(45%, 10rem);
+    }
+}
+
+@mixin dropdown-input() {
+    padding: 0.3rem;
+
+    border-radius: base.$br-sm;
+}
+
+@mixin textarea() {
+    min-height: 5rem;
+}
+
+@mixin form() {
+    padding: base.$main-spacing 0 0;
+
+    display: grid;
+    gap: 4vw;
+    grid-template-columns: 1fr;
+
+    input::placeholder,
+    textarea::placeholder {
+        color: color.scale(base.$primary, $lightness: 40%);
+    }
+
+    input {
+        @include value-input(true);
+    }
+
+    select {
+        @include dropdown-input();
+    }
+
+    button {
+        @include button();
+    }
+
+    textarea {
+        @include textarea();
+    }
+}
+
+// Layout
+@mixin element-spacing() {
+    > *:not(:last-child) {
+        margin-bottom: base.$main-spacing;
+    }
+}
+
+// Other
+@mixin card() {
+    background-color: base.$section-color;
+    color: base.$primary;
+
+    padding: 0.5rem;
+    border-radius: base.$br-md;
+}
