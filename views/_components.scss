@@ -33,7 +33,7 @@
     }
 }
 
-@mixin text-input($form: false) {
+@mixin value-input($form: false) {
     color: base.$primary;
 
     padding: 0.3rem;
@@ -67,9 +67,8 @@
         color: color.scale(base.$primary, $lightness: 40%);
     }
 
-    input[type='text'],
-    input[type='password'] {
-        @include text-input(true);
+    input {
+        @include value-input(true);
     }
 
     select {

@@ -22,8 +22,7 @@ form input::placeholder,
 form textarea::placeholder {
   color: #778a9e;
 }
-form input[type=text],
-form input[type=password] {
+form input {
   color: #323c46;
   padding: 0.3rem;
   border-radius: 0.5rem;
