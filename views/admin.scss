@@ -24,8 +24,8 @@ main {
 
         text-align: center;
     }
+}
 
-    form {
-        @include components.form();
-    }
+form {
+    @include components.form();
 }

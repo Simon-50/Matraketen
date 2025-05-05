@@ -22,29 +22,30 @@ main > div {
   border-radius: 1rem;
   text-align: center;
 }
-main form {
+
+form {
   padding: 4vw 0 0;
   display: grid;
   gap: 4vw;
   grid-template-columns: 1fr;
 }
-main form input::-moz-placeholder, main form textarea::-moz-placeholder {
+form input::-moz-placeholder, form textarea::-moz-placeholder {
   color: #778a9e;
 }
-main form input::placeholder,
-main form textarea::placeholder {
+form input::placeholder,
+form textarea::placeholder {
   color: #778a9e;
 }
-main form input[type=text] {
+form input[type=text] {
   color: #323c46;
   padding: 0.3rem;
   border-radius: 0.5rem;
 }
-main form select {
+form select {
   padding: 0.3rem;
   border-radius: 0.5rem;
 }
-main form button {
+form button {
   transition: all 0.3s ease-in-out;
   border-radius: 0.5rem;
   margin: 0.3rem;
@@ -53,9 +54,9 @@ main form button {
   font-family: inherit;
   outline: 0.3rem solid #bc2632;
 }
-main form button:hover {
+form button:hover {
   transform: scale(1.1);
 }
-main form textarea {
+form textarea {
   min-height: 5rem;
 }
