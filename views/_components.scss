@@ -67,7 +67,8 @@
         color: color.scale(base.$primary, $lightness: 40%);
     }
 
-    input[type='text'] {
+    input[type='text'],
+    input[type='password'] {
         @include text-input(true);
     }
 
