@@ -1,0 +1,31 @@
+#oODiv {
+  width: 90vw;
+  max-width: 400px;
+}
+
+#oDiv {
+  border-radius: 20px;
+  background-color: #D9D9D9;
+  padding: 5px;
+}
+
+#oImg {
+  height: 200px;
+  max-width: 150px;
+}
+
+#oP{
+  text-align: center;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 10px;
+}
+
+#oS{
+  min-width: 15vw;
+}
+
+@media (min-width: 700px) {
+  #oImg {
+  }
+}
