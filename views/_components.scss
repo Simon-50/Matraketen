@@ -55,6 +55,45 @@
     min-height: 5rem;
 }
 
+@mixin checkbox() {
+    $size: 2rem;
+
+    height: $size;
+    aspect-ratio: 1;
+
+    appearance: none;
+    cursor: pointer;
+
+    border: calc(base.$outline-width / 2) solid base.$secondary;
+    border-radius: calc($size / 2.6);
+
+    ~ .checkmark {
+        position: absolute;
+        left: 0;
+
+        width: $size;
+        height: $size;
+
+        pointer-events: none;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &:checked ~ .checkmark::after {
+        content: '';
+
+        width: 0.4rem;
+        height: 1rem;
+
+        border: solid base.$secondary;
+        border-width: 0 calc($size / 7) calc($size / 7) 0;
+
+        transform: translate(0, -10%) rotate(40deg);
+    }
+}
+
 @mixin form() {
     padding: base.$main-spacing 0 0;
 
@@ -62,23 +101,49 @@
     gap: 4vw;
     grid-template-columns: 1fr;
 
+    // Placeholder text
     input::placeholder,
     textarea::placeholder {
         color: color.scale(base.$primary, $lightness: 40%);
     }
 
+    // All input types
     input {
         @include value-input(true);
     }
 
+    // Checkboxes
+    // Requirments
+    // - Checkbox and its label to be wrapped in div
+    // - span with "checkmark" class applied
+    div:has(input[type='checkbox']) {
+        display: flex;
+        align-items: center;
+
+        gap: 3vw;
+
+        position: relative;
+
+        label {
+            cursor: pointer;
+        }
+
+        input[type='checkbox'] {
+            @include checkbox();
+        }
+    }
+
+    // Dropdowns
     select {
         @include dropdown-input();
     }
 
+    // Buttons
     button {
         @include button();
     }
 
+    // Textarea
     textarea {
         @include textarea();
     }
