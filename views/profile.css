@@ -27,6 +27,43 @@ form input {
   padding: 0.3rem;
   border-radius: 0.5rem;
 }
+form div:has(input[type=checkbox]) {
+  display: flex;
+  align-items: center;
+  gap: 3vw;
+  position: relative;
+}
+form div:has(input[type=checkbox]) label {
+  cursor: pointer;
+}
+form div:has(input[type=checkbox]) input[type=checkbox] {
+  height: 2rem;
+  aspect-ratio: 1;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  cursor: pointer;
+  border: 0.15rem solid #bc2632;
+  border-radius: 0.7692307692rem;
+}
+form div:has(input[type=checkbox]) input[type=checkbox] ~ .checkmark {
+  position: absolute;
+  left: 0;
+  width: 2rem;
+  height: 2rem;
+  pointer-events: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+form div:has(input[type=checkbox]) input[type=checkbox]:checked ~ .checkmark::after {
+  content: "";
+  width: 0.4rem;
+  height: 1rem;
+  border: solid #bc2632;
+  border-width: 0 0.2857142857rem 0.2857142857rem 0;
+  transform: translate(0, -10%) rotate(40deg);
+}
 form select {
   padding: 0.3rem;
   border-radius: 0.5rem;

@@ -1,0 +1,19 @@
+@use 'base';
+@use 'components';
+
+main {
+    > div {
+        @include components.card();
+
+        text-align: center;
+    }
+}
+
+form {
+    @include components.form();
+
+    input[name='email'],
+    input[name='password'] {
+        margin-top: base.$main-spacing;
+    }
+}

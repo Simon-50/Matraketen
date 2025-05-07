@@ -22,35 +22,5 @@
 }
 
 #oS {
-  font-size: 5vw;
-  min-width: 100px;
+  min-width: 15vw;
 }
-
-@media (min-width: 800px) {
-  #oImg {
-    margin-left: 120px;
-    margin-right: -325px;
-    margin-bottom: -150px;
-    max-width: 200px;
-  }
-  #oS {
-    margin-bottom: 30px;
-  }
-
-@media (min-width: 800px) {
-  #oImg {
-    margin-left: 120px;
-    margin-right: -325px;
-    margin-bottom: -150px;
-    max-width: 200px;
-  }
-  #oS {
-    margin-bottom: 30px;
-    font-size: 5vw;
-  }
-}
-
-@media (max-width: 300px) {
-  #oS {
-    font-size: 100px;
-  }
