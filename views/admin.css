@@ -1,0 +1,30 @@
+main > *:not(:last-child) {
+  margin-bottom: 4vw;
+}
+main > div {
+  background-color: #d9d9d9;
+  color: #323c46;
+  padding: 0.5rem;
+  border-radius: 1rem;
+  text-align: center;
+}
+main input[type=text] {
+  text-align: center;
+  color: #323c46;
+  padding: 0.3rem;
+  border: none;
+  border-radius: 0.5rem;
+}
+main button {
+  transition: all 0.3s ease-in-out;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 1.6vw 4vw;
+  margin: 0.3rem;
+  cursor: pointer;
+  font-family: inherit;
+  outline: 0.3rem solid #bc2632;
+}
+main button:hover {
+  transform: scale(1.1);
+}

@@ -1,0 +1,59 @@
+@use 'base';
+@use "components";
+
+
+section {
+    @include components.card;
+    max-width: 600px;
+    margin: 0 auto;
+
+    img {
+        position: absolute;
+        left: 0px;
+        height: auto;
+        width: 35px;
+        justify-content: center;
+        
+    }
+}
+
+button {
+    @include components.button;
+    
+    text-align: center;
+
+    padding-top: 0;
+    padding-bottom: 0;
+
+}
+
+form {
+    @include components.element-spacing;
+
+    >div {
+        @include components.card;
+
+        height: 10vh;
+        background: linear-gradient(to right, base.$primary 40px,
+                base.$section-color 0);
+        justify-content: center;
+        display: flex;
+        position: relative
+    }
+}
+
+input[type="text"] {
+    @include components.text-input;
+
+    border-bottom: 5px solid base.$secondary;
+    width: 70%;
+}
+
+@media screen and (min-width:base.$breakpoint){
+    form{
+        > div  {
+            background: linear-gradient(to right, base.$primary 40px,
+            base.$section-color 0);
+        }
+    }
+}
