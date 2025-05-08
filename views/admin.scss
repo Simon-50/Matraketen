@@ -1,19 +1,31 @@
+@use 'base';
 @use 'components';
 
 main {
-    @include components.element-spacing;
+    @include components.element-spacing();
+
+    #remove-meal-form,
+    #remove-restaurant-form {
+        max-height: 50vh;
+        overflow-x: auto;
+
+        > div {
+            display: flex;
+            justify-content: space-between;
+
+            p {
+                font-size: min(3.8vw);
+            }
+        }
+    }
 
     > div {
-        @include components.card;
+        @include components.card();
 
         text-align: center;
     }
+}
 
-    input[type='text'] {
-        @include components.text-input;
-    }
-
-    button {
-        @include components.button;
-    }
+form {
+    @include components.form();
 }

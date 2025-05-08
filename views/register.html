@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0" />
+        <link
+            rel="stylesheet"
+            href="main.css" />
+        <link
+            rel="stylesheet"
+            href="register.css" />
+        <title>Document</title>
+    </head>
+    <body>
+        <main>
+            <div id="register">
+                <h1>Registrera</h1>
+                <form
+                    method="POST"
+                    id="register-form">
+                    <input
+                        type="text"
+                        name="firstName"
+                        placeholder="Förnamn"
+                        required />
+                    <input
+                        type="text"
+                        name="lastName"
+                        placeholder="Efternamn"
+                        required />
+                    <input
+                        type="tel"
+                        name="phoneNumber"
+                        placeholder="Telefonnummer"
+                        required />
+                    <input
+                        type="text"
+                        name="address"
+                        placeholder="Adress"
+                        required />
+                    <input
+                        type="text"
+                        name="postcode"
+                        placeholder="Postnummer"
+                        required />
+
+                    <input
+                        type="text"
+                        name="email"
+                        placeholder="E-postadress"
+                        required />
+                    <input
+                        type="email"
+                        name="confirmEmail"
+                        placeholder="Bekräfta e-postadress"
+                        required />
+
+                    <input
+                        type="password"
+                        name="password"
+                        placeholder="Lösenord"
+                        required />
+                    <input
+                        type="password"
+                        name="confirmPassword"
+                        placeholder="Bekräfta lösenord"
+                        required />
+
+                    <div>
+                        <input
+                            type="checkbox"
+                            name="newsletter"
+                            id="cb-news" />
+                        <label for="cb-news">
+                            Jag vill prenumerera på Matraketens nyhetsbrev och få information om
+                            rabatter och erbjudande
+                        </label>
+                        <span class="checkmark"></span>
+                    </div>
+
+                    <div>
+                        <input
+                            type="checkbox"
+                            name="privacy-policy"
+                            id="cb-privacy-policy"
+                            required
+                            checked />
+
+                        <label for="cb-privacy-policy"
+                            >Jag godkänner att mina personuppgifter används och lagras i enlighet
+                            med GDPR
+                        </label>
+                        <span class="checkmark"></span>
+                    </div>
+
+                    <button type="submit">Registrera dig nu</button>
+                </form>
+            </div>
+        </main>
+    </body>
+</html>

@@ -1,5 +1,8 @@
+@use 'sass:color';
+
 @use 'base';
 
+// Generic
 @mixin hover-effect($strength: 1.1) {
     transition: all 0.3s ease-in-out;
 
@@ -8,22 +11,14 @@
     }
 }
 
-@mixin card() {
-    background-color: base.$section-color;
-    color: base.$primary;
-
-    padding: 0.5rem;
-    border-radius: base.$br-md;
-}
-
+// Tags
 @mixin button($type: 'standard') {
     @include hover-effect();
 
-    border: none;
     border-radius: base.$br-sm;
 
-    padding: 1.6vw 4vw;
     margin: base.$outline-width;
+    padding: min(1.6vw, 0.6rem) min(5vw, 2.4rem);
 
     cursor: pointer;
 
@@ -38,18 +33,134 @@
     }
 }
 
-@mixin text-input() {
-    text-align: center;
+@mixin value-input($form: false) {
     color: base.$primary;
 
     padding: 0.3rem;
 
-    border: none;
+    border-radius: base.$br-sm;
+
+    @if not $form {
+        width: min(45%, 10rem);
+    }
+}
+
+@mixin dropdown-input() {
+    padding: 0.3rem;
+
     border-radius: base.$br-sm;
 }
 
+@mixin textarea() {
+    min-height: 5rem;
+}
+
+@mixin checkbox() {
+    $size: 2rem;
+
+    height: $size;
+    aspect-ratio: 1;
+
+    appearance: none;
+    cursor: pointer;
+
+    border: calc(base.$outline-width / 2) solid base.$secondary;
+    border-radius: calc($size / 2.6);
+
+    ~ .checkmark {
+        position: absolute;
+        left: 0;
+
+        width: $size;
+        height: $size;
+
+        pointer-events: none;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &:checked ~ .checkmark::after {
+        content: '';
+
+        width: 0.4rem;
+        height: 1rem;
+
+        border: solid base.$secondary;
+        border-width: 0 calc($size / 7) calc($size / 7) 0;
+
+        transform: translate(0, -10%) rotate(40deg);
+    }
+}
+
+@mixin form() {
+    padding: base.$main-spacing 0 0;
+
+    display: grid;
+    gap: 4vw;
+    grid-template-columns: 1fr;
+
+    // Placeholder text
+    input::placeholder,
+    textarea::placeholder {
+        color: color.scale(base.$primary, $lightness: 40%);
+    }
+
+    // All input types
+    input {
+        @include value-input(true);
+    }
+
+    // Checkboxes
+    // Requirments
+    // - Checkbox and its label to be wrapped in div
+    // - span with "checkmark" class applied
+    div:has(input[type='checkbox']) {
+        display: flex;
+        align-items: center;
+
+        gap: 3vw;
+
+        position: relative;
+
+        label {
+            cursor: pointer;
+        }
+
+        input[type='checkbox'] {
+            @include checkbox();
+        }
+    }
+
+    // Dropdowns
+    select {
+        @include dropdown-input();
+    }
+
+    // Buttons
+    button {
+        @include button();
+    }
+
+    // Textarea
+    textarea {
+        @include textarea();
+    }
+}
+
+// Layout
 @mixin element-spacing() {
     > *:not(:last-child) {
         margin-bottom: base.$main-spacing;
     }
+}
+
+// Other
+@mixin card() {
+    background-color: base.$section-color;
+    color: base.$primary;
+
+    padding: 0.5rem;
+    border-radius: base.$br-md;
 }
