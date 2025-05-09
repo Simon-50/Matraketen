@@ -39,7 +39,7 @@ button {
   background-color: #bc2632;
   color: white;
 }
-button:hover {
+button:hover, button:focus {
   transform: scale(1.1);
 }
 

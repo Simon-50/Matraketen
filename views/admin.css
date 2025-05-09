@@ -91,7 +91,7 @@ form button {
   font-family: inherit;
   outline: 0.3rem solid #bc2632;
 }
-form button:hover {
+form button:hover, form button:focus {
   transform: scale(1.1);
 }
 form textarea {

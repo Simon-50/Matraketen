@@ -6,7 +6,8 @@
 @mixin hover-effect($strength: 1.1) {
     transition: all 0.3s ease-in-out;
 
-    &:hover {
+    &:hover,
+    &:focus {
         transform: scale($strength);
     }
 }
@@ -94,6 +95,24 @@
     }
 }
 
+// Applied to div that contains input, label, and span
+@mixin checkbox-container() {
+    display: flex;
+    align-items: center;
+
+    gap: 3vw;
+
+    position: relative;
+
+    label {
+        cursor: pointer;
+    }
+
+    input[type='checkbox'] {
+        @include checkbox();
+    }
+}
+
 @mixin form() {
     padding: base.$main-spacing 0 0;
 
@@ -117,20 +136,7 @@
     // - Checkbox and its label to be wrapped in div
     // - span with "checkmark" class applied
     div:has(input[type='checkbox']) {
-        display: flex;
-        align-items: center;
-
-        gap: 3vw;
-
-        position: relative;
-
-        label {
-            cursor: pointer;
-        }
-
-        input[type='checkbox'] {
-            @include checkbox();
-        }
+        @include checkbox-container();
     }
 
     // Dropdowns
