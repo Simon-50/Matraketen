@@ -114,6 +114,10 @@ form > div {
   display: flex;
   position: relative;
 }
+form a {
+  text-align: center;
+  font-size: larger;
+}
 
 input[type=text] {
   color: #323c46;
