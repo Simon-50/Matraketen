@@ -28,7 +28,7 @@
   position: relative;
   padding: 0 15vw;
 }
-#order-now:hover {
+#order-now:hover, #order-now:focus {
   transform: scale(1.06);
 }
 #order-now img {
