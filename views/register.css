@@ -45,7 +45,6 @@ form div:has(input[type=checkbox]) input[type=checkbox] {
 }
 form div:has(input[type=checkbox]) input[type=checkbox] ~ .checkmark {
   position: absolute;
-  left: 0;
   width: 2rem;
   height: 2rem;
   pointer-events: none;

@@ -16,10 +16,9 @@ section img {
 
 button {
   transition: all 0.3s ease-in-out;
-  border: none;
   border-radius: 0.5rem;
-  padding: 1.6vw 4vw;
   margin: 0.3rem;
+  padding: min(1.6vw, 0.6rem) min(5vw, 2.4rem);
   cursor: pointer;
   font-family: inherit;
   outline: 0.3rem solid #bc2632;
@@ -27,12 +26,82 @@ button {
   padding-top: 0;
   padding-bottom: 0;
 }
-button:hover {
+button:hover, button:focus {
   transform: scale(1.1);
 }
 
-form > *:not(:last-child) {
-  margin-bottom: 4vw;
+form {
+  padding: 4vw 0 0;
+  display: grid;
+  gap: 4vw;
+  grid-template-columns: 1fr;
+}
+form input::-moz-placeholder, form textarea::-moz-placeholder {
+  color: #778a9e;
+}
+form input::placeholder,
+form textarea::placeholder {
+  color: #778a9e;
+}
+form input {
+  color: #323c46;
+  padding: 0.3rem;
+  border-radius: 0.5rem;
+}
+form div:has(input[type=checkbox]) {
+  display: flex;
+  align-items: center;
+  gap: 3vw;
+  position: relative;
+}
+form div:has(input[type=checkbox]) label {
+  cursor: pointer;
+}
+form div:has(input[type=checkbox]) input[type=checkbox] {
+  height: 2rem;
+  aspect-ratio: 1;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  cursor: pointer;
+  border: 0.15rem solid #bc2632;
+  border-radius: 0.7692307692rem;
+}
+form div:has(input[type=checkbox]) input[type=checkbox] ~ .checkmark {
+  position: absolute;
+  width: 2rem;
+  height: 2rem;
+  pointer-events: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+form div:has(input[type=checkbox]) input[type=checkbox]:checked ~ .checkmark::after {
+  content: "";
+  width: 0.4rem;
+  height: 1rem;
+  border: solid #bc2632;
+  border-width: 0 0.2857142857rem 0.2857142857rem 0;
+  transform: translate(0, -10%) rotate(40deg);
+}
+form select {
+  padding: 0.3rem;
+  border-radius: 0.5rem;
+}
+form button {
+  transition: all 0.3s ease-in-out;
+  border-radius: 0.5rem;
+  margin: 0.3rem;
+  padding: min(1.6vw, 0.6rem) min(5vw, 2.4rem);
+  cursor: pointer;
+  font-family: inherit;
+  outline: 0.3rem solid #bc2632;
+}
+form button:hover, form button:focus {
+  transform: scale(1.1);
+}
+form textarea {
+  min-height: 5rem;
 }
 form > div {
   background-color: #d9d9d9;
@@ -47,16 +116,15 @@ form > div {
 }
 
 input[type=text] {
-  text-align: center;
   color: #323c46;
   padding: 0.3rem;
-  border: none;
   border-radius: 0.5rem;
+  width: min(45%, 10rem);
   border-bottom: 5px solid #bc2632;
   width: 70%;
 }
 
-@media screen and (min-width: 450px) {
+@media screen and (min-width: 500px) {
   form > div {
     background: linear-gradient(to right, #323c46 40px, #d9d9d9 0);
   }
