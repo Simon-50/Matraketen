@@ -130,6 +130,19 @@ input[type=text] {
 
 @media screen and (min-width: 500px) {
   form > div {
-    background: linear-gradient(to right, #323c46 40px, #d9d9d9 0);
+    background: linear-gradient(to right, #323c46 60px, #d9d9d9 0);
+  }
+  section input [type=text] {
+    font-size: xx-large;
+  }
+  section button {
+    font-size: x-large;
+  }
+  section img {
+    height: auto;
+    width: 50px;
+  }
+  section a {
+    font-size: x-large;
   }
 }

@@ -55,7 +55,23 @@ input[type='text'] {
 @media screen and (min-width: base.$breakpoint) {
     form {
         > div {
-            background: linear-gradient(to right, base.$primary 40px, base.$section-color 0);
+            background: linear-gradient(to right, base.$primary 60px, base.$section-color 0);
+        }
+    }
+
+    section {
+        input [type="text"] {
+            font-size:xx-large;
+        }
+        button{
+            font-size: x-large;
+        }
+        img{
+            height: auto;
+            width: 50px;
+        }
+        a{
+            font-size: x-large;
         }
     }
 }
