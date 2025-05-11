@@ -25,67 +25,24 @@ ul {
 }
 
 header {
-  height: 5rem;
+  height: clamp(4rem, 16vw, 6rem);
   background-color: #323c46;
   display: flex;
   justify-content: space-between;
-}
-header h1 {
-  background-color: white;
-  color: #323c46;
-  font-family: "Luckiest Guy";
-  margin: 0.5rem 0;
-  padding: 0.5rem;
-  width: 45%;
-  border-radius: 1rem;
-  font-size: min(6.5vw, 2.4rem);
-  letter-spacing: 0.05rem;
-  align-content: center;
-  text-align: center;
-}
-header img,
-header .hamburger-icon {
-  height: 5rem;
-  aspect-ratio: 1/1;
-}
-header .hamburger-icon {
-  cursor: pointer;
-  background-color: white;
-  font-size: 3rem;
-  align-content: center;
-  text-align: center;
-  margin: 0.5rem;
-  height: 4rem;
-  border-radius: 1rem;
-}
-header #hamburger-toggle:checked ~ nav {
-  width: 40%;
-}
-header nav {
-  position: fixed;
-  height: calc(100vh - 5rem - 3rem);
-  width: 0;
-  right: 0;
-  bottom: 3rem;
-  background-color: #323c46;
-  overflow-x: hidden;
-  transition: 0.5s;
-  z-index: 1;
-  display: flex;
-  flex-direction: column;
-}
-header nav a {
-  color: black;
-  background-color: white;
-  text-decoration: none;
-  text-align: center;
-  font-size: 2rem;
-  margin-bottom: 4vh;
-  padding: 2vh 0;
+  align-items: center;
 }
 header nav > *,
 header .hamburger-icon {
-  transition: 0.3s;
+  transition: all 0.3s ease-in-out;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  font-family: inherit;
+  outline: 0.15rem solid #bc2632;
+}
+header nav > *:hover, header nav > *:focus,
+header .hamburger-icon:hover,
+header .hamburger-icon:focus {
+  transform: scale(1);
 }
 header nav > *:hover, header nav > *:focus,
 header .hamburger-icon:hover,
@@ -93,18 +50,120 @@ header .hamburger-icon:focus {
   outline: 0.3rem solid #bc2632;
   outline-offset: -0.2rem;
 }
+header h1,
+header .hamburger-icon {
+  height: 60%;
+  border-radius: 1rem;
+}
+header h1 {
+  background-color: white;
+  color: #323c46;
+  font-family: "Luckiest Guy";
+  padding: 0.5rem;
+  width: 45%;
+  font-size: min(7vw, 3rem);
+  letter-spacing: 0.15rem;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  text-align: center;
+  align-content: center;
+}
+header img {
+  height: clamp(4rem, 16vw, 6rem);
+  aspect-ratio: 1;
+}
+header .hamburger-icon {
+  background-color: white;
+  margin-right: calc(clamp(4rem, 16vw, 6rem) * 0.2);
+  aspect-ratio: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #323c46;
+}
+header .hamburger-icon svg {
+  width: 70%;
+  height: 70%;
+}
+header #hamburger-toggle:checked ~ nav {
+  width: max(30%, 9rem);
+}
+header nav {
+  position: absolute;
+  height: calc(100vh - clamp(4rem, 16vw, 6rem));
+  width: 0;
+  top: clamp(4rem, 16vw, 6rem);
+  right: 0;
+  background-color: #323c46;
+  overflow-x: hidden;
+  transition: 0.5s;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+}
+header nav > *:not(:last-child) {
+  margin-bottom: 5vh;
+}
+header nav a {
+  color: black;
+  background-color: white;
+  text-decoration: none;
+  text-align: center;
+  font-size: 2rem;
+  padding: 1.5vh 0;
+  height: calc(2rem + 3vh);
+  border-radius: 0;
+}
+header nav a img {
+  height: 100%;
+}
+header nav a:has(img) {
+  padding: 0.375vh 0;
+}
 
+@media screen and (min-width: 768px) {
+  header .hamburger-icon {
+    display: none;
+  }
+  header nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100% !important;
+    height: 100%;
+    position: initial;
+    background-color: initial;
+    transition: initial;
+  }
+  header nav a {
+    margin: 0 !important;
+    padding: 0 0.5rem !important;
+    height: 60%;
+    align-content: center;
+    border-radius: 1rem;
+  }
+  header nav a img {
+    display: block;
+    height: 80%;
+  }
+  header h1 {
+    display: none;
+  }
+}
 body {
   position: relative;
   min-height: 100vh;
 }
 
 main {
-  padding-bottom: calc(4vw + 3rem);
+  padding-bottom: calc(4vw + clamp(2rem, 7vw, 4rem));
 }
 
 footer {
-  height: 3rem;
+  height: clamp(2rem, 7vw, 4rem);
+  width: 100%;
   background-color: #323c46;
   color: white;
   position: absolute;
@@ -115,15 +174,20 @@ footer {
 footer > * {
   align-content: center;
 }
+footer #rights {
+  width: auto;
+}
 footer p {
-  font-size: 2.5vw;
+  font-size: min(2vw, clamp(2rem, 7vw, 4rem) / 2.5);
 }
-footer div {
-  width: 42%;
+footer #banner {
+  width: 40%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-footer div img {
-  width: 100%;
-  height: auto;
+footer #banner img {
+  max-height: calc(clamp(2rem, 7vw, 4rem) / 1.1);
 }
 
 * {

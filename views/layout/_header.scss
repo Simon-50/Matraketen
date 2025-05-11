@@ -1,65 +1,90 @@
 @use '../base';
+@use '../components';
+
+$nav-item-height: 60%;
 
 header {
-    height: base.$navbar-height-mobile;
+    height: base.$navbar-height;
     background-color: base.$primary;
 
     display: flex;
     justify-content: space-between;
+    align-items: center;
 
+    // Use standard button
+    nav > *,
+    .hamburger-icon {
+        @include components.button($hover-strength: 1, $add-spacing: false);
+    }
+
+    // Same height and br on both
+    h1,
+    .hamburger-icon {
+        height: $nav-item-height;
+
+        border-radius: base.$br-md;
+    }
+
+    // Title text
     h1 {
         background-color: white;
         color: base.$primary;
         font-family: 'Luckiest Guy';
 
-        margin: 0.5rem 0;
         padding: 0.5rem;
 
         width: 45%;
-        border-radius: base.$br-md;
 
-        font-size: min(6.5vw, 2.4rem);
-        letter-spacing: 0.05rem;
-        align-content: center;
+        font-size: min(7vw, 3rem);
+        letter-spacing: 0.15rem;
+        user-select: none;
         text-align: center;
+        align-content: center;
     }
 
     // Navbar items
-    img,
-    .hamburger-icon {
-        height: base.$navbar-height-mobile;
-        aspect-ratio: 1/1;
+    img {
+        height: base.$navbar-height;
+        aspect-ratio: 1;
     }
 
-    // Toogle icon
+    // Toggle icon
     .hamburger-icon {
-        cursor: pointer;
-
         background-color: white;
 
-        font-size: 3rem;
-        align-content: center;
-        text-align: center;
+        // Places it as equally far from right edge as top and bottom
+        margin-right: calc(base.$navbar-height * ((1 - $nav-item-height / 100%) / 2));
 
-        margin: 0.5rem;
-        height: base.$navbar-height-mobile - 1rem;
-        border-radius: base.$br-md;
+        aspect-ratio: 1;
+
+        // Center the icon in its button
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        // Icon styling and animation
+        color: base.$primary;
+
+        svg {
+            width: 70%;
+            height: 70%;
+        }
     }
 
     // Hamburger menu width
     #hamburger-toggle {
         &:checked ~ nav {
-            width: 40%;
+            width: max(30%, 9rem);
         }
     }
 
     nav {
-        position: fixed;
-        height: calc(100vh - base.$navbar-height-mobile - base.$footer-height-mobile);
+        position: absolute;
+        height: calc(100vh - base.$navbar-height);
 
         width: 0;
+        top: base.$navbar-height;
         right: 0;
-        bottom: base.$footer-height-mobile;
 
         background-color: base.$primary;
         overflow-x: hidden;
@@ -69,29 +94,77 @@ header {
         display: flex;
         flex-direction: column;
 
-        // Menu options
+        // Navigation options
+        @include components.element-spacing(base.$hamburger-spacing);
+        $font-size: 2rem;
+        $x-padding: 1.5vh;
+
         a {
             color: black;
             background-color: white;
 
             text-decoration: none;
             text-align: center;
-            font-size: 2rem;
+            font-size: $font-size;
 
-            margin-bottom: base.$hamburger-spacing;
-            padding: 2vh 0;
+            padding: $x-padding 0;
+
+            height: calc($font-size + $x-padding * 2);
+
+            border-radius: 0;
+
+            img {
+                height: 100%;
+            }
+        }
+
+        // Adjust padding for options with an image
+        a:has(img) {
+            padding: calc($x-padding / 4) 0;
         }
     }
+}
 
-    // Hover effect
-    nav > *,
-    .hamburger-icon {
-        transition: 0.3s;
+@media screen and (min-width: base.$breakpoint) {
+    header {
+        .hamburger-icon {
+            display: none;
+        }
 
-        &:hover,
-        &:focus {
-            outline: base.$outline-width solid base.$secondary;
-            outline-offset: calc(base.$outline-width * -1 + 0.1rem);
+        // Move navbar from hamburger menu to navigation bar
+        nav {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+            align-items: center;
+
+            width: 100% !important; // Make sure width is 100% even if checked
+            height: 100%;
+
+            position: initial;
+            background-color: initial;
+            transition: initial;
+
+            // Navigation bar buttons
+            a {
+                margin: 0 !important; // Remove margin from element spacing
+                padding: 0 0.5rem !important; // Override image specific padding option from vertical layout
+
+                height: $nav-item-height;
+
+                align-content: center;
+
+                border-radius: base.$br-md;
+
+                img {
+                    display: block;
+                    height: 80%;
+                }
+            }
+        }
+
+        h1 {
+            display: none;
         }
     }
 }

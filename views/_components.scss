@@ -13,21 +13,29 @@
 }
 
 // Tags
-@mixin button($type: 'standard') {
-    @include hover-effect();
+@mixin button($type: 'standard', $hover-strength: 1.1, $add-spacing: true) {
+    @include hover-effect($hover-strength);
 
     border-radius: base.$br-sm;
-
-    margin: base.$outline-width;
-    padding: min(1.6vw, 0.6rem) min(5vw, 2.4rem);
 
     cursor: pointer;
 
     // Don't know why, but the buttons don't get the correct font otherwise
     font-family: inherit;
 
+    @if $add-spacing {
+        margin: base.$outline-width;
+        padding: min(1.6vw, 0.6rem) min(5vw, 2.4rem);
+    }
+
     @if $type == standard {
-        outline: base.$outline-width solid base.$secondary;
+        outline: calc(base.$outline-width / 2) solid base.$secondary;
+
+        &:hover,
+        &:focus {
+            outline: base.$outline-width solid base.$secondary;
+            outline-offset: calc(base.$outline-width * -1 + 0.1rem);
+        }
     } @else if $type == inverted {
         background-color: base.$secondary;
         color: white;
@@ -155,9 +163,9 @@
 }
 
 // Layout
-@mixin element-spacing() {
+@mixin element-spacing($spacing: base.$main-spacing) {
     > *:not(:last-child) {
-        margin-bottom: base.$main-spacing;
+        margin-bottom: $spacing;
     }
 }
 

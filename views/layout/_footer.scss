@@ -7,11 +7,12 @@ body {
 }
 
 main {
-    padding-bottom: calc(base.$main-spacing + base.$footer-height-mobile);
+    padding-bottom: calc(base.$main-spacing + base.$footer-height);
 }
 
 footer {
-    height: base.$footer-height-mobile;
+    height: base.$footer-height;
+    width: 100%;
 
     background-color: base.$primary;
     color: white;
@@ -26,15 +27,23 @@ footer {
         align-content: center;
     }
 
-    p {
-        font-size: 2.5vw;
+    #rights {
+        width: auto;
     }
 
-    div {
-        width: 42%;
+    p {
+        font-size: min(2vw, calc(base.$footer-height / 2.5));
+    }
+
+    #banner {
+        width: 40%;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
         img {
-            width: 100%;
-            height: auto;
+            max-height: calc(base.$footer-height / 1.1);
         }
     }
 }

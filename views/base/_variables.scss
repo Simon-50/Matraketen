@@ -1,14 +1,14 @@
 // Global
-$breakpoint: 500px;
+$breakpoint: 768px;
 $main-spacing: 4vw;
 $outline-width: 0.3rem;
 
 // Header
-$navbar-height-mobile: 5rem;
-$hamburger-spacing: 4vh;
+$navbar-height: clamp(4rem, 16vw, 6rem);
+$hamburger-spacing: 5vh;
 
 // Footer
-$footer-height-mobile: 3rem;
+$footer-height: clamp(2rem, 7vw, 4rem);
 
 // Standard border radius settings
 $br-sm: 0.5rem;
