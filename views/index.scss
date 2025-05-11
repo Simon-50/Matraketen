@@ -15,11 +15,18 @@
     font-size: 6vw;
 }
 
-#brands {
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
+#daily-deal {
+    > div {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+
+    > p {
+        font-size: clamp(1rem, 5vw, 1.4rem);
+    }
 }
+
 .img-container {
     width: 50%;
     img {
@@ -44,9 +51,9 @@
         position: absolute;
         top: 50%;
         left: 50%;
-        transform: translate(-50%, -50%) rotate(22deg);
+        transform: translate(-50%, -50%) rotate(20deg);
 
-        font-size: min(8vw, 2.5rem);
+        font-size: 12vw;
         color: #65acf4;
     }
 }
@@ -56,9 +63,11 @@ main {
         @include components.card;
         text-align: center;
     }
+
+    margin: auto 0;
 }
 
-@media screen and (max-width: calc(base.$breakpoint - 0.5px)) {
+@media screen and (max-width: calc(base.$breakpoint - 1px)) {
     main {
         @include components.element-spacing();
     }
@@ -71,6 +80,14 @@ main {
 
     #info-text {
         font-size: 3.8vw;
+    }
+
+    #order-now {
+        width: 70%;
+
+        p {
+            font-size: min(5vw);
+        }
     }
 
     main {
