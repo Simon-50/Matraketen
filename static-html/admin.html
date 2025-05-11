@@ -13,7 +13,7 @@
                 <h1>Lägg till måltid</h1>
                 <form id="add-meal-form" method="POST">
                     <input type="text" name="dish" placeholder="Maträtt" required />
-                    <input type="text" name="imagePath" placeholder="Filnamn på bild" required />
+                    <input type="text" name="imageName" placeholder="Filnamn på bild" required />
                     <select name="restaurant" required>
                         <option selected disabled hidden value="default">Erbjuds av</option>
                         <option value="McDonalds">McDonalds</option>
@@ -59,7 +59,7 @@ En ingrediens per rad"
                     <input type="text" name="name" placeholder="Restaurangnamn" required />
                     <input
                         type="text"
-                        name="logotypePath"
+                        name="logotypeName"
                         placeholder="Filnamn på logotyp"
                         required
                     />
@@ -91,6 +91,7 @@ En ingrediens per rad"
             </div>
         </main>
         <script>
+            // Stop meal from being submitted without an offering restaurant
             document.querySelector('#add-meal-form').addEventListener('submit', function (event) {
                 let selectedOption = document.querySelector(
                     'select[name="restaurant"] option:checked'

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0" />
+        <title>Logga in - Matra</title>
+        <link
+            rel="stylesheet"
+            href="/css/main.css" />
+        <link
+            rel="stylesheet"
+            href="/css/login.css" />
+    </head>
+    <body>
+        <%- include('partials/header') -%>
+        <main>
+            <section>
+                <form method="POST">
+                    <div class="user">
+                        <img
+                            src="/images/profile.webp"
+                            alt="profilbild" />
+                        <input
+                            type="text"
+                            placeholder="Användarnamn"
+                            name="Username" />
+                    </div>
+                    <div class="password">
+                        <img
+                            src="/images/hanglas-ikon.webp"
+                            alt="lås ikon" />
+                        <input
+                            type="password"
+                            name="password"
+                            placeholder="Lösenord" />
+                    </div>
+                    <div class="remember-me">
+                        <div>
+                            <input
+                                type="checkbox"
+                                id="remember-login" />
+                            <span class="checkmark"></span>
+                        </div>
+                        <label for="remember-login">Håll mig inloggad</label>
+                    </div>
+                    <div class="login">
+                        <img
+                            src="/images/inlogg.webp"
+                            alt="inlogg ikon" />
+                        <button type="submit">Logga in</button>
+                    </div>
+
+                    <a href="register">Inget konto? Registrera dig här.</a>
+                    <a href="reset-password">Glömt lösenord?</a>
+                </form>
+            </section>
+        </main>
+        <%- include('partials/footer') -%>
+    </body>
+</html>

@@ -1,5 +1,11 @@
 @use 'base';
 
+// Override bootstraps defaults
+h1 {
+    margin: 0;
+    line-height: 1;
+}
+
 .resturang {
     border-radius: base.$br-md;
     width: 80%;
@@ -25,7 +31,6 @@
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         place-items: center;
-
 
         .item {
             align-items: center;

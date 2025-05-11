@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0" />
+        <link
+            rel="stylesheet"
+            href="/css/main.css" />
+        <link
+            rel="stylesheet"
+            href="/css/cart.css" />
+        <title>Kundvagn - Matraketen</title>
+    </head>
+    <body>
+        <%- include('partials/header') -%>
+
+        <main>
+            <section id="cart-items">
+                <div class="item">
+                    <div class="image-container logo">
+                        <img src="/images/Mclogo.webp" />
+                    </div>
+                    <div class="image-container">
+                        <img src="/images/mcdonalds-burgare.webp" />
+                    </div>
+                    <p>Cheesburger</p>
+                    <div class="item-counter">
+                        <img src="/images/increment_item.webp" />
+                        <p>x1</p>
+                        <img src="/images/decrement_item.webp" />
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="image-container logo">
+                        <img src="/images/Mclogo.webp" />
+                    </div>
+                    <div class="image-container">
+                        <img
+                            src="/images/mcchicken.webp"
+                            alt="" />
+                    </div>
+                    <p>Chicken</p>
+                    <div class="item-counter">
+                        <img src="/images/increment_item.webp" />
+                        <p>x1</p>
+                        <img src="/images/decrement_item.webp" />
+                    </div>
+                </div>
+            </section>
+            <section id="summary">
+                <p>
+                    Cheesburger<br />
+                    Chicken<br />
+                    <br /><br />
+                    Frakt<br />
+                    Total
+                </p>
+                <p id="pricing">
+                    15<br />
+                    15<br />
+                    <br /><br />
+                    75<br />
+                    105
+                </p>
+                <a href="confirmation"><button>Betala nu →</button></a>
+            </section>
+        </main>
+        <%- include('partials/footer') -%>
+    </body>
+</html>

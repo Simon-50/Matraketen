@@ -53,7 +53,7 @@ header .hamburger-icon:focus {
 header h1,
 header .hamburger-icon {
   height: 60%;
-  border-radius: 1rem;
+  border-radius: 0.5rem;
 }
 header h1 {
   background-color: white;
@@ -188,8 +188,4 @@ footer #banner {
 }
 footer #banner img {
   max-height: calc(clamp(2rem, 7vw, 4rem) / 1.1);
-}
-
-* {
-  outline: 1px solid black;
 }

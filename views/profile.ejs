@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0" />
+        <link
+            rel="stylesheet"
+            href="/css/main.css" />
+        <link
+            rel="stylesheet"
+            href="/css/profile.css" />
+        <title>Document</title>
+    </head>
+    <body>
+        <%- include('partials/header') -%>
+        <main>
+            <div id="update-details">
+                <h1>Uppdatera personuppgifter</h1>
+                <form
+                    method="POST"
+                    id="update-details-form">
+                    <input
+                        type="text"
+                        name="firstName"
+                        placeholder="Förnamn"
+                        required />
+                    <input
+                        type="text"
+                        name="lastName"
+                        placeholder="Efternamn"
+                        required />
+                    <input
+                        type="tel"
+                        name="phoneNumber"
+                        placeholder="Telefonnummer"
+                        required />
+                    <input
+                        type="email"
+                        name="email"
+                        placeholder="e-postadress"
+                        required />
+                    <input
+                        type="text"
+                        name="address"
+                        placeholder="Adress"
+                        required />
+                    <input
+                        type="text"
+                        name="postcode"
+                        placeholder="Postnummer"
+                        required />
+                    <button type="submit">Uppdatera</button>
+                </form>
+            </div>
+            <div id="change-password">
+                <h1>Byt lösenord</h1>
+                <form method="POST">
+                    <input
+                        type="password"
+                        name="currentPassword"
+                        placeholder="Nuvarande lösenord"
+                        required />
+                    <input
+                        type="password"
+                        name="newPassword"
+                        placeholder="Nytt lösenord" />
+                    <input
+                        type="password"
+                        name="repeatPassword"
+                        placeholder="Repetera nytt lösenord"
+                        required />
+                    <button type="submit">Bekräfta byte</button>
+                </form>
+            </div>
+        </main>
+        <%- include('partials/footer') -%>
+    </body>
+</html>

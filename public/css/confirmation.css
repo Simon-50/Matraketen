@@ -1,4 +1,4 @@
-div {
+main div {
   background-color: #d9d9d9;
   color: #323c46;
   padding: 0.5rem;
@@ -11,6 +11,6 @@ div {
   transform: translate(-50%, -50%);
   width: auto;
 }
-div p {
+main div p {
   font-size: 1rem;
 }

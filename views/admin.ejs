@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0" />
+        <link
+            rel="stylesheet"
+            href="/css/main.css" />
+        <link
+            rel="stylesheet"
+            href="/css/admin.css" />
+        <title>Administratör - Matraketen</title>
+    </head>
+    <body>
+        <%- include('partials/header') -%>
+        <main>
+            <div id="add-meal">
+                <h1>Lägg till måltid</h1>
+                <form
+                    id="add-meal-form"
+                    method="POST">
+                    <input
+                        type="text"
+                        name="dish"
+                        placeholder="Maträtt"
+                        required />
+                    <input
+                        type="text"
+                        name="imageName"
+                        placeholder="Filnamn på bild"
+                        required />
+                    <select
+                        name="restaurant"
+                        required>
+                        <option
+                            selected
+                            disabled
+                            hidden
+                            value="default">
+                            Erbjuds av
+                        </option>
+                        <option value="McDonalds">McDonalds</option>
+                        <option value="Burger King">Burger King</option>
+                        <option value="Benne Pastabar">Benne Pastabar</option>
+                    </select>
+                    <textarea
+                        name="description"
+                        placeholder="Beskrivning"
+                        required></textarea>
+                    <textarea
+                        name="dishContent"
+                        placeholder="Innehållsförteckning
+En ingrediens per rad"
+                        required></textarea>
+                    <button type="submit">Lägg till</button>
+                </form>
+            </div>
+            <div id="remove-meal">
+                <h1>Ta bort måltid</h1>
+                <form
+                    id="remove-meal-form"
+                    method="POST">
+                    <div>
+                        <p>McDonalds - Cheeseburger</p>
+                        <button
+                            type="submit"
+                            name="removeItem"
+                            value="McDonalds - Cheeseburger">
+                            Ta bort
+                        </button>
+                    </div>
+                    <div>
+                        <p>McDonalds - McWrap</p>
+                        <button
+                            type="submit"
+                            name="removeItem"
+                            value="McDonalds - McWrap">
+                            Ta bort
+                        </button>
+                    </div>
+                    <div>
+                        <p>McDonalds - Chicken burger</p>
+                        <button
+                            type="submit"
+                            name="removeItem"
+                            value="McDonalds - Chicken burger">
+                            Ta bort
+                        </button>
+                    </div>
+                </form>
+            </div>
+            <div id="add-restaurant">
+                <h1>Lägg till restaurang</h1>
+                <form
+                    id="add-restaurant-form"
+                    method="POST">
+                    <input
+                        type="text"
+                        name="name"
+                        placeholder="Restaurangnamn"
+                        required />
+                    <input
+                        type="text"
+                        name="logotypeName"
+                        placeholder="Filnamn på logotyp"
+                        required />
+                    <button type="submit">Lägg till</button>
+                </form>
+            </div>
+            <div id="remove-restaurant">
+                <h1>Ta bort restaurang</h1>
+                <form
+                    id="remove-restaurant-form"
+                    method="POST">
+                    <div>
+                        <p>McDonalds</p>
+                        <button
+                            type="submit"
+                            name="removeRestaurant"
+                            value="McDonalds">
+                            Ta bort
+                        </button>
+                    </div>
+                    <div>
+                        <p>Burger King</p>
+                        <button
+                            type="submit"
+                            name="removeRestaurant"
+                            value="Buger King">
+                            Ta bort
+                        </button>
+                    </div>
+                    <div>
+                        <p>Benne Pastabar</p>
+                        <button
+                            type="submit"
+                            name="removeRestaurant"
+                            value="Benne Pastabar">
+                            Ta bort
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </main>
+        <%- include('partials/footer') -%>
+        <script>
+            // Stop meal from being submitted without an offering restaurant
+            document.querySelector('#add-meal-form').addEventListener('submit', function (event) {
+                let selectedOption = document.querySelector(
+                    'select[name="restaurant"] option:checked'
+                );
+                if (selectedOption.value === 'default') {
+                    event.preventDefault();
+                    alert('Välj en restaurang');
+                }
+            });
+        </script>
+    </body>
+</html>

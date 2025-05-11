@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0" />
+        <link
+            rel="stylesheet"
+            href="/css/main.css" />
+        <link
+            rel="stylesheet"
+            href="/css/index.css" />
+        <title>Hem - Matraketen</title>
+    </head>
+    <body>
+        <%- include('partials/header') -%>
+        <main>
+            <div id="name">
+                <h1>Matraketen</h1>
+            </div>
+            <div id="info-text">
+                <p>
+                    För dig som inte kommer ut ur soffan, nu finns Matraketen som matleveranstjänst
+                    hos dig.
+                </p>
+            </div>
+            <div id="daily-deal">
+                <div>
+                    <div class="img-container">
+                        <img
+                            src="/images/Mclogo.webp"
+                            alt="Logotyp för McDonalds" />
+                    </div>
+                    <div class="img-container">
+                        <img
+                            src="/images/bklogo.webp"
+                            alt="Logotyp för McDonalds" />
+                    </div>
+                </div>
+                <p>Dagens mat<br />10% rabatt</p>
+            </div>
+            <div id="order-now">
+                <a href="menu">
+                    <img
+                        src="/images/cloud.webp"
+                        alt="Cloud" />
+                    <p>Beställ nu!</p>
+                </a>
+            </div>
+        </main>
+        <%- include('partials/footer') -%>
+
+    </body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0" />
+        <link
+            rel="stylesheet"
+            href="/css/main.css" />
+        <link
+            rel="stylesheet"
+            href="/css/product.css" />
+        <title>Produkt - Matraketen</title>
+    </head>
+    <body>
+        <%- include('partials/header') -%>
+
+        <main>
+            <div id="item">
+                <h1>Cheeseburger</h1>
+                <img
+                    src="/images/mcdonalds-burgare.webp"
+                    alt="" />
+            </div>
+            <div id="nav-buttons">
+                <a href="menu"><button>← Till meny</button></a>
+                <a href="cart"><button>Beställ nu →</button></a>
+            </div>
+            <div id="product-contents">
+                <h2>Innehåller</h2>
+                <ul>
+                    <li>Nötkött</li>
+                    <li>Saltgurka</li>
+                    <li>Lök</li>
+                    <li>Ketchup</li>
+                    <li>Senap</li>
+                    <li>Ost</li>
+                </ul>
+            </div>
+
+            <div id="description">
+                <h2>Beskrivning</h2>
+                <p>
+                    Beskrivning Njut av den ostliknande läckerheten hos en McDonald's Cheeseburgare!
+                    Vår enkla, klassiska cheeseburgare börjar med en burgarbiff av 100 % rent
+                    nötkött som kryddats med en nypa salt och peppar. McDonald's Cheeseburger toppas
+                    med en syrlig saltgurka, hackad lök, ketchup, senap och en skiva smältande
+                    amerikansk Ost. Den innehåller inga konstgjorda smaker, konserveringsmedel eller
+                    tillsatta färger från konstgjorda källor.
+                </p>
+            </div>
+        </main>
+        <%- include('partials/footer') -%>
+    </body>
+</html>

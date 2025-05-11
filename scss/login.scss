@@ -1,3 +1,5 @@
+@use 'sass:color';
+
 @use 'base';
 @use 'components';
 
@@ -28,24 +30,30 @@ form {
     @include components.form();
 
     > div {
-        @include components.card;
-
-        height: 10vh;
-        background: linear-gradient(to right, base.$primary 40px, base.$section-color 0);
         justify-content: center;
         display: flex;
         position: relative;
+    }
 
-        
+    > div:not(.remember-me) {
+        @include components.card;
+
+        height: 10vh;
+        background: linear-gradient(
+            to right,
+            base.$primary 40px,
+            color.scale(base.$section-color, $lightness: -15%) 0
+        );
     }
 
     a {
         text-align: center;
-        font-size:larger;
+        font-size: larger;
     }
 }
 
-input[type='text'] {
+input[type='text'],
+input[type='password'] {
     @include components.value-input;
 
     border-bottom: 5px solid base.$secondary;
@@ -55,22 +63,26 @@ input[type='text'] {
 @media screen and (min-width: base.$breakpoint) {
     form {
         > div {
-            background: linear-gradient(to right, base.$primary 60px, base.$section-color 0);
+            background: linear-gradient(
+                to right,
+                base.$primary 60px,
+                color.scale(base.$section-color, $lightness: -15%) 0
+            );
         }
     }
 
     section {
-        input [type="text"] {
-            font-size:xx-large;
+        input [type='text'] {
+            font-size: xx-large;
         }
-        button{
+        button {
             font-size: x-large;
         }
-        img{
+        img {
             height: auto;
             width: 50px;
         }
-        a{
+        a {
             font-size: x-large;
         }
     }

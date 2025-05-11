@@ -1,0 +1,22 @@
+{
+    "name": "matraketen",
+    "version": "1.0.0",
+    "main": "index.js",
+    "type": "module",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "sass": "sass scss:public/css --watch"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "description": "",
+    "dependencies": {
+        "ejs": "^3.1.10",
+        "express": "^5.1.0"
+    },
+    "devDependencies": {
+        "sass": "^1.88.0"
+    }
+}
+
