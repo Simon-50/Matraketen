@@ -1,7 +1,7 @@
 -- Restaurants
 CREATE TABLE restaurants (
     id SERIAL NOT NULL PRIMARY KEY,
-    restaurant_name TEXT NOT NULL UNIQUE,
+    name TEXT NOT NULL UNIQUE,
     logo_name TEXT NOT NULL
 );
 
@@ -9,8 +9,8 @@ CREATE TABLE restaurants (
 CREATE TABLE meals (
     id SERIAL PRIMARY KEY,
     offering_restaurant_id INT NOT NULL REFERENCES restaurants(id) ON DELETE CASCADE,
-    dish_name TEXT NOT NULL,
-    dish_description TEXT,
+    name TEXT NOT NULL,
+    description TEXT,
     image_name TEXT
 );
 
@@ -18,7 +18,7 @@ CREATE TABLE meals (
 -- Meal content
 CREATE TABLE ingredients (
     id SERIAL PRIMARY KEY,
-    ingredient_name TEXT NOT NULL UNIQUE
+    name TEXT NOT NULL UNIQUE
 );
 
 -- Meal to content 
