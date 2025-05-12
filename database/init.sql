@@ -14,7 +14,6 @@ CREATE TABLE meals (
     image_name TEXT
 );
 
-
 -- Meal content
 CREATE TABLE ingredients (
     id SERIAL PRIMARY KEY,
@@ -42,15 +41,14 @@ CREATE TABLE customers (
     privacy_policy_accepted BOOLEAN NOT NULL
 );
 
-
 -- Add data
-INSERT INTO restaurants (restaurant_name, logo_name)
+INSERT INTO restaurants (name, logo_name)
 VALUES
     ('McDonalds', 'Mclogo.webp'),
     ('Burger King', 'bklogo.webp'),
     ('Benne Pastabar', 'bennelogo.webp');
 
-INSERT INTO ingredients (ingredient_name)
+INSERT INTO ingredients (name)
 VALUES
     ('Kött'),                       -- 1
     ('Cheddar'),                    -- 2
@@ -80,7 +78,7 @@ VALUES
     ('Lök'),                        -- 26
     ('Mjölk');                      -- 27
 
-INSERT INTO meals (offering_restaurant_id, dish_name, dish_description, image_name)
+INSERT INTO meals (offering_restaurant_id, name, description, image_name)
 VALUES
     (
         1,
@@ -104,38 +102,38 @@ VALUES
         2,
         'Chicken royal',
         'En extra lång burgare med saftig, panerad kycklingfilé, färsk sallad och majonnäs.',
-        'bkroyal.webp', 
+        'bkroyal.webp'
     ),
     (
         2,
         'Chicken nuggets',
         'Krispiga på utsidan, saftiga på insidan. Inte undra på att våra panerade Chicken Nuggets är populära.',
-        'bknuggets.webp', 
+        'bknuggets.webp'
     ),
     (
         2,
         'Bacon king stack',
         'Den ikoniska Bacon King - mer överdådig än någonsin. Vi har gett din favoritburgare en uppgradering värdig en kung. En dubbelburgare med 100% grillat saftigt nötkött, toppad med 4 skivor cheddarost, krämig majonnäs och ketchup, och med en krona av 10 skivor knaprigt, rökigt bacon. Det här är inte bara en burgare, det är en Bacon King-upplevelse!',
-        'bkbacon.webp', 
+        'bkbacon.webp'
     ),
     (
         3,
-        'Green Ragu'
+        'Green Ragu',
         'Vegofärs från Anamma i vår mustiga ragusås smaksatt med färsk rosmarin och lagerblad. Toppad med lagrad hårdost, en vegansk vitlöks-créme fraiche, hackad persilja, nymalen svartpeppar och extra virgin olivolja.',
-        'bennepasta.webp',
+        'bennepasta.webp'
     ),
-        (
+    (
         3,
-        'Double cheese'
+        'Double cheese',
         'Vår himmelskt krämiga ostsås gjord på taleggio och lagrad hårdost, smaksatt med en generös mängd svartpeppar. Toppad med lagrad hårdost, hackad persilja och nymalen svartpeppar.',
-        'bennepasta2.webp',
+        'bennepasta2.webp'
     ),
-        (
+    (
         3,
-        'smokey pig'
+        'Smokey pig',
         'Nystekt bacon i en krämig sås gjord på svenska mejerier som är smaksatt med svartpeppar. Toppad med lagrad hårdost och hackad persilja.',
-        'bennepasta1.webp',
-    ),
+        'bennepasta1.webp'
+    );
 
 INSERT INTO meal_ingredients (meal_id, ingredient_id)
 VALUES
