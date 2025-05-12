@@ -163,3 +163,9 @@ VALUES
     (7, 21), (7, 22), (7, 23), (7, 24), (7, 25), (7, 26),
     (8, 21), (8, 22), (8, 23),
     (9, 21), (9, 22), (9, 23);
+
+INSERT INTO customers (first_name, last_name, email, phone_number, address, postcode, password, newsletter, privacy_policy_accepted)
+VALUES
+    ('Anna', 'Svensson', 'anna.svensson@example.com', '0701234567', 'Storgatan 1', '12345', 'hashedpassword1', true, true),
+    ('Erik', 'Karlsson', 'erik.karlsson@example.com', '0707654321', 'Lillgatan 5', '54321', 'hashedpassword2', false, true),
+    ('Maria', 'Lindblom', 'maria.lind@example.com', '0731112222', 'Björkvägen 12', '11223', 'hashedpassword3', true, true);
