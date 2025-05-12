@@ -28,7 +28,6 @@ app.get('/menu', async (req, res) => {
 
 app.get('/product', async (req, res) => {
     const productId = req.query['id'];
-
     const product = await database.queryMeal(productId);
 
     res.render('product', {product: product});
@@ -62,8 +61,10 @@ app.get('/profile', (req, res) => {
     res.render('profile');
 });
 
-app.get('/admin', (req, res) => {
-    res.render('admin');
+app.get('/admin', async (req, res) => {
+    const menu = await database.queryMenu();
+
+    res.render('admin', {menu: menu});
 });
 
 // Start server

@@ -25,6 +25,22 @@ const db = new pg.Client({
 db.connect();
 
 const database = {
+    async queryMeal(id) {
+        // Get product info
+        let result = await db.query(queries['getMeal'], [id]);
+        const product = result.rows[0];
+
+        // Get ingredients
+        result = await db.query(queries['getIngredients'], [id]);
+        product['ingredients'] = [];
+
+        // Add them to the product object
+        for (const { name } of result.rows) {
+            product['ingredients'].push(name);
+        }
+
+        return product;
+    },
     async queryMenu() {
         const menu = [];
 
@@ -43,22 +59,6 @@ const database = {
         }
 
         return menu;
-    },
-    async queryMeal(id) {
-        // Get product info
-        let result = await db.query(queries['getMeal'], [id]);
-        const product = result.rows[0];
-
-        // Get ingredients
-        result = await db.query(queries['getIngredients'], [id]);
-        product['ingredients'] = [];
-
-        // Add them to the product object
-        for (const { name } of result.rows) {
-            product['ingredients'].push(name);
-        }
-
-        return product;
     }
 };
 
