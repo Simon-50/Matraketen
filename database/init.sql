@@ -122,19 +122,19 @@ VALUES
         3,
         'Green Ragu'
         'Vegofärs från Anamma i vår mustiga ragusås smaksatt med färsk rosmarin och lagerblad. Toppad med lagrad hårdost, en vegansk vitlöks-créme fraiche, hackad persilja, nymalen svartpeppar och extra virgin olivolja.',
-        '',
+        'bennepasta.webp',
     ),
         (
         3,
         'Double cheese'
         'Vår himmelskt krämiga ostsås gjord på taleggio och lagrad hårdost, smaksatt med en generös mängd svartpeppar. Toppad med lagrad hårdost, hackad persilja och nymalen svartpeppar.',
-        '',
+        'bennepasta2.webp',
     ),
         (
         3,
         'smokey pig'
         'Nystekt bacon i en krämig sås gjord på svenska mejerier som är smaksatt med svartpeppar. Toppad med lagrad hårdost och hackad persilja.',
-        '',
+        'bennepasta1.webp',
     ),
 
 INSERT INTO meal_ingredients (meal_id, ingredient_id)
@@ -147,4 +147,4 @@ VALUES
     (6, 18), (6, 19), (6, 20), (6, 2), (6, 3), (6, 16),
     (7, 21), (7, 22), (7, 23), (7, 24), (7, 25), (7, 26),
     (8, 21), (8, 22), (8, 23),
-    (9, ), (9, 22), (9, 23);
+    (9, 21), (9, 22), (9, 23);
