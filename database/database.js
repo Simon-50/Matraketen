@@ -32,8 +32,7 @@ const database = {
         const result = await db.query(queries['getRestaurants']);
 
         for (const restarant of result.rows) {
-
-            // Get meals for restaraunt
+            // Get meals for restaurant
             const result = await db.query(queries['getMeals'], [restarant['id']]);
 
             // Add them to object
@@ -44,6 +43,22 @@ const database = {
         }
 
         return menu;
+    },
+    async queryMeal(id) {
+        // Get product info
+        let result = await db.query(queries['getMeal'], [id]);
+        const product = result.rows[0];
+
+        // Get ingredients
+        result = await db.query(queries['getIngredients'], [id]);
+        product['ingredients'] = [];
+
+        // Add them to the product object
+        for (const { name } of result.rows) {
+            product['ingredients'].push(name);
+        }
+
+        return product;
     }
 };
 

@@ -26,8 +26,12 @@ app.get('/menu', async (req, res) => {
     res.render('menu', { menu: menu });
 });
 
-app.get('/product', (req, res) => {
-    res.render('product');
+app.get('/product', async (req, res) => {
+    const productId = req.query['id'];
+
+    const product = await database.queryMeal(productId);
+
+    res.render('product', {product: product});
 });
 
 app.get('/cart', (req, res) => {

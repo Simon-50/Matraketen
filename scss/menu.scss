@@ -36,6 +36,12 @@ p {
         .item {
             align-items: center;
 
+            
+            a {
+                color: base.$primary;
+                text-decoration: none;
+            }
+
             img {
                 width: auto;
                 height: 15vw;

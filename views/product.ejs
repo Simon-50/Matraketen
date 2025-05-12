@@ -18,37 +18,26 @@
 
         <main>
             <div id="item">
-                <h1>Cheeseburger</h1>
-                <img
-                    src="/images/mcdonalds-burgare.webp"
-                    alt="" />
+                <h1><%- product['name'] %></h1>
+                <img src="/images/<%- product['image_name'] %>" />
             </div>
             <div id="nav-buttons">
                 <a href="menu"><button>← Till meny</button></a>
+                <button>Lägg i kundvagn</button>
                 <a href="cart"><button>Beställ nu →</button></a>
             </div>
             <div id="product-contents">
                 <h2>Innehåller</h2>
                 <ul>
-                    <li>Nötkött</li>
-                    <li>Saltgurka</li>
-                    <li>Lök</li>
-                    <li>Ketchup</li>
-                    <li>Senap</li>
-                    <li>Ost</li>
+                    <% product['ingredients'].forEach(ingredient => { %>
+                        <li><%- ingredient %></li>
+                    <% }) %>
                 </ul>
             </div>
 
             <div id="description">
                 <h2>Beskrivning</h2>
-                <p>
-                    Beskrivning Njut av den ostliknande läckerheten hos en McDonald's Cheeseburgare!
-                    Vår enkla, klassiska cheeseburgare börjar med en burgarbiff av 100 % rent
-                    nötkött som kryddats med en nypa salt och peppar. McDonald's Cheeseburger toppas
-                    med en syrlig saltgurka, hackad lök, ketchup, senap och en skiva smältande
-                    amerikansk Ost. Den innehåller inga konstgjorda smaker, konserveringsmedel eller
-                    tillsatta färger från konstgjorda källor.
-                </p>
+                <p><%- product['description'] %></p>
             </div>
         </main>
         <%- include('partials/footer') -%>

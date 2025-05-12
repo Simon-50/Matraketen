@@ -21,7 +21,6 @@
 
     <body class="bg-light">
         <%- include('partials/header') -%>
-
         <main>
             <% menu.forEach(restaurant => { %>
             <section class="resturang mx-auto">
@@ -35,17 +34,18 @@
                         src="/images/<%- restaurant['logo_name'] %>"
                         alt="bildloga" />
                 </div>
-
                 <div class="menu-items">
                     <% restaurant['meals'].forEach(meal => { %>
                     <div class="item">
-                        <img
-                            src="/images/<%- meal['image_name'] %>"
-                            alt="bild" />
-                        <p>
-                            <%- meal['name'] %> <br />
-                            <%- meal['cost'].replace('.', ',') %> kr
-                        </p>
+                        <a href="product?id=<%- meal['id'] %>">
+                            <img
+                                src="/images/<%- meal['image_name'] %>"
+                                alt="bild" />
+                            <p>
+                                <%- meal['name'] %> <br />
+                                <%- meal['cost'].replace('.', ',') %> kr
+                            </p>
+                        </a>
                     </div>
                     <% }) %>
                 </div>
