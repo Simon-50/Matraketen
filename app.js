@@ -1,25 +1,29 @@
 import express from 'express';
-import { join, dirname } from 'path';
+import { dirname, join } from 'path';
 import { fileURLToPath } from 'url';
+import database from './database/database.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
+// Initialize App
 const app = express();
 const PORT = 3000;
+
+// Add middlewares
+app.use(express.static(join(__dirname, 'public'))); // Serve public
+app.use(express.urlencoded({ extended: true })); // urlencoded parser
 
 // Set EJS as templating engine
 app.set('view engine', 'ejs');
 app.set('views', join(__dirname, 'views'));
 
-// Serve static files
-app.use(express.static(join(__dirname, 'public')));
-
 app.get('/', (req, res) => {
     res.render('index');
 });
 
-app.get('/menu', (req, res) => {
-    res.render('menu');
+app.get('/menu', async (req, res) => {
+    const menu = await database.queryMenu();
+    res.render('menu', { menu: menu });
 });
 
 app.get('/product', (req, res) => {

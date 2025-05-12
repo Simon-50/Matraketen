@@ -1,3 +1,10 @@
+-- Reset database
+DROP SCHEMA public CASCADE;
+CREATE SCHEMA public;
+GRANT ALL ON SCHEMA public TO postgres;
+GRANT ALL ON SCHEMA public TO public;
+COMMENT ON SCHEMA public IS 'standard public schema';
+
 -- Restaurants
 CREATE TABLE restaurants (
     id SERIAL NOT NULL PRIMARY KEY,
@@ -10,8 +17,9 @@ CREATE TABLE meals (
     id SERIAL PRIMARY KEY,
     offering_restaurant_id INT NOT NULL REFERENCES restaurants(id) ON DELETE CASCADE,
     name TEXT NOT NULL,
-    description TEXT,
-    image_name TEXT
+    cost NUMERIC(10, 2) NOT NULL,
+    description TEXT NOT NULL,
+    image_name TEXT NOT NULL
 );
 
 -- Meal content
@@ -78,59 +86,68 @@ VALUES
     ('Lök'),                        -- 26
     ('Mjölk');                      -- 27
 
-INSERT INTO meals (offering_restaurant_id, name, description, image_name)
+INSERT INTO meals (offering_restaurant_id, name, cost, description, image_name)
 VALUES
     (
         1,
         'Cheeseburger',
+        24.90,
         'Njut av den ostliknande läckerheten hos en McDonald''s Cheeseburgare! Vår enkla, klassiska cheeseburgare börjar med en burgarbiff av 100 % rent nötkött som kryddats med en nypa salt och peppar. McDonald''s Cheeseburger toppas med en syrlig saltgurka, hackad lök, ketchup, senap och en skiva smältande amerikansk ost. Den innehåller inga konstgjorda smaker, konserveringsmedel eller tillsatta färger från konstgjorda källor.',
         'mcdonalds-burgare.webp'
     ),
     (
         1,
         'McWrap',
+        59.90,
         'Vår efterlängtade McWrap® är äntligen tillbaka på menyn! Den innehåller delad Chicken Premiere, sallad, tomat och McFeast-sås.',
         'mcwrap.webp'
     ),
     (
         1,
         'McChicken',
+        64.90,
         'Vår populära Mc Chicken finns nu i en mindre version med den oemotståndligt goda Tasty-såsen, sallad och cheddar. Allt samlat i ett varmt och luftigt bröd.',
         'mcchicken.webp'
     ),
     (
         2,
         'Chicken royal',
+        84.90,
         'En extra lång burgare med saftig, panerad kycklingfilé, färsk sallad och majonnäs.',
         'bkroyal.webp'
     ),
     (
         2,
-        'Chicken nuggets',
+        'Chicken nuggets 9st',
+        89.90,
         'Krispiga på utsidan, saftiga på insidan. Inte undra på att våra panerade Chicken Nuggets är populära.',
         'bknuggets.webp'
     ),
     (
         2,
         'Bacon king stack',
+        130.90,
         'Den ikoniska Bacon King - mer överdådig än någonsin. Vi har gett din favoritburgare en uppgradering värdig en kung. En dubbelburgare med 100% grillat saftigt nötkött, toppad med 4 skivor cheddarost, krämig majonnäs och ketchup, och med en krona av 10 skivor knaprigt, rökigt bacon. Det här är inte bara en burgare, det är en Bacon King-upplevelse!',
         'bkbacon.webp'
     ),
     (
         3,
         'Green Ragu',
+        84.90,
         'Vegofärs från Anamma i vår mustiga ragusås smaksatt med färsk rosmarin och lagerblad. Toppad med lagrad hårdost, en vegansk vitlöks-créme fraiche, hackad persilja, nymalen svartpeppar och extra virgin olivolja.',
         'bennepasta.webp'
     ),
     (
         3,
         'Double cheese',
+        74.90,
         'Vår himmelskt krämiga ostsås gjord på taleggio och lagrad hårdost, smaksatt med en generös mängd svartpeppar. Toppad med lagrad hårdost, hackad persilja och nymalen svartpeppar.',
         'bennepasta2.webp'
     ),
     (
         3,
         'Smokey pig',
+        84.90,
         'Nystekt bacon i en krämig sås gjord på svenska mejerier som är smaksatt med svartpeppar. Toppad med lagrad hårdost och hackad persilja.',
         'bennepasta1.webp'
     );

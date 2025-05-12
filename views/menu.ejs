@@ -23,48 +23,34 @@
         <%- include('partials/header') -%>
 
         <main>
+            <% menu.forEach(restaurant => { %>
             <section class="resturang mx-auto">
                 <div class="headbar">
                     <img
                         class="bild1"
-                        src="/images/Mclogo.webp"
+                        src="/images/<%- restaurant['logo_name'] %>"
                         alt="bildloga" />
                     <img
                         class="bild2"
-                        src="/images/Mclogo.webp"
+                        src="/images/<%- restaurant['logo_name'] %>"
                         alt="bildloga" />
                 </div>
 
                 <div class="menu-items">
+                    <% restaurant['meals'].forEach(meal => { %>
                     <div class="item">
                         <img
-                            src="/images/mcdonalds-burgare.webp"
+                            src="/images/<%- meal['image_name'] %>"
                             alt="bild" />
                         <p>
-                            cheeseburger <br />
-                            15kr
+                            <%- meal['name'] %> <br />
+                            <%- meal['cost'].replace('.', ',') %> kr
                         </p>
                     </div>
-                    <div class="item">
-                        <img
-                            src="/images/mcwrap.webp"
-                            alt="bild" />
-                        <p>
-                            Mcwrap <br />
-                            45kr
-                        </p>
-                    </div>
-                    <div class="item">
-                        <img
-                            src="/images/mcchicken.webp"
-                            alt="bild" />
-                        <p>
-                            Chicken burger<br />
-                            20kr
-                        </p>
-                    </div>
+                    <% }) %>
                 </div>
             </section>
+            <% }) %>
         </main>
         <%- include('partials/footer') -%>
         <script
