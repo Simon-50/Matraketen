@@ -23,8 +23,8 @@ const db = new pg.Client({
     password: process.env.DB_PASSWORD,
 
     host: 'localhost',
-    database: 'Matraketen',
-    port: 5432
+    database: process.env.DB_NAME,
+    port: process.env.DB_PORT
 });
 db.connect();
 
