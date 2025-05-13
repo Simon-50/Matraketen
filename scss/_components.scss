@@ -6,15 +6,21 @@
 @mixin hover-effect($strength: 1.1) {
     transition: all 0.3s ease-in-out;
 
-    &:hover,
-    &:focus {
+    &:hover {
         transform: scale($strength);
+    }
+}
+
+@mixin focus-effect() {
+    &:focus {
+        outline: calc(base.$outline-width / 2) solid base.$secondary;
     }
 }
 
 // Tags
 @mixin button($type: 'standard', $hover-strength: 1.1, $add-spacing: true) {
     @include hover-effect($hover-strength);
+    @include focus-effect();
 
     border-radius: base.$br-sm;
 
@@ -52,6 +58,8 @@
     @if not $form {
         width: min(45%, 10rem);
     }
+
+    @include focus-effect();
 }
 
 @mixin dropdown-input() {
@@ -92,8 +100,8 @@
     &:checked ~ .checkmark::after {
         content: '';
 
-        width: 0.4rem;
-        height: 1rem;
+        width: 0.6rem;
+        height: 1.3rem;
 
         border: solid base.$secondary;
         border-width: 0 calc($size / 7) calc($size / 7) 0;

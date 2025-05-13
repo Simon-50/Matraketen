@@ -33,7 +33,7 @@
   position: relative;
   padding: 0 3rem;
 }
-#order-now:hover, #order-now:focus {
+#order-now:hover {
   transform: scale(1.06);
 }
 #order-now img {

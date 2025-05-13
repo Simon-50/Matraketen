@@ -72,6 +72,9 @@
   font-size: min(5vw, 2.5rem);
   margin-top: 1rem;
 }
-#summary button:hover, #summary button:focus {
+#summary button:hover {
   transform: scale(1.1);
+}
+#summary button:focus {
+  outline: 0.15rem solid #bc2632;
 }

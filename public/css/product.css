@@ -39,8 +39,11 @@ button {
   background-color: #bc2632;
   color: white;
 }
-button:hover, button:focus {
+button:hover {
   transform: scale(1.1);
+}
+button:focus {
+  outline: 0.15rem solid #bc2632;
 }
 
 main > *:not(:last-child) {
