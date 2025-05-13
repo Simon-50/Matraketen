@@ -1,6 +1,10 @@
+import dotenv from 'dotenv';
 import { readdirSync, readFileSync } from 'fs';
 import { join, parse } from 'path';
 import pg from 'pg';
+
+// Load environment
+dotenv.config();
 
 // Load queries
 const queriesDir = join('database', 'queries');
@@ -16,7 +20,7 @@ for (const file of readdirSync(queriesDir)) {
 // Initialize database
 const db = new pg.Client({
     user: 'postgres',
-    password: 'ec5Zmbnd',
+    password: process.env.DB_PASSWORD,
 
     host: 'localhost',
     database: 'Matraketen',
