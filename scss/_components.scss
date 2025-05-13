@@ -6,8 +6,7 @@
 @mixin hover-effect($strength: 1.1) {
     transition: all 0.3s ease-in-out;
 
-    &:hover,
-    &:focus {
+    &:hover {
         transform: scale($strength);
     }
 }
@@ -52,6 +51,10 @@
     @if not $form {
         width: min(45%, 10rem);
     }
+
+    &:focus {
+        outline: calc(base.$outline-width / 2) solid base.$secondary;
+    }
 }
 
 @mixin dropdown-input() {
@@ -92,8 +95,8 @@
     &:checked ~ .checkmark::after {
         content: '';
 
-        width: 0.4rem;
-        height: 1rem;
+        width: 0.6rem;
+        height: 1.3rem;
 
         border: solid base.$secondary;
         border-width: 0 calc($size / 7) calc($size / 7) 0;
