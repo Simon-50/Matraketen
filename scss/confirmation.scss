@@ -1,16 +1,53 @@
+@use "base";
 @use 'components';
 
-main div {
-    @include components.card;
-    text-align: center;
-    justify-items: center;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
+main {
+    min-height: calc(100vh - base.$navbar-height - base.$footer-height);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-    width: auto;
-    p {
-        font-size: 1rem;
+    div {
+        @include components.card;
+        height: 18vw;
+        padding: 0;
+        
+        align-content: center;
+
+        p {
+            font-size: 2.4vw;
+            text-align: center;
+        }
+    }
+
+    img {
+        display: none;
+        height: 18vw;
+    }
+}
+
+@media screen and (min-width: base.$breakpoint) {
+    main {
+        >div {
+            width: auto;
+            text-align: center;
+
+            z-index: 1;
+        }
+
+        img {
+            display: inline-block;
+            width: auto;
+        }
+
+        .right {
+            margin-left: -10px;
+            border-radius: 0 base.$br-lg base.$br-lg 0;
+        }
+
+        .left {
+            margin-right: -10px;
+            border-radius: base.$br-lg 0 0 base.$br-lg;
+        }
     }
 }

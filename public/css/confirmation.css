@@ -1,16 +1,43 @@
+main {
+  min-height: calc(100vh - clamp(4rem, 16vw, 6rem) - clamp(2rem, 7vw, 4rem));
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 main div {
   background-color: #d9d9d9;
   color: #323c46;
   padding: 0.5rem;
   border-radius: 1rem;
-  text-align: center;
-  justify-items: center;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  width: auto;
+  height: 18vw;
+  padding: 0;
+  align-content: center;
 }
 main div p {
-  font-size: 1rem;
+  font-size: 2.4vw;
+  text-align: center;
+}
+main img {
+  display: none;
+  height: 18vw;
+}
+
+@media screen and (min-width: 768px) {
+  main > div {
+    width: auto;
+    text-align: center;
+    z-index: 1;
+  }
+  main img {
+    display: inline-block;
+    width: auto;
+  }
+  main .right {
+    margin-left: -10px;
+    border-radius: 0 2rem 2rem 0;
+  }
+  main .left {
+    margin-right: -10px;
+    border-radius: 2rem 0 0 2rem;
+  }
 }

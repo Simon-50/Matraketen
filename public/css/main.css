@@ -187,5 +187,6 @@ footer #banner {
   align-items: center;
 }
 footer #banner img {
+  width: 100%;
   max-height: calc(clamp(2rem, 7vw, 4rem) / 1.1);
 }
