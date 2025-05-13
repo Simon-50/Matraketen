@@ -30,6 +30,10 @@ p {
 .resturang .menu-items .item {
   align-items: center;
 }
+.resturang .menu-items .item a {
+  color: #323c46;
+  text-decoration: none;
+}
 .resturang .menu-items .item img {
   width: auto;
   height: 15vw;
