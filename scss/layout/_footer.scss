@@ -43,6 +43,7 @@ footer {
         align-items: center;
 
         img {
+            width: 100%;
             max-height: calc(base.$footer-height / 1.1);
         }
     }
