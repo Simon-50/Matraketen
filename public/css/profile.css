@@ -82,6 +82,9 @@ form button {
 form button:hover {
   transform: scale(1.1);
 }
+form button:focus {
+  outline: 0.15rem solid #bc2632;
+}
 form button:hover, form button:focus {
   outline: 0.3rem solid #bc2632;
   outline-offset: -0.2rem;

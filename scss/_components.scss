@@ -11,9 +11,16 @@
     }
 }
 
+@mixin focus-effect() {
+    &:focus {
+        outline: calc(base.$outline-width / 2) solid base.$secondary;
+    }
+}
+
 // Tags
 @mixin button($type: 'standard', $hover-strength: 1.1, $add-spacing: true) {
     @include hover-effect($hover-strength);
+    @include focus-effect();
 
     border-radius: base.$br-sm;
 
@@ -52,9 +59,7 @@
         width: min(45%, 10rem);
     }
 
-    &:focus {
-        outline: calc(base.$outline-width / 2) solid base.$secondary;
-    }
+    @include focus-effect();
 }
 
 @mixin dropdown-input() {

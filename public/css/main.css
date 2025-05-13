@@ -45,6 +45,10 @@ header nav > *:hover,
 header .hamburger-icon:hover {
   transform: scale(1);
 }
+header nav > *:focus,
+header .hamburger-icon:focus {
+  outline: 0.15rem solid #bc2632;
+}
 header nav > *:hover, header nav > *:focus,
 header .hamburger-icon:hover,
 header .hamburger-icon:focus {

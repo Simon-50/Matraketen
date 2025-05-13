@@ -75,3 +75,6 @@
 #summary button:hover {
   transform: scale(1.1);
 }
+#summary button:focus {
+  outline: 0.15rem solid #bc2632;
+}
