@@ -18,7 +18,7 @@ section {
 }
 
 button {
-    @include components.button;
+    @include components.button();
 
     text-align: center;
 
@@ -30,13 +30,11 @@ form {
     @include components.form();
 
     > div {
+        @include components.card;
+
         justify-content: center;
         display: flex;
         position: relative;
-    }
-
-    > div:not(.remember-me) {
-        @include components.card;
 
         height: 10vh;
         background: linear-gradient(
@@ -49,6 +47,10 @@ form {
     a {
         text-align: center;
         font-size: larger;
+    }
+
+    .remember-me {
+        height: 6vh
     }
 }
 

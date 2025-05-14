@@ -16,6 +16,10 @@
 #nav-buttons {
     display: flex;
     justify-content: space-between;
+
+    button {
+        @include components.button(inverted);
+    }
 }
 
 #description {
@@ -25,10 +29,6 @@
 h1,
 h2 {
     text-align: center;
-}
-
-button {
-    @include components.button(inverted);
 }
 
 main {

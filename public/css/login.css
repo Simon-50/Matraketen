@@ -15,26 +15,20 @@ section img {
 }
 
 button {
-  transition: all 0.3s ease-in-out;
+  transition: all 0.2s ease-in-out;
   border-radius: 0.5rem;
   cursor: pointer;
   font-family: inherit;
-  margin: 0.3rem;
+  margin: 0.25rem;
   padding: min(1.6vw, 0.6rem) min(5vw, 2.4rem);
-  outline: 0.15rem solid #bc2632;
+  outline: 0.125rem solid #bc2632;
   text-align: center;
   padding-top: 0;
   padding-bottom: 0;
 }
-button:hover {
-  transform: scale(1.1);
-}
-button:focus {
-  outline: 0.15rem solid #bc2632;
-}
-button:hover, button:focus {
-  outline: 0.3rem solid #bc2632;
-  outline-offset: -0.2rem;
+button:focus, button:hover {
+  outline: 0.25rem solid #bc2632;
+  outline-offset: -0.125rem;
 }
 
 form {
@@ -51,12 +45,14 @@ form textarea::placeholder {
   color: #778a9e;
 }
 form input {
+  transition: all 0.2s ease-in-out;
   color: #323c46;
   padding: 0.3rem;
   border-radius: 0.5rem;
 }
-form input:focus {
-  outline: 0.15rem solid #bc2632;
+form input:focus, form input:hover {
+  outline: 0.25rem solid #bc2632;
+  outline-offset: -0.125rem;
 }
 form div:has(input[type=checkbox]) {
   display: flex;
@@ -74,7 +70,7 @@ form div:has(input[type=checkbox]) input[type=checkbox] {
      -moz-appearance: none;
           appearance: none;
   cursor: pointer;
-  border: 0.15rem solid #bc2632;
+  border: 0.125rem solid #bc2632;
   border-radius: 0.7692307692rem;
 }
 form div:has(input[type=checkbox]) input[type=checkbox] ~ .checkmark {
@@ -95,41 +91,44 @@ form div:has(input[type=checkbox]) input[type=checkbox]:checked ~ .checkmark::af
   transform: translate(0, -10%) rotate(40deg);
 }
 form select {
+  transition: all 0.2s ease-in-out;
   padding: 0.3rem;
   border-radius: 0.5rem;
 }
+form select:focus, form select:hover {
+  outline: 0.25rem solid #bc2632;
+  outline-offset: -0.125rem;
+}
 form button {
-  transition: all 0.3s ease-in-out;
+  transition: all 0.2s ease-in-out;
   border-radius: 0.5rem;
   cursor: pointer;
   font-family: inherit;
-  margin: 0.3rem;
+  margin: 0.25rem;
   padding: min(1.6vw, 0.6rem) min(5vw, 2.4rem);
-  outline: 0.15rem solid #bc2632;
+  outline: 0.125rem solid #bc2632;
 }
-form button:hover {
-  transform: scale(1.1);
-}
-form button:focus {
-  outline: 0.15rem solid #bc2632;
-}
-form button:hover, form button:focus {
-  outline: 0.3rem solid #bc2632;
-  outline-offset: -0.2rem;
+form button:focus, form button:hover {
+  outline: 0.25rem solid #bc2632;
+  outline-offset: -0.125rem;
 }
 form textarea {
+  transition: all 0.2s ease-in-out;
+  padding: 0.25rem;
   min-height: 5rem;
 }
-form > div {
-  justify-content: center;
-  display: flex;
-  position: relative;
+form textarea:focus, form textarea:hover {
+  outline: 0.25rem solid #bc2632;
+  outline-offset: -0.125rem;
 }
-form > div:not(.remember-me) {
+form > div {
   background-color: #d9d9d9;
   color: #323c46;
   padding: 0.5rem;
   border-radius: 1rem;
+  justify-content: center;
+  display: flex;
+  position: relative;
   height: 10vh;
   background: linear-gradient(to right, #323c46 40px, #b8b8b8 0);
 }
@@ -137,9 +136,13 @@ form a {
   text-align: center;
   font-size: larger;
 }
+form .remember-me {
+  height: 6vh;
+}
 
 input[type=text],
 input[type=password] {
+  transition: all 0.2s ease-in-out;
   color: #323c46;
   padding: 0.3rem;
   border-radius: 0.5rem;
@@ -147,9 +150,11 @@ input[type=password] {
   border-bottom: 5px solid #bc2632;
   width: 70%;
 }
-input[type=text]:focus,
-input[type=password]:focus {
-  outline: 0.15rem solid #bc2632;
+input[type=text]:focus, input[type=text]:hover,
+input[type=password]:focus,
+input[type=password]:hover {
+  outline: 0.25rem solid #bc2632;
+  outline-offset: -0.125rem;
 }
 
 @media screen and (min-width: 768px) {

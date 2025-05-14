@@ -3,7 +3,7 @@
 @use 'base';
 
 // Generic
-@mixin hover-effect($strength: 1.1) {
+@mixin hover-scale($strength: 1.1) {
     transition: all 0.3s ease-in-out;
 
     &:hover {
@@ -11,16 +11,27 @@
     }
 }
 
-@mixin focus-effect() {
-    &:focus {
-        outline: calc(base.$outline-width / 2) solid base.$secondary;
+@mixin outline-effect($type: 'standard') {
+    transition: all 0.2s ease-in-out;
+
+    &:focus,
+    &:hover {
+        $color: none;
+
+        @if $type == standard {
+            $color: base.$secondary;
+        } @else if $type == inverted {
+            $color: base.$primary;
+        }
+
+        outline: base.$outline-width solid $color;
+        outline-offset: calc(base.$outline-width * -1 + base.$outline-width / 2);
     }
 }
 
 // Tags
 @mixin button($type: 'standard', $hover-strength: 1.1, $add-spacing: true) {
-    @include hover-effect($hover-strength);
-    @include focus-effect();
+    @include outline-effect($type);
 
     border-radius: base.$br-sm;
 
@@ -36,12 +47,6 @@
 
     @if $type == standard {
         outline: calc(base.$outline-width / 2) solid base.$secondary;
-
-        &:hover,
-        &:focus {
-            outline: base.$outline-width solid base.$secondary;
-            outline-offset: calc(base.$outline-width * -1 + 0.1rem);
-        }
     } @else if $type == inverted {
         background-color: base.$secondary;
         color: white;
@@ -49,6 +54,8 @@
 }
 
 @mixin value-input($form: false) {
+    @include outline-effect();
+
     color: base.$primary;
 
     padding: 0.3rem;
@@ -58,17 +65,20 @@
     @if not $form {
         width: min(45%, 10rem);
     }
-
-    @include focus-effect();
 }
 
 @mixin dropdown-input() {
+    @include outline-effect();
+
     padding: 0.3rem;
 
     border-radius: base.$br-sm;
 }
 
 @mixin textarea() {
+    @include outline-effect();
+
+    padding: base.$outline-width;
     min-height: 5rem;
 }
 

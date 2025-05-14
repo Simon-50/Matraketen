@@ -17,7 +17,7 @@ header {
         @include components.button($hover-strength: 1, $add-spacing: false);
     }
 
-    // Same height and br on both
+    // Same height on both
     h1,
     .hamburger-icon {
         height: $nav-item-height;
@@ -66,8 +66,8 @@ header {
         color: base.$primary;
 
         svg {
-            width: 70%;
-            height: 70%;
+            width: 65%;
+            height: 65%;
         }
     }
 
@@ -93,6 +93,7 @@ header {
 
         display: flex;
         flex-direction: column;
+        align-items: center;
 
         // Navigation options
         @include components.element-spacing(base.$hamburger-spacing);
@@ -109,6 +110,7 @@ header {
 
             padding: $x-padding 0;
 
+            width: calc(100% - base.$outline-width);
             height: calc($font-size + $x-padding * 2);
 
             border-radius: 0;
@@ -116,6 +118,10 @@ header {
             img {
                 height: 100%;
             }
+        }
+
+        & :first-child {
+            margin-top: calc(base.$outline-width / 2);
         }
 
         // Adjust padding for options with an image
@@ -150,6 +156,7 @@ header {
                 margin: 0 !important; // Remove margin from element spacing
                 padding: 0 0.5rem !important; // Override image specific padding option from vertical layout
 
+                width: initial;
                 height: $nav-item-height;
 
                 align-content: center;

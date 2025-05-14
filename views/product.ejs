@@ -11,6 +11,10 @@
         <link
             rel="stylesheet"
             href="/css/product.css" />
+        <script
+            src="js/cart.js"
+            defer>
+        </script>
         <title>Produkt - Matraketen</title>
     </head>
     <body>
@@ -22,11 +26,11 @@
                 <img src="/images/<%- product['image_name'] %>" />
             </div>
             <div id="nav-buttons">
-                <a href="menu">
+                <a href="menu" tabindex="-1">
                     <button>← Till meny</button>
                 </a>
-                    <button>Lägg i kundvagn</button>
-                <a href="cart">
+                <button class="add-to-cart" data-id="<%- product['id'] %>">Lägg i kundvagn</button>
+                <a href="cart" tabindex="-1">
                     <button>Beställ nu →</button>
                 </a>
             </div>
@@ -34,7 +38,7 @@
                 <h2>Innehåller</h2>
                 <ul>
                     <% product['ingredients'].forEach(ingredient => { %>
-                        <li><%- ingredient %></li>
+                    <li><%- ingredient %></li>
                     <% }) %>
                 </ul>
             </div>

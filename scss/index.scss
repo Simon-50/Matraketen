@@ -36,7 +36,7 @@
 }
 
 #order-now {
-    @include components.hover-effect(1.06);
+    @include components.hover-scale(1.06);
 
     background-color: initial;
     position: relative;
@@ -83,8 +83,6 @@ main {
     }
 
     #order-now {
-        width: 70%;
-
         p {
             font-size: min(5vw);
         }
