@@ -29,3 +29,7 @@ main {
 form {
     @include components.form();
 }
+
+@media screen and (min-width: base.$breakpoint){
+    
+}
