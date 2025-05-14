@@ -65,12 +65,7 @@ app.get('/product', async (req, res) => {
 
 app.get('/cart', async (req, res) => {
     if (!req.session.cart) {
-        req.session.cart = {
-            1: { count: 3 },
-            3: { count: 3 },
-            4: { count: 4 },
-            8: { count: 5 }
-        };
+        req.session.cart = {};
     }
 
     // Copy before querying additional product info
