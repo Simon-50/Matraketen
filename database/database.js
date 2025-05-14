@@ -12,7 +12,7 @@ const queries = {};
 
 for (const file of readdirSync(queriesDir)) {
     if (file.endsWith('.sql')) {
-        const name = parse(file).name; // get filename without .sql
+        const name = parse(file).name; // Get filename without extension .sql
         queries[name] = readFileSync(join(queriesDir, file), 'utf-8');
     }
 }
@@ -63,6 +63,15 @@ const database = {
         }
 
         return menu;
+    },
+    async queryCart(sessionCart) {
+        for (const [mealID, info] of Object.entries(sessionCart)) {
+            const result = await db.query(queries['getCartMeal'], [mealID]);
+
+            sessionCart[mealID] = { ...info, ...result.rows[0] };
+        }
+
+        return sessionCart;
     }
 };
 

@@ -11,60 +11,73 @@
         <link
             rel="stylesheet"
             href="/css/cart.css" />
+
+        <!-- Pass data to be used in JS -->
+        <script>
+            const cart = <%- JSON.stringify(cart) %>;
+            const shipping = <%- JSON.stringify(shipping) %>
+        </script>
+        <script
+            src="/js/cart.js"
+            defer></script>
+
         <title>Kundvagn - Matraketen</title>
     </head>
     <body>
         <%- include('partials/header') -%>
-
         <main>
             <section id="cart-items">
+                <% Object.entries(cart).forEach(([id, item]) => { %>
                 <div class="item">
                     <div class="image-container logo">
-                        <img src="/images/Mclogo.webp" />
+                        <img src="/images/<%- item['logo_name'] %>" />
                     </div>
                     <div class="image-container">
-                        <img src="/images/mcdonalds-burgare.webp" />
+                        <img src="/images/<%- item['image_name'] %>" />
                     </div>
-                    <p>Cheesburger</p>
+                    <p><%- item['name'] %></p>
                     <div class="item-counter">
-                        <img src="/images/increment_item.webp" />
-                        <p>x1</p>
-                        <img src="/images/decrement_item.webp" />
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="image-container logo">
-                        <img src="/images/Mclogo.webp" />
-                    </div>
-                    <div class="image-container">
                         <img
-                            src="/images/mcchicken.webp"
-                            alt="" />
-                    </div>
-                    <p>Chicken</p>
-                    <div class="item-counter">
-                        <img src="/images/increment_item.webp" />
-                        <p>x1</p>
-                        <img src="/images/decrement_item.webp" />
+                            src="/images/increment_item.webp"
+                            class="add-to-cart"
+                            data-id="<%- id %>" />
+                        <p id="item-count-<%- id %>"><%- item['count'] %></p>
+                        <img
+                            src="/images/decrement_item.webp"
+                            class="remove-from-cart"
+                            data-id="<%- id %>" />
                     </div>
                 </div>
+                <% }) %>
             </section>
+
             <section id="summary">
                 <p>
-                    Cheesburger<br />
-                    Chicken<br />
+                    <% Object.values(cart).forEach(item => { %>
+                    <span><%- item['name'] %><br /></span>
+                    <% }) %>
                     <br /><br />
                     Frakt<br />
                     Total
                 </p>
                 <p id="pricing">
-                    15<br />
-                    15<br />
+                    <% Object.entries(cart).forEach(([id, item]) => { %>
+                        <%- item['cost'] %> * <span id="sum-count-<%- id %>"><%- item['count'] %></span><br />
+                    <% }) %>
                     <br /><br />
-                    75<br />
-                    105
+
+                    <span id="shipping"><%- shipping %></span><br />
+                    <span id="total">
+                        <% let sum = shipping; Object.values(cart).forEach(item => { sum +=
+                        item['cost'] * item['count'] }) %> <%- sum.toFixed(2) %>
+                    </span>
+                    SEK
                 </p>
-                <a href="confirmation"><button>Betala nu →</button></a>
+                <a
+                    href="confirmation"
+                    tabindex="-1"
+                    ><button class="confirm-order">Betala nu →</button></a
+                >
             </section>
         </main>
         <%- include('partials/footer') -%>
