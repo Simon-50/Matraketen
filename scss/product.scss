@@ -6,6 +6,7 @@
 
     img {
         width: 100%;
+        border-radius: base.$br-md;
     }
 }
 
@@ -26,11 +27,51 @@
     @include components.card;
 }
 
-h1,
-h2 {
-    text-align: center;
-}
-
 main {
     @include components.element-spacing();
+
+    h1,
+    h2 {
+        text-align: center;
+    }
+}
+
+@media screen and (min-width: base.$breakpoint) {
+    main {
+        #item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            img {
+                width: 50%;
+                margin-top: base.$main-spacing;
+            }
+        }
+       
+        #product-contents, #description {
+            display: inline-block;
+            width: 48%; 
+            vertical-align: top; 
+            box-sizing: border-box; 
+        }
+
+        #description {
+            padding: 4rem;
+        }
+
+        #product-contents {
+            margin-bottom: 0px;
+        }
+    }
+
+    li {
+        font-size: 30px;
+    }
+
+    #description {
+        p {
+            font-size: 20px;
+        }
+    }
 }
