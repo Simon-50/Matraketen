@@ -11,10 +11,14 @@
         <link
             rel="stylesheet"
             href="/css/product.css" />
+
+        <!-- Prevent cart behaviour on product page -->
+        <script>
+            const cart = null;
+        </script>
         <script
             src="js/cart.js"
-            defer>
-        </script>
+            defer></script>
         <title>Produkt - Matraketen</title>
     </head>
     <body>
@@ -26,11 +30,19 @@
                 <img src="/images/<%- product['image_name'] %>" />
             </div>
             <div id="nav-buttons">
-                <a href="menu" tabindex="-1">
+                <a
+                    href="menu"
+                    tabindex="-1">
                     <button>← Till meny</button>
                 </a>
-                <button class="add-to-cart" data-id="<%- product['id'] %>">Lägg i kundvagn</button>
-                <a href="cart" tabindex="-1">
+                <button
+                    class="add-to-cart"
+                    data-id="<%- product['id'] %>">
+                    Lägg i kundvagn
+                </button>
+                <a
+                    href="cart"
+                    tabindex="-1">
                     <button>Beställ nu →</button>
                 </a>
             </div>

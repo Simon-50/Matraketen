@@ -40,7 +40,7 @@ document.addEventListener('click', async (event) => {
         });
 
         if (response.status === 200) {
-            updateCounter(mealId, 1);
+            if (cart) updateCounter(mealId, 1);
 
             console.log('Added to cart');
         }
@@ -58,7 +58,7 @@ document.addEventListener('click', async (event) => {
         });
 
         if (response.status === 200) {
-            updateCounter(mealId, -1);
+            if (cart) updateCounter(mealId, -1);
 
             console.log('Removed from cart');
         }
