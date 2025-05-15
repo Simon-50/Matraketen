@@ -48,12 +48,13 @@ main {
                 margin-top: base.$main-spacing;
             }
         }
-       
-        #product-contents, #description {
+
+        #product-contents,
+        #description {
             display: inline-block;
-            width: 48%; 
-            vertical-align: top; 
-            box-sizing: border-box; 
+            width: 48%;
+            vertical-align: top;
+            box-sizing: border-box;
         }
 
         #description {

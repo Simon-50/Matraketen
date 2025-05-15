@@ -48,7 +48,6 @@
   color: #323c46;
   padding: 0.5rem;
   border-radius: 1rem;
-  margin-top: 8vw;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
@@ -59,6 +58,8 @@
 #summary p {
   width: 50%;
   font-size: min(4vw, 2rem);
+  text-align: left;
+  direction: ltr;
 }
 #summary button {
   transition: all 0.2s ease-in-out;
@@ -71,8 +72,25 @@
   color: white;
   font-size: min(5vw, 2.5rem);
   margin-top: 1rem;
+  width: 100%;
 }
 #summary button:focus, #summary button:hover {
   outline: 0.25rem solid #323c46;
   outline-offset: -0.125rem;
+}
+
+@media screen and (min-width: 768px) {
+  #cart-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    gap: 2%;
+  }
+  #cart-items,
+  #summary {
+    display: inline-block;
+    width: 49%;
+    vertical-align: top;
+    box-sizing: border-box;
+  }
 }

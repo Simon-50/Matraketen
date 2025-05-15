@@ -45,7 +45,6 @@
     }
 
     p {
-        // Even spacing despite different text lengths
         text-align: center;
         min-width: 35%;
     }
@@ -60,8 +59,6 @@
 #summary {
     @include components.card;
 
-    margin-top: calc(base.$main-spacing * 2);
-
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
@@ -72,14 +69,33 @@
 
     p {
         width: 50%;
-
         font-size: min(4vw, 2rem);
+        text-align: left; 
+        direction: ltr; 
     }
 
     button {
         @include components.button('inverted');
         font-size: min(5vw, 2.5rem);
-
         margin-top: 1rem;
+
+        width: 100%;
+    }
+}
+
+@media screen and (min-width: base.$breakpoint) {
+    #cart-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: stretch;
+        gap: 2%;
+    }
+
+    #cart-items,
+    #summary {
+        display: inline-block;
+        width: 49%;
+        vertical-align: top;
+        box-sizing: border-box;
     }
 }
