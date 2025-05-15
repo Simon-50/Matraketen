@@ -36,14 +36,10 @@ footer {
     }
 
     #banner {
-        width: 40%;
-
         display: flex;
-        justify-content: center;
         align-items: center;
 
         img {
-            width: 100%;
             max-height: calc(base.$footer-height / 1.1);
         }
     }

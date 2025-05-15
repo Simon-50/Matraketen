@@ -46,7 +46,8 @@ CREATE TABLE customers (
     postcode TEXT,
     password TEXT,
     newsletter BOOLEAN DEFAULT FALSE,
-    privacy_policy_accepted BOOLEAN NOT NULL
+    privacy_policy_accepted BOOLEAN NOT NULL,
+    is_admin BOOLEAN DEFAULT FALSE
 );
 
 -- Add data
