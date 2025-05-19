@@ -26,8 +26,8 @@
 
         <main>
             <div id="item">
-                <h1><%- product['name'] %></h1>
-                <img src="/images/<%- product['image_name'] %>" />
+                <h1><%= product['name'] %></h1>
+                <img src="/images/<%= product['image_name'] %>" />
             </div>
             <div id="nav-buttons">
                 <a
@@ -37,27 +37,27 @@
                 </a>
                 <button
                     class="add-to-cart"
-                    data-id="<%- product['id'] %>">
+                    data-id="<%= product['id'] %>">
                     Lägg i kundvagn
                 </button>
                 <a
                     href="cart"
                     tabindex="-1">
-                    <button>Beställ nu →</button>
+                    <button>Betala nu →</button>
                 </a>
             </div>
             <div id="product-contents">
                 <h2>Innehåller</h2>
                 <ul>
                     <% product['ingredients'].forEach(ingredient => { %>
-                    <li><%- ingredient %></li>
+                    <li><%= ingredient %></li>
                     <% }) %>
                 </ul>
             </div>
 
             <div id="description">
                 <h2>Beskrivning</h2>
-                <p><%- product['description'] %></p>
+                <p><%= product['description'] %></p>
             </div>
         </main>
         <%- include('partials/footer') -%>

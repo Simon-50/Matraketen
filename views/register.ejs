@@ -11,6 +11,9 @@
         <link
             rel="stylesheet"
             href="/css/register.css" />
+        <script
+            src="/js/user.js"
+            async></script>
         <title>Registrera - Matraketen</title>
     </head>
     <body>
@@ -18,9 +21,7 @@
         <main>
             <div id="register">
                 <h1>Registrera</h1>
-                <form
-                    method="POST"
-                    id="register-form">
+                <form id="register-form">
                     <input
                         type="text"
                         name="firstName"
@@ -84,8 +85,9 @@
                     <div>
                         <input
                             type="checkbox"
-                            name="privacy-policy"
+                            name="privacyPolicy"
                             id="cb-privacy-policy"
+                            checked
                             required />
 
                         <label for="cb-privacy-policy"
@@ -95,7 +97,11 @@
                         <span class="checkmark"></span>
                     </div>
 
-                    <button type="submit">Registrera dig nu</button>
+                    <button
+                        type="submit"
+                        class="register-user">
+                        Registrera dig nu
+                    </button>
                 </form>
             </div>
         </main>

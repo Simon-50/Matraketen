@@ -70,6 +70,7 @@
   padding: min(1.6vw, 0.6rem) min(5vw, 2.4rem);
   background-color: #bc2632;
   color: white;
+  outline: 0.125rem solid #323c46;
   font-size: min(5vw, 2.5rem);
   margin-top: 1rem;
   width: 100%;

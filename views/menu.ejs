@@ -27,23 +27,23 @@
                 <div class="headbar">
                     <img
                         class="bild1"
-                        src="/images/<%- restaurant['logo_name'] %>"
+                        src="/images/<%= restaurant['logo_name'] %>"
                         alt="bildloga" />
                     <img
                         class="bild2"
-                        src="/images/<%- restaurant['logo_name'] %>"
+                        src="/images/<%= restaurant['logo_name'] %>"
                         alt="bildloga" />
                 </div>
                 <div class="menu-items">
                     <% restaurant['meals'].forEach(meal => { %>
                     <div class="item">
-                        <a href="product?id=<%- meal['id'] %>">
+                        <a href="product?id=<%= meal['id'] %>">
                             <img
-                                src="/images/<%- meal['image_name'] %>"
+                                src="/images/<%= meal['image_name'] %>"
                                 alt="bild" />
                             <p>
-                                <%- meal['name'] %> <br />
-                                <%- meal['cost'].replace('.', ',') %> kr
+                                <%= meal['name'] %> <br />
+                                <%= meal['cost'].replace('.', ',') %> kr
                             </p>
                         </a>
                     </div>

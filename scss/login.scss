@@ -56,7 +56,6 @@ form {
 
 input[type='text'],
 input[type='password'] {
-    @include components.value-input;
 
     border-bottom: 5px solid base.$secondary;
     width: 70%;

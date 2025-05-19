@@ -28,8 +28,16 @@ const db = new pg.Client({
 });
 db.connect();
 
+function ifExists(result) {
+    if (result.rows.length > 0) {
+        return result.rows[0];
+    } else {
+        return null;
+    }
+}
+
 const database = {
-    async queryMeal(id) {
+    async getMeal(id) {
         // Get product info
         let result = await db.query(queries['getMeal'], [id]);
         const product = result.rows[0];
@@ -45,7 +53,7 @@ const database = {
 
         return product;
     },
-    async queryMenu() {
+    async getMenu() {
         const menu = [];
 
         // Get restarants
@@ -64,7 +72,7 @@ const database = {
 
         return menu;
     },
-    async queryCart(sessionCart) {
+    async getCart(sessionCart) {
         for (const [mealID, info] of Object.entries(sessionCart)) {
             const result = await db.query(queries['getCartMeal'], [mealID]);
 
@@ -72,6 +80,33 @@ const database = {
         }
 
         return sessionCart;
+    },
+    async getUserByEmail(email) {
+        const result = await db.query(queries['getUserByEmail'], [email]);
+
+        return ifExists(result);
+    },
+    async getUserById(id) {
+        const result = await db.query(queries['getUserById'], [id]);
+
+        return ifExists(result);
+    },
+    async addUser(data) {
+        const userData = [
+            data['firstName'],
+            data['lastName'],
+            data['email'],
+            data['phoneNumber'],
+            data['address'],
+            data['postcode'],
+            data['password'],
+            data['newsletter'],
+            data['privacyPolicy'],
+            data['isAdmin']
+        ];
+
+        const result = await db.query(queries['addUser'], userData);
+        return result.rows[0];
     }
 };
 

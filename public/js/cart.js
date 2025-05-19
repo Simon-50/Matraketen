@@ -39,7 +39,7 @@ document.addEventListener('click', async (event) => {
             body: JSON.stringify({ mealId })
         });
 
-        if (response.status === 200) {
+        if (response.ok) {
             if (cart) updateCounter(mealId, 1);
 
             console.log('Added to cart');
@@ -57,7 +57,7 @@ document.addEventListener('click', async (event) => {
             body: JSON.stringify({ mealId })
         });
 
-        if (response.status === 200) {
+        if (response.ok) {
             if (cart) updateCounter(mealId, -1);
 
             console.log('Removed from cart');
@@ -71,7 +71,7 @@ document.addEventListener('click', async (event) => {
             }
         });
 
-        if (response.status === 200) {
+        if (response.ok) {
             console.log('Cart emptied');
         }
     }

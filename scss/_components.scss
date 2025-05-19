@@ -25,7 +25,7 @@
         }
 
         outline: base.$outline-width solid $color;
-        outline-offset: calc(base.$outline-width * -1 + base.$outline-width / 2);
+        outline-offset: calc(-1 * base.$outline-width / 2);
     }
 }
 
@@ -50,6 +50,7 @@
     } @else if $type == inverted {
         background-color: base.$secondary;
         color: white;
+        outline: calc(base.$outline-width / 2) solid base.$primary;
     }
 }
 
@@ -57,6 +58,7 @@
     @include outline-effect();
 
     color: base.$primary;
+    font-family: inherit;
 
     padding: 0.3rem;
 

@@ -42,7 +42,7 @@
                             Erbjuds av
                         </option>
                         <% menu.forEach(restaurant => { %>
-                        <option value="<%- restaurant['name'] %>"><%- restaurant['name'] %></option>
+                        <option value="<%= restaurant['name'] %>"><%= restaurant['name'] %></option>
                         <% }) %>
                     </select>
                     <textarea
@@ -65,11 +65,11 @@ En ingrediens per rad"
                     <% menu.forEach(restaurant => { %>
                         <% restaurant['meals'].forEach(meal => { %>
                             <div>
-                                <p><%- restaurant['name'] %> - <%- meal['name'] %></p>
+                                <p><%= restaurant['name'] %> - <%= meal['name'] %></p>
                                 <button
                                     type="submit"
                                     name="removeItem"
-                                    value="<%- restaurant['name'] %> - <%- meal['name'] %>">
+                                    value="<%= restaurant['name'] %> - <%= meal['name'] %>">
                                     Ta bort
                                 </button>
                             </div>
@@ -103,11 +103,11 @@ En ingrediens per rad"
                 >
                     <% menu.forEach(restaurant => { %>
                         <div>
-                            <p><%- restaurant['name'] %></p>
+                            <p><%= restaurant['name'] %></p>
                             <button
                                 type="submit"
                                 name="removeRestaurant"
-                                value="<%- restaurant['name'] %>">
+                                value="<%= restaurant['name'] %>">
                                 Ta bort
                             </button>
                         </div>

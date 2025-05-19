@@ -22,6 +22,7 @@ form textarea::placeholder {
 form input {
   transition: all 0.2s ease-in-out;
   color: #323c46;
+  font-family: inherit;
   padding: 0.3rem;
   border-radius: 0.5rem;
 }

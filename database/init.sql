@@ -165,8 +165,13 @@ VALUES
     (8, 21), (8, 22), (8, 23),
     (9, 21), (9, 22), (9, 23);
 
-INSERT INTO customers (first_name, last_name, email, phone_number, address, postcode, password, newsletter, privacy_policy_accepted)
+INSERT INTO customers (first_name, last_name, email, phone_number, address, postcode, password, newsletter, privacy_policy_accepted, is_admin)
 VALUES
-    ('Anna', 'Svensson', 'anna.svensson@example.com', '0701234567', 'Storgatan 1', '12345', 'hashedpassword1', true, true),
-    ('Erik', 'Karlsson', 'erik.karlsson@example.com', '0707654321', 'Lillgatan 5', '54321', 'hashedpassword2', false, true),
-    ('Maria', 'Lindblom', 'maria.lind@example.com', '0731112222', 'Björkvägen 12', '11223', 'hashedpassword3', true, true);
+    ('Anna', 'Svensson', 'anna.svensson@example.com', '0701234567', 'Storgatan 1', '12345', '$2b$12$bfmpOdqUjZ3jrG9FnCMqquxGAekIz7JGVPq5IhYKnEe5gX1KZqAzi', true, true, false),
+    ('Erik', 'Karlsson', 'erik.karlsson@example.com', '0707654321', 'Lillgatan 5', '54321', '$2b$12$1s7Zebyo6mhEQCwY9Ayy5uO9znK6L5spHFgBuh23VSv9Xml/jsx/q', false, true, true),
+    ('Maria', 'Lindblom', 'maria.lind@example.com', '0731112222', 'Björkvägen 12', '11223', '$2b$12$OEaVS9inoJ3oLCnRTh6ezepZxmk4JsCugc558Pf2MS.xLijrOWVJy', true, true, false);
+
+-- Lösenord för testpersoner
+-- Anna: '12345'
+-- Erik: 'MycketSäkert'
+-- Maria: 'Lösen'

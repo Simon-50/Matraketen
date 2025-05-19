@@ -47,6 +47,7 @@ form textarea::placeholder {
 form input {
   transition: all 0.2s ease-in-out;
   color: #323c46;
+  font-family: inherit;
   padding: 0.3rem;
   border-radius: 0.5rem;
 }
@@ -142,19 +143,8 @@ form .remember-me {
 
 input[type=text],
 input[type=password] {
-  transition: all 0.2s ease-in-out;
-  color: #323c46;
-  padding: 0.3rem;
-  border-radius: 0.5rem;
-  width: min(45%, 10rem);
   border-bottom: 5px solid #bc2632;
   width: 70%;
-}
-input[type=text]:focus, input[type=text]:hover,
-input[type=password]:focus,
-input[type=password]:hover {
-  outline: 0.25rem solid #bc2632;
-  outline-offset: -0.125rem;
 }
 
 @media screen and (min-width: 768px) {

@@ -5,27 +5,30 @@
         <meta
             name="viewport"
             content="width=device-width, initial-scale=1.0" />
-        <title>Logga in - Matra</title>
+        <title>Logga in - Matraketen</title>
         <link
             rel="stylesheet"
             href="/css/main.css" />
         <link
             rel="stylesheet"
             href="/css/login.css" />
+        <script
+            src="/js/user.js"
+            async></script>
     </head>
     <body>
         <%- include('partials/header') -%>
         <main>
             <section>
-                <form method="POST">
+                <form id="login-form">
                     <div class="user">
                         <img
                             src="/images/profile.webp"
                             alt="profilbild" />
                         <input
                             type="text"
-                            placeholder="Användarnamn"
-                            name="Username" />
+                            placeholder="E-postadress"
+                            name="username" />
                     </div>
                     <div class="password">
                         <img
@@ -35,15 +38,6 @@
                             type="password"
                             name="password"
                             placeholder="Lösenord" />
-                    </div>
-                    <div class="remember-me">
-                        <div>
-                            <input
-                                type="checkbox"
-                                id="remember-login" />
-                            <span class="checkmark"></span>
-                        </div>
-                        <label for="remember-login">Håll mig inloggad</label>
                     </div>
                     <div class="login">
                         <img

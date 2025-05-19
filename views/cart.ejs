@@ -19,7 +19,7 @@
         </script>
         <script
             src="/js/cart.js"
-            defer></script>
+            async></script>
 
         <title>Kundvagn - Matraketen</title>
     </head>
@@ -30,22 +30,22 @@
                 <% Object.entries(cart).forEach(([id, item]) => { %>
                 <div class="item">
                     <div class="image-container logo">
-                        <img src="/images/<%- item['logo_name'] %>" />
+                        <img src="/images/<%= item['logo_name'] %>" />
                     </div>
                     <div class="image-container">
-                        <img src="/images/<%- item['image_name'] %>" />
+                        <img src="/images/<%= item['image_name'] %>" />
                     </div>
-                    <p><%- item['name'] %></p>
+                    <p><%= item['name'] %></p>
                     <div class="item-counter">
                         <img
                             src="/images/increment_item.webp"
                             class="add-to-cart"
-                            data-id="<%- id %>" />
-                        <p id="item-count-<%- id %>"><%- item['count'] %></p>
+                            data-id="<%= id %>" />
+                        <p id="item-count-<%= id %>"><%= item['count'] %></p>
                         <img
                             src="/images/decrement_item.webp"
                             class="remove-from-cart"
-                            data-id="<%- id %>" />
+                            data-id="<%= id %>" />
                     </div>
                 </div>
                 <% }) %>
@@ -54,7 +54,7 @@
             <section id="summary">
                 <p>
                     <% Object.values(cart).forEach(item => { %>
-                    <span><%- item['name'] %><br /></span>
+                    <span><%= item['name'] %><br /></span>
                     <% }) %>
                     <br /><br />
                     Frakt<br />
@@ -62,14 +62,14 @@
                 </p>
                 <p id="pricing">
                     <% Object.entries(cart).forEach(([id, item]) => { %>
-                        <%- item['cost'] %> * <span id="sum-count-<%- id %>"><%- item['count'] %></span><br />
+                        <%= item['cost'] %> * <span id="sum-count-<%= id %>"><%= item['count'] %></span><br />
                     <% }) %>
                     <br /><br />
 
-                    <span id="shipping"><%- shipping %></span><br />
+                    <span id="shipping"><%= shipping %></span><br />
                     <span id="total">
                         <% let sum = shipping; Object.values(cart).forEach(item => { sum +=
-                        item['cost'] * item['count'] }) %> <%- sum.toFixed(2) %>
+                        item['cost'] * item['count'] }) %> <%= sum.toFixed(2) %>
                     </span>
                     SEK
                 </p>
