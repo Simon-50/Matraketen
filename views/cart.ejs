@@ -27,8 +27,10 @@
         <%- include('partials/header') -%>
         <main>
             <section id="cart-items">
-                <% if (cart) { %> Produkter i kundvagnen visas här <% } %> <%
-                Object.entries(cart).forEach(([id, item]) => { %>
+                <% if (Object.keys(cart).length === 0) { %>
+                    <p>Produkter i kundvagnen kommer visas här</p>
+                <% } %>
+                <% Object.entries(cart).forEach(([id, item]) => { %>
                 <div class="item">
                     <div class="image-container logo">
                         <img src="/images/<%= item['logo_name'] %>" />
