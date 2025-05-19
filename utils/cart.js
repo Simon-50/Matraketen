@@ -6,6 +6,17 @@ const cart = {
             req.session.cart = {};
         }
 
+        // Cart testing
+        if (false) {
+            req.session.cart = {
+                1: { count: 2 },
+                4: { count: 4 },
+                7: { count: 1 },
+                5: { count: 100 },
+                8: { count: 10 }
+            };
+        }
+
         // Copy before querying additional product info
         const cart = { ...req.session.cart };
         await database.getCart(cart);

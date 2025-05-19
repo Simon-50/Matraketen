@@ -27,7 +27,8 @@
         <%- include('partials/header') -%>
         <main>
             <section id="cart-items">
-                <% Object.entries(cart).forEach(([id, item]) => { %>
+                <% if (cart) { %> Produkter i kundvagnen visas här <% } %> <%
+                Object.entries(cart).forEach(([id, item]) => { %>
                 <div class="item">
                     <div class="image-container logo">
                         <img src="/images/<%= item['logo_name'] %>" />
@@ -51,33 +52,35 @@
                 <% }) %>
             </section>
 
-            <section id="summary">
-                <p>
-                    <% Object.values(cart).forEach(item => { %>
-                    <span><%= item['name'] %><br /></span>
-                    <% }) %>
-                    <br /><br />
-                    Frakt<br />
-                    Total
-                </p>
-                <p id="pricing">
-                    <% Object.entries(cart).forEach(([id, item]) => { %>
-                        <%= item['cost'] %> * <span id="sum-count-<%= id %>"><%= item['count'] %></span><br />
-                    <% }) %>
-                    <br /><br />
+            <section>
+                <div id="summary">
+                    <p>
+                        <% Object.values(cart).forEach(item => { %>
+                        <span><%= item['name'] %><br /></span>
+                        <% }) %>
+                        <br /><br />
+                        Frakt<br />
+                        Total
+                    </p>
+                    <p id="pricing">
+                        <% Object.entries(cart).forEach(([id, item]) => { %> <%= item['cost'] %> *
+                        <span id="sum-count-<%= id %>"><%= item['count'] %></span><br />
+                        <% }) %>
+                        <br /><br />
 
-                    <span id="shipping"><%= shipping %></span><br />
-                    <span id="total">
-                        <% let sum = shipping; Object.values(cart).forEach(item => { sum +=
-                        item['cost'] * item['count'] }) %> <%= sum.toFixed(2) %>
-                    </span>
-                    SEK
-                </p>
-                <a
-                    href="confirmation"
-                    tabindex="-1"
-                    ><button class="confirm-order">Betala nu →</button></a
-                >
+                        <span id="shipping"><%= shipping %></span><br />
+                        <span id="total">
+                            <% let sum = shipping; Object.values(cart).forEach(item => { sum +=
+                            item['cost'] * item['count'] }) %> <%= sum.toFixed(2) %>
+                        </span>
+                        SEK
+                    </p>
+                    <a
+                        href="confirmation"
+                        tabindex="-1"
+                        ><button class="confirm-order">Betala nu →</button></a
+                    >
+                </div>
             </section>
         </main>
         <%- include('partials/footer') -%>

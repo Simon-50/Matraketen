@@ -1,3 +1,6 @@
+#cart-items {
+  margin-bottom: 8vw;
+}
 #cart-items > *:not(:last-child) {
   margin-bottom: 4vw;
 }
@@ -5,7 +8,7 @@
 .item {
   background-color: #d9d9d9;
   color: #323c46;
-  padding: 0.5rem;
+  padding: 0.75rem;
   border-radius: 1rem;
   display: flex;
   justify-content: space-between;
@@ -33,10 +36,11 @@
 }
 .item .item-counter p {
   margin: 0.2rem 0;
+  width: 100%;
 }
 .item p {
   text-align: center;
-  min-width: 35%;
+  width: 20%;
 }
 .item img {
   width: 100%;
@@ -46,7 +50,7 @@
 #summary {
   background-color: #d9d9d9;
   color: #323c46;
-  padding: 0.5rem;
+  padding: 0.75rem;
   border-radius: 1rem;
   display: flex;
   justify-content: center;
@@ -72,7 +76,7 @@
   color: white;
   outline: 0.125rem solid #323c46;
   font-size: min(5vw, 2.5rem);
-  margin-top: 1rem;
+  margin-top: 4vw;
   width: 100%;
 }
 #summary button:focus, #summary button:hover {
@@ -81,17 +85,31 @@
 }
 
 @media screen and (min-width: 768px) {
-  #cart-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: stretch;
-    gap: 2%;
+  #cart-items {
+    margin-bottom: 0;
   }
-  #cart-items,
-  #summary {
-    display: inline-block;
-    width: 49%;
-    vertical-align: top;
-    box-sizing: border-box;
+  .item p {
+    font-size: 1.8vw;
+    width: 35%;
+  }
+  .item .image-container {
+    width: 25%;
+  }
+  .item .logo {
+    width: 15%;
+  }
+  .item .logo img {
+    border-radius: 0.5rem;
+  }
+  #summary p {
+    font-size: 2vw;
+  }
+  #summary button {
+    font-size: 2vw;
+  }
+  main {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8vw;
   }
 }
