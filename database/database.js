@@ -17,14 +17,21 @@ for (const file of readdirSync(queriesDir)) {
     }
 }
 
-const db = new pg.Client({
-    connectionString: process.env.DATABASE_URL,
-    ssl: {
-        rejectUnauthorized: false
-    }
-});
+// Use local db if available, otherwise use online one
+const db = new pg.Client(
+    process.env.LOCAL_DATABASE_URL
+        ? {
+            connectionString: process.env.LOCAL_DATABASE_URL
+        }
+        : {
+            connectionString: process.env.DATABASE_URL,
+            ssl: {
+                rejectUnauthorized: false
+            }
+        }
+);
 
-db.connect();
+await db.connect();
 
 function ifExists(result) {
     if (result.rows.length > 0) {
