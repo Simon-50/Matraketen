@@ -17,18 +17,11 @@ for (const file of readdirSync(queriesDir)) {
     }
 }
 
-// Initialize database
-// const db = new pg.Client({
-//     user: 'postgres',
-//     password: process.env.DB_PASSWORD,
-
-//     host: 'localhost',
-//     database: process.env.DB_NAME,
-//     port: process.env.DB_PORT
-// });
-
 const db = new pg.Client({
-    connectionString: process.env.DATABASE_URL
+    connectionString: process.env.DATABASE_URL,
+    ssl: {
+        rejectUnauthorized: false
+    }
 });
 
 db.connect();

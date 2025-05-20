@@ -12,7 +12,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 
 // Initialize App
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 // Apply all middlewares
 applyMiddlewares(app, __dirname);
