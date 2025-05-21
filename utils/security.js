@@ -33,45 +33,42 @@ export function setupPassport() {
 
 const security = {
     async register(req, res) {
-        (async () => {
-            const data = req.body;
-            if (data['email'] !== data['confirmEmail']) {
-                return res.status(400).json({ error: 'Email matchar inte' });
-            } else if (data['password'] !== data['confirmPassword']) {
-                return res.status(400).json({ error: 'Lösenord matchar inte' });
+        const data = req.body;
+        if (data['email'] !== data['confirmEmail']) {
+            return res.status(400).json({ error: 'Email matchar inte' });
+        } else if (data['password'] !== data['confirmPassword']) {
+            return res.status(400).json({ error: 'Lösenord matchar inte' });
+        }
+
+        if (!data['newsletter']) {
+            data['newsletter'] = false;
+        }
+
+        delete data['confirmEmail'];
+        delete data['confirmPassword'];
+
+        data['privacyPolicy'] = true;
+        data['isAdmin'] = false;
+
+        const user = await database.getUserByEmail(req.body['email']);
+        if (user) {
+            return res.status(409).json({ error: 'User already exists' });
+        }
+
+        const hash = await bcrypt.hash(req.body['password'], saltRounds);
+        req.body['password'] = hash;
+
+        const newUser = await database.addUser(req.body);
+
+        req.logIn(newUser, (err) => {
+            if (err) {
+                return res.status(500).json({ error: 'Login error. Please try again' });
             }
 
-            if (!data['newsletter']) {
-                data['newsletter'] = false;
-            }
-
-            delete data['confirmEmail'];
-            delete data['confirmPassword'];
-
-            data['privacyPolicy'] = true;
-            data['isAdmin'] = false;
-
-            const user = await database.getUserByEmail(req.body['email']);
-            if (user) {
-                return res.status(409).json({ error: 'User already exists' });
-            }
-
-            const hash = await bcrypt.hash(req.body['password'], saltRounds);
-            req.body['password'] = hash;
-
-            const newUser = await database.addUser(req.body);
-
-            req.logIn(newUser, (err) => {
-                if (err) {
-                    return res.status(500).json({ error: 'Login error. Please try again' });
-                }
-
-                console.log(`Added new user: ${newUser['first_name']}`);
-                return res.json({ redirectTo: '/' });
-            });
-        })();
+            console.log(`Added new user: ${newUser['first_name']}`);
+            return res.json({ redirectTo: '/' });
+        });
     },
-
     async login(req, res, next) {
         passport.authenticate('local', (err, user, info) => {
             if (err) {
@@ -87,6 +84,20 @@ const security = {
                 return res.status(200).json({ redirectTo: '/' });
             });
         })(req, res, next);
+    },
+    async requireAuth(req, res, next) {
+        if (req.isAuthenticated()) {
+            return next();
+        }
+
+        res.redirect('login');
+    },
+    async requireAdmin(req, res, next) {
+        if (req.isAuthenticated() && req.user['is_admin']) {
+            return next();
+        }
+
+        res.redirect('/');
     }
 };
 

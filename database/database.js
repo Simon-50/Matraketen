@@ -18,20 +18,18 @@ for (const file of readdirSync(queriesDir)) {
 }
 
 // Use local db if available, otherwise use online one
-const db = new pg.Client(
-    process.env.LOCAL_DATABASE_URL
+const db = new pg.Pool(
+    process.env.DATABASE_URL
         ? {
-            connectionString: process.env.LOCAL_DATABASE_URL
-        }
+              connectionString: process.env.DATABASE_URL
+          }
         : {
-            connectionString: process.env.DATABASE_URL,
-            ssl: {
-                rejectUnauthorized: false
-            }
-        }
+              connectionString: process.env.RENDER_DATABASE_URL,
+              ssl: {
+                  rejectUnauthorized: false
+              }
+          }
 );
-
-await db.connect();
 
 function ifExists(result) {
     if (result.rows.length > 0) {
@@ -96,6 +94,11 @@ const database = {
 
         return ifExists(result);
     },
+    async getRestaurant(name) {
+        const result = await db.query(queries['getRestaurant'], [name]);
+
+        return ifExists(result);
+    },
     async addUser(data) {
         const userData = [
             data['firstName'],
@@ -112,6 +115,32 @@ const database = {
 
         const result = await db.query(queries['addUser'], userData);
         return result.rows[0];
+    },
+    async addMeal(data) {
+        const restaurant = await this.getRestaurant(data['restaurant']);
+
+        const mealData = [
+            restaurant['id'],
+            data['name'],
+            data['cost'],
+            data['description'],
+            data['imageName']
+        ];
+
+        const result = await db.query(queries['addMeal'], mealData);
+        return result.rows[0];
+    },
+    async addIngredient(ingredient) {
+        try {
+            const result = await db.query(queries['addIngredient'], [ingredient]);
+            return result.rows[0];
+        } catch (err) {
+            const result = await db.query(queries['getIngredientId'], [ingredient]);
+            return result.rows[0];
+        }
+    },
+    async addMealIngredientBinding(mealId, ingredientId) {
+        await db.query(queries['addMealIngredientBinding'], [mealId, ingredientId]);
     }
 };
 

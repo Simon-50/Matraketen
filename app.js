@@ -4,6 +4,7 @@ import cart from './utils/cart.js';
 import database from './database/database.js';
 import applyMiddlewares from './utils/middlewares.js';
 import security, { setupPassport } from './utils/security.js';
+import admin from './utils/admin.js';
 
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
@@ -13,6 +14,15 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 // Initialize App
 const app = express();
 const PORT = process.env.PORT || 3000;
+
+//! Don't commit this
+// app.use((req, res, next) => {
+//     if (!req.user) {
+//         req.user = { id: 1, is_admin: true };
+//         req.isAuthenticated = () => true;
+//     }
+//     next();
+// });
 
 // Apply all middlewares
 applyMiddlewares(app, __dirname);
@@ -31,60 +41,56 @@ setupPassport();
 app.get('/', (req, res) => {
     res.render('index');
 });
-
 app.get('/menu', async (req, res) => {
     const menu = await database.getMenu();
     res.render('menu', { menu });
 });
-
 app.get('/product', async (req, res) => {
     const productId = req.query['id'];
     const product = await database.getMeal(productId);
 
     res.render('product', { product });
 });
-
-// Cart routes are now in cart.js
-
 app.get('/confirmation', (req, res) => {
     res.render('confirmation');
 });
-
 app.get('/about', (req, res) => {
     res.render('omOss');
 });
-
 app.get('/login', (req, res) => {
     res.render('login');
 });
-
 app.get('/register', (req, res) => {
     res.render('register');
 });
-
-app.get('/reset-password', (req, res) => {
+app.get('/reset-password', security.requireAuth, (req, res) => {
     res.render('password');
 });
-
-app.get('/profile', (req, res) => {
+app.get('/profile', security.requireAuth, (req, res) => {
     res.render('profile');
 });
-
-app.get('/admin', async (req, res) => {
+app.get('/admin', security.requireAdmin, async (req, res) => {
     const menu = await database.getMenu();
 
     res.render('admin', { menu });
 });
 
-//* Cart routes
+// User routes
+app.post('/register', security.register);
+app.post('/login', security.login);
+
+//* API routes
+// Cart routes
 app.get('/cart', cart.init);
 app.delete('/cart', cart.clear);
 app.post('/cart/add', cart.add);
 app.delete('/cart/remove', cart.remove);
 
-//* User
-app.post('/register', security.register);
-app.post('/login', security.login);
+// Admin routes
+app.post('/admin/meal', security.requireAdmin, admin.addMeal);
+app.delete('/admin/meal', security.requireAdmin, admin.removeMeal);
+app.post('/admin/restarant', security.requireAdmin, admin.addRestaurant);
+app.delete('/admin/restarant', security.requireAdmin, admin.removeRestaurant);
 
 // Start server
 app.listen(PORT, () => {

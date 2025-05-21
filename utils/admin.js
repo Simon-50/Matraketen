@@ -1,0 +1,24 @@
+import database from '../database/database.js';
+
+const admin = {
+    async addMeal(req, res) {
+        // Add the meal itself
+        const mealResult = await database.addMeal(req.body);
+
+        // Add ingredients and meal-ingredient binding
+        let ingredients = req.body['contents'];
+        ingredients = ingredients.split('\n').filter((v) => v);
+
+        for (const ingredient of ingredients) {
+            const ingredientResult = await database.addIngredient(ingredient);
+
+            await database.addMealIngredientBinding(mealResult['id'], ingredientResult['id']);
+        }
+        res.sendStatus(200);
+    },
+    async addRestaurant(req, res) {},
+    async removeMeal(req, res) {},
+    async removeRestaurant(req, res) {}
+};
+
+export default admin;

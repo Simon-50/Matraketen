@@ -20,8 +20,7 @@ document.addEventListener('submit', async (event) => {
         } else if (response.status === 400) {
             alert(body['error']);
         }
-    }
-    if (event.target.matches('#login-form')) {
+    } else if (event.target.matches('#login-form')) {
         event.preventDefault();
 
         const formData = new FormData(event.target);
@@ -41,9 +40,7 @@ document.addEventListener('submit', async (event) => {
         if (response.ok) {
             console.log('Login succesful');
             window.location.href = body['redirectTo'];
-
         } else {
-
             console.warn('Login failed', body);
             alert(body['error']);
         }

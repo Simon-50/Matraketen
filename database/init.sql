@@ -167,9 +167,7 @@ VALUES
 
 INSERT INTO customers (first_name, last_name, email, phone_number, address, postcode, password, newsletter, privacy_policy_accepted, is_admin)
 VALUES
-    ('Erik', 'Karlsson', 'erik.karlsson@example.com', '0707654321', 'Lillgatan 5', '54321', '$2b$12$CzYAM2hMcMepFm0bnUoK.OZp4NIeiB3KeSyjIRY9s00.JecoQAfFK', false, true, true);
+    ('Erik', 'Karlsson', 'erik.karlsson@example.com', '0707654321', 'Lillgatan 5', '54321', '$2b$12$Mm38VMiRxhWPmRSW9tQg.eTmI2uu6QRmwFfCmwjFvi3QJjedp75NC', false, true, true);
 
 -- Lösenord för testpersoner
--- Anna: '12345'
--- Erik: 'Myck3tSäk3rtLös3n0rd!'
--- Maria: 'Lösen'
+-- Erik: Myck3tSäk3rtLös3n0rd!

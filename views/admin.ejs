@@ -11,6 +11,9 @@
         <link
             rel="stylesheet"
             href="/css/admin.css" />
+        <script
+            src="/js/admin.js"
+            async></script>
         <title>Administratör - Matraketen</title>
     </head>
     <body>
@@ -18,13 +21,16 @@
         <main>
             <div id="add-meal">
                 <h1>Lägg till måltid</h1>
-                <form
-                    id="add-meal-form"
-                    method="POST">
+                <form id="add-meal-form">
                     <input
                         type="text"
-                        name="dish"
+                        name="name"
                         placeholder="Maträtt"
+                        required />
+                    <input
+                        type="number"
+                        name="cost"
+                        placeholder="Pris"
                         required />
                     <input
                         type="text"
@@ -50,7 +56,7 @@
                         placeholder="Beskrivning"
                         required></textarea>
                     <textarea
-                        name="dishContent"
+                        name="contents"
                         placeholder="Innehållsförteckning
 En ingrediens per rad"
                         required></textarea>
@@ -59,29 +65,23 @@ En ingrediens per rad"
             </div>
             <div id="remove-meal">
                 <h1>Ta bort måltid</h1>
-                <form
-                    id="remove-meal-form"
-                    method="POST">
-                    <% menu.forEach(restaurant => { %>
-                        <% restaurant['meals'].forEach(meal => { %>
-                            <div>
-                                <p><%= restaurant['name'] %> - <%= meal['name'] %></p>
-                                <button
-                                    type="submit"
-                                    name="removeItem"
-                                    value="<%= restaurant['name'] %> - <%= meal['name'] %>">
-                                    Ta bort
-                                </button>
-                            </div>
-                        <% }) %>
-                    <% }) %>
+                <form id="remove-meal-form">
+                    <% menu.forEach(restaurant => { %> <% restaurant['meals'].forEach(meal => { %>
+                    <div>
+                        <p><%= restaurant['name'] %> - <%= meal['name'] %></p>
+                        <button
+                            type="submit"
+                            name="removeItem"
+                            value="<%= restaurant['name'] %> - <%= meal['name'] %>">
+                            Ta bort
+                        </button>
+                    </div>
+                    <% }) %> <% }) %>
                 </form>
             </div>
             <div id="add-restaurant">
                 <h1>Lägg till restaurang</h1>
-                <form
-                    id="add-restaurant-form"
-                    method="POST">
+                <form id="add-restaurant-form">
                     <input
                         type="text"
                         name="name"
@@ -99,34 +99,21 @@ En ingrediens per rad"
                 <h1>Ta bort restaurang</h1>
                 <form
                     id="remove-restaurant-form"
-                    method="POST"
-                >
+                    method="POST">
                     <% menu.forEach(restaurant => { %>
-                        <div>
-                            <p><%= restaurant['name'] %></p>
-                            <button
-                                type="submit"
-                                name="removeRestaurant"
-                                value="<%= restaurant['name'] %>">
-                                Ta bort
-                            </button>
-                        </div>
+                    <div>
+                        <p><%= restaurant['name'] %></p>
+                        <button
+                            type="submit"
+                            name="removeRestaurant"
+                            value="<%= restaurant['name'] %>">
+                            Ta bort
+                        </button>
+                    </div>
                     <% }) %>
                 </form>
             </div>
         </main>
         <%- include('partials/footer') -%>
-        <script>
-            // Stop meal from being submitted without an offering restaurant
-            document.querySelector('#add-meal-form').addEventListener('submit', function (event) {
-                let selectedOption = document.querySelector(
-                    'select[name="restaurant"] option:checked'
-                );
-                if (selectedOption.value === 'default') {
-                    event.preventDefault();
-                    alert('Välj en restaurang');
-                }
-            });
-        </script>
     </body>
 </html>

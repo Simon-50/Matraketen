@@ -49,6 +49,9 @@
             <a href="login">Logga in</a>
         <% } %>
         <% if (user) { %>
+            <% if (user['is_admin']) { %>
+                <a href="admin">Admin</a>
+            <% } %>
             <a href="profile">
                 <img
                     src="/images/profile.webp"
