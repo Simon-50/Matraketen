@@ -49,9 +49,9 @@
             <div id="product-contents">
                 <h2>Innehåller</h2>
                 <ul>
-                    <% product['ingredients'].forEach(ingredient => { %>
-                    <li><%= ingredient %></li>
-                    <% }) %>
+                    <% for (const ingredient of product['ingredients']) { %>
+                        <li><%= ingredient %></li>
+                    <% } %>
                 </ul>
             </div>
 

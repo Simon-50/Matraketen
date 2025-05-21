@@ -22,35 +22,35 @@
     <body class="bg-light">
         <%- include('partials/header') -%>
         <main>
-            <% menu.forEach(restaurant => { %>
-            <section class="resturang mx-auto">
-                <div class="headbar">
-                    <img
-                        class="bild1"
-                        src="/images/<%= restaurant['logo_name'] %>"
-                        alt="bildloga" />
-                    <img
-                        class="bild2"
-                        src="/images/<%= restaurant['logo_name'] %>"
-                        alt="bildloga" />
-                </div>
-                <div class="menu-items">
-                    <% restaurant['meals'].forEach(meal => { %>
-                    <div class="item">
-                        <a href="product?id=<%= meal['id'] %>">
-                            <img
-                                src="/images/<%= meal['image_name'] %>"
-                                alt="bild" />
-                            <p>
-                                <%= meal['name'] %> <br />
-                                <%= meal['cost'].replace('.', ',') %> kr
-                            </p>
-                        </a>
+            <% for (const restaurant of menu) { %>
+                <section class="resturang mx-auto">
+                    <div class="headbar">
+                        <img
+                            class="bild1"
+                            src="/images/<%= restaurant['logo_name'] %>"
+                            alt="bildloga" />
+                        <img
+                            class="bild2"
+                            src="/images/<%= restaurant['logo_name'] %>"
+                            alt="bildloga" />
                     </div>
-                    <% }) %>
-                </div>
-            </section>
-            <% }) %>
+                    <div class="menu-items">
+                        <% for (const meal of restaurant['meals']) { %>
+                            <div class="item">
+                                <a href="product?id=<%= meal['id'] %>">
+                                    <img
+                                        src="/images/<%= meal['image_name'] %>"
+                                        alt="bild" />
+                                    <p>
+                                        <%= meal['name'] %> <br />
+                                        <%= meal['cost'].replace('.', ',') %> kr
+                                    </p>
+                                </a>
+                            </div>
+                        <% } %>
+                    </div>
+                </section>
+            <% } %>
         </main>
         <%- include('partials/footer') -%>
         <script

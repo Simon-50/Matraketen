@@ -17,9 +17,10 @@ function updateCounter(id, delta) {
 
 function updateTotal() {
     let sum = shipping;
-    Object.values(cart).forEach((item) => {
+
+    for (const item of Object.values(cart)) {
         sum += item['cost'] * item['count'];
-    });
+    }
 
     // Update element with rounded sum to two digits
     updateElement(document.querySelector('#total'), sum.toFixed(2));

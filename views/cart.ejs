@@ -28,52 +28,55 @@
         <main>
             <section id="cart-items">
                 <% if (Object.keys(cart).length === 0) { %>
-                    <p>Produkter i kundvagnen kommer visas här</p>
+                <p>Produkter i kundvagnen kommer visas här</p>
                 <% } %>
-                <% Object.entries(cart).forEach(([id, item]) => { %>
-                <div class="item">
-                    <div class="image-container logo">
-                        <img src="/images/<%= item['logo_name'] %>" />
+                <% for (const [id, item] of Object.entries(cart)) { %>
+                    <div class="item">
+                        <div class="image-container logo">
+                            <img src="/images/<%= item['logo_name'] %>" />
+                        </div>
+                        <div class="image-container">
+                            <img src="/images/<%= item['image_name'] %>" />
+                        </div>
+                        <p><%= item['name'] %></p>
+                        <div class="item-counter">
+                            <img
+                                src="/images/increment_item.webp"
+                                class="add-to-cart"
+                                data-id="<%= id %>" />
+                            <p id="item-count-<%= id %>"><%= item['count'] %></p>
+                            <img
+                                src="/images/decrement_item.webp"
+                                class="remove-from-cart"
+                                data-id="<%= id %>" />
+                        </div>
                     </div>
-                    <div class="image-container">
-                        <img src="/images/<%= item['image_name'] %>" />
-                    </div>
-                    <p><%= item['name'] %></p>
-                    <div class="item-counter">
-                        <img
-                            src="/images/increment_item.webp"
-                            class="add-to-cart"
-                            data-id="<%= id %>" />
-                        <p id="item-count-<%= id %>"><%= item['count'] %></p>
-                        <img
-                            src="/images/decrement_item.webp"
-                            class="remove-from-cart"
-                            data-id="<%= id %>" />
-                    </div>
-                </div>
-                <% }) %>
+                <% } %>
             </section>
 
             <section>
                 <div id="summary">
                     <p>
-                        <% Object.values(cart).forEach(item => { %>
-                        <span><%= item['name'] %><br /></span>
-                        <% }) %>
+                        <% for (const item of Object.values(cart)) { %>
+                            <span><%= item['name'] %><br /></span>
+                        <% } %>
                         <br /><br />
                         Frakt<br />
                         Total
                     </p>
                     <p id="pricing">
-                        <% Object.entries(cart).forEach(([id, item]) => { %> <%= item['cost'] %> *
-                        <span id="sum-count-<%= id %>"><%= item['count'] %></span><br />
-                        <% }) %>
+                        <% for (const [id, item] of Object.entries(cart)) { %>
+                            <%= item['cost'] %> * <span id="sum-count-<%= id %>"><%= item['count'] %></span><br />
+                        <% } %>
                         <br /><br />
 
                         <span id="shipping"><%= shipping %></span><br />
                         <span id="total">
-                            <% let sum = shipping; Object.values(cart).forEach(item => { sum +=
-                            item['cost'] * item['count'] }) %> <%= sum.toFixed(2) %>
+                            <%  let sum = shipping;
+                                for (const item of Object.values(cart)) {
+                                    sum += item['cost'] * item['count']
+                                } %>
+                            <%= sum.toFixed(2) %>
                         </span>
                         SEK
                     </p>

@@ -47,9 +47,9 @@
                             value="default">
                             Erbjuds av
                         </option>
-                        <% menu.forEach(restaurant => { %>
-                        <option value="<%= restaurant['name'] %>"><%= restaurant['name'] %></option>
-                        <% }) %>
+                        <% for (const restaurant of menu) { %>
+                            <option value="<%= restaurant['name'] %>"><%= restaurant['name'] %></option>
+                        <% } %>
                     </select>
                     <textarea
                         name="description"
@@ -66,17 +66,19 @@ En ingrediens per rad"
             <div id="remove-meal">
                 <h1>Ta bort måltid</h1>
                 <form id="remove-meal-form">
-                    <% menu.forEach(restaurant => { %> <% restaurant['meals'].forEach(meal => { %>
-                    <div>
-                        <p><%= restaurant['name'] %> - <%= meal['name'] %></p>
-                        <button
-                            type="submit"
-                            name="removeItem"
-                            value="<%= restaurant['name'] %> - <%= meal['name'] %>">
-                            Ta bort
-                        </button>
-                    </div>
-                    <% }) %> <% }) %>
+                    <% for (const restaurant of menu) { %>
+                        <% for (const meal of restaurant['meals']) {%>
+                            <div>
+                                <p><%= restaurant['name'] %> - <%= meal['name'] %></p>
+                                <button
+                                    type="submit"
+                                    name="removeItem"
+                                    value="<%= restaurant['name'] %> - <%= meal['name'] %>">
+                                    Ta bort
+                                </button>
+                            </div>
+                        <% } %>
+                    <% } %>
                 </form>
             </div>
             <div id="add-restaurant">
@@ -100,7 +102,7 @@ En ingrediens per rad"
                 <form
                     id="remove-restaurant-form"
                     method="POST">
-                    <% menu.forEach(restaurant => { %>
+                    <% for (const restaurant of menu) { %>
                     <div>
                         <p><%= restaurant['name'] %></p>
                         <button
@@ -110,7 +112,7 @@ En ingrediens per rad"
                             Ta bort
                         </button>
                     </div>
-                    <% }) %>
+                    <% } %>
                 </form>
             </div>
         </main>
