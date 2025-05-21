@@ -17,21 +17,21 @@ for (const file of readdirSync(queriesDir)) {
     }
 }
 
-// Initialize database
-// const db = new pg.Client({
-//     user: 'postgres',
-//     password: process.env.DB_PASSWORD,
+// Use local db if available, otherwise use online one
+const db = new pg.Client(
+    process.env.LOCAL_DATABASE_URL
+        ? {
+            connectionString: process.env.LOCAL_DATABASE_URL
+        }
+        : {
+            connectionString: process.env.DATABASE_URL,
+            ssl: {
+                rejectUnauthorized: false
+            }
+        }
+);
 
-//     host: 'localhost',
-//     database: process.env.DB_NAME,
-//     port: process.env.DB_PORT
-// });
-
-const db = new pg.Client({
-    connectionString: process.env.DATABASE_URL
-});
-
-db.connect();
+await db.connect();
 
 function ifExists(result) {
     if (result.rows.length > 0) {
