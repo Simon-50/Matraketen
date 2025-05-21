@@ -40,6 +40,10 @@
   border-radius: 1rem;
 }
 
+#product-info > *:not(:last-child) {
+  margin-bottom: 4vw;
+}
+
 main > *:not(:last-child) {
   margin-bottom: 4vw;
 }
@@ -58,23 +62,18 @@ main h2 {
     width: 50%;
     margin-top: 4vw;
   }
-  main #product-contents,
-  main #description {
-    display: inline-block;
-    width: 48%;
-    vertical-align: top;
-    box-sizing: border-box;
-  }
-  main #description {
-    padding: 4rem;
+  main #product-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4vw;
   }
   main #product-contents {
-    margin-bottom: 0px;
+    margin-bottom: 0 !important;
+  }
+  main #description p {
+    font-size: 20px;
   }
   li {
     font-size: 30px;
-  }
-  #description p {
-    font-size: 20px;
   }
 }

@@ -27,6 +27,10 @@
     @include components.card;
 }
 
+#product-info {
+    @include components.element-spacing();
+}
+
 main {
     @include components.element-spacing();
 
@@ -49,30 +53,24 @@ main {
             }
         }
 
-        #product-contents,
-        #description {
-            display: inline-block;
-            width: 48%;
-            vertical-align: top;
-            box-sizing: border-box;
-        }
-
-        #description {
-            padding: 4rem;
+        #product-info {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: base.$main-spacing;
         }
 
         #product-contents {
-            margin-bottom: 0px;
+            margin-bottom: 0 !important;
+        }
+
+        #description {
+            p {
+                font-size: 20px;
+            }
         }
     }
 
     li {
         font-size: 30px;
-    }
-
-    #description {
-        p {
-            font-size: 20px;
-        }
     }
 }

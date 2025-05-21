@@ -46,18 +46,19 @@
                     <button>Betala nu →</button>
                 </a>
             </div>
-            <div id="product-contents">
-                <h2>Innehåller</h2>
-                <ul>
-                    <% for (const ingredient of product['ingredients']) { %>
-                        <li><%= ingredient %></li>
-                    <% } %>
-                </ul>
-            </div>
-
-            <div id="description">
-                <h2>Beskrivning</h2>
-                <p><%= product['description'] %></p>
+            <div id="product-info">
+                <div id="product-contents">
+                    <h2>Innehåller</h2>
+                    <ul>
+                        <% for (const ingredient of product['ingredients']) { %>
+                            <li><%= ingredient %></li>
+                        <% } %>
+                    </ul>
+                </div>
+                <div id="description">
+                    <h2>Beskrivning</h2>
+                    <p><%= product['description'] %></p>
+                </div>
             </div>
         </main>
         <%- include('partials/footer') -%>
