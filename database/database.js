@@ -19,12 +19,12 @@ for (const file of readdirSync(queriesDir)) {
 
 // Use local db if available, otherwise use online one
 const db = new pg.Client(
-    process.env.LOCAL_DATABASE_URL
+    process.env.DATABASE_URL
         ? {
-            connectionString: process.env.LOCAL_DATABASE_URL
+            connectionString: process.env.DATABASE_URL
         }
         : {
-            connectionString: process.env.DATABASE_URL,
+            connectionString: process.env.RENDER_DATABASE_URL,
             ssl: {
                 rejectUnauthorized: false
             }
