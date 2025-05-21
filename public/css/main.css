@@ -39,6 +39,7 @@ header .hamburger-icon {
   border-radius: 0.5rem;
   cursor: pointer;
   font-family: inherit;
+  font-size: min(1.5rem, 2.5vw);
   outline: 0.125rem solid #bc2632;
 }
 header nav > *:focus, header nav > *:hover,

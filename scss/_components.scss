@@ -37,8 +37,8 @@
 
     cursor: pointer;
 
-    // Don't know why, but the buttons don't get the correct font otherwise
-    font-family: inherit;
+    font-family: inherit; // Don't know why, but the buttons don't get the correct font otherwise
+    font-size: min(1.5rem, 2.5vw);
 
     @if $add-spacing {
         margin: base.$outline-width;

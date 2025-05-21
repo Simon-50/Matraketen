@@ -19,6 +19,7 @@ button {
   border-radius: 0.5rem;
   cursor: pointer;
   font-family: inherit;
+  font-size: min(1.5rem, 2.5vw);
   margin: 0.25rem;
   padding: min(1.6vw, 0.6rem) min(5vw, 2.4rem);
   outline: 0.125rem solid #bc2632;
@@ -105,6 +106,7 @@ form button {
   border-radius: 0.5rem;
   cursor: pointer;
   font-family: inherit;
+  font-size: min(1.5rem, 2.5vw);
   margin: 0.25rem;
   padding: min(1.6vw, 0.6rem) min(5vw, 2.4rem);
   outline: 0.125rem solid #bc2632;
