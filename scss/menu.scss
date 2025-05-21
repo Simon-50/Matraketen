@@ -1,4 +1,5 @@
 @use 'base';
+@use 'components';
 
 // Override bootstraps defaults
 h1,
@@ -7,16 +8,19 @@ p {
     line-height: 1;
 }
 
+main {
+    @include components.element-spacing(base.$main-spacing * 2);
+}
+
 .resturang {
     border-radius: base.$br-md;
     width: 80%;
-    margin-top: 200px;
     background-color: base.$section-color;
 
     .headbar {
         display: flex;
         justify-content: space-between;
-        height: 2.2rem;
+        height: max(2.2rem, 6vw);
         background-color: base.$primary;
         border-radius: base.$br-md;
 
@@ -33,10 +37,12 @@ p {
         grid-template-columns: repeat(2, 1fr);
         place-items: center;
 
+        padding: base.$main-spacing / 2;
+        gap: base.$main-spacing / 2;
+
         .item {
             align-items: center;
 
-            
             a {
                 color: base.$primary;
                 text-decoration: none;
@@ -45,7 +51,6 @@ p {
             img {
                 width: auto;
                 height: 15vw;
-                margin-top: 2rem;
                 border-radius: base.$br-lg;
                 display: block;
             }
@@ -58,14 +63,6 @@ p {
 }
 
 @media screen and (min-width: base.$breakpoint) {
-    .resturang {
-        margin-top: 100px;
-    }
-
-    .headbar {
-        height: 60px;
-    }
-
     main {
         p {
             font-size: xx-large;
