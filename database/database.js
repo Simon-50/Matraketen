@@ -21,14 +21,14 @@ for (const file of readdirSync(queriesDir)) {
 const db = new pg.Pool(
     process.env.DATABASE_URL
         ? {
-              connectionString: process.env.DATABASE_URL
-          }
+            connectionString: process.env.DATABASE_URL
+        }
         : {
-              connectionString: process.env.RENDER_DATABASE_URL,
-              ssl: {
-                  rejectUnauthorized: false
-              }
-          }
+            connectionString: process.env.RENDER_DATABASE_URL,
+            ssl: {
+                rejectUnauthorized: false
+            }
+        }
 );
 
 function ifExists(result) {

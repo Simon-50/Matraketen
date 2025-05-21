@@ -16,6 +16,8 @@ main {
         p {
             font-size: 2.4vw;
             text-align: center;
+
+            padding: 0 2rem;
         }
     }
 
@@ -46,7 +48,9 @@ main {
 
         .left {
             margin-right: -10px;
-            border-radius: base.$br-lg 0 0 base.$br-lg;
+            border-radius: 0 base.$br-lg base.$br-lg 0;
+            transform: scaleX(-1);
         }
+
     }
 }
