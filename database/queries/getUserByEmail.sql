@@ -1,1 +1,6 @@
-SELECT * FROM customers WHERE email = $1;
+SELECT
+    *
+FROM
+    customers
+WHERE
+    email = $1;

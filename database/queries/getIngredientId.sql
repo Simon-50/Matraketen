@@ -1,1 +1,6 @@
-SELECT id FROM ingredients WHERE name = $1;
+SELECT
+    id
+FROM
+    ingredients
+WHERE
+    name = $1;

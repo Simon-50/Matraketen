@@ -1,1 +1,6 @@
-SELECT * FROM customers WHERE id = $1;
+SELECT
+    *
+FROM
+    customers
+WHERE
+    id = $1;

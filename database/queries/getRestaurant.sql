@@ -1,1 +1,6 @@
-SELECT * FROM restaurants WHERE name = $1;
+SELECT
+    *
+FROM
+    restaurants
+WHERE
+    name = $1;

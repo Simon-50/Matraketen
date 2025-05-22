@@ -1,2 +1,6 @@
-SELECT * FROM restaurants
-ORDER BY name ASC;
+SELECT
+    *
+FROM
+    restaurants
+ORDER BY
+    name ASC;
