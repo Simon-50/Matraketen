@@ -1,5 +1,9 @@
 @use '../base';
 
+html {
+    scroll-behavior: smooth;
+}
+
 main {
     padding: base.$main-spacing;
 }

@@ -14,6 +14,10 @@ body {
   font-size-adjust: 0.52;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 main {
   padding: 4vw;
 }
