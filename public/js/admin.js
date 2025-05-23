@@ -5,7 +5,6 @@ document.addEventListener('submit', async (event) => {
     const data = Object.fromEntries(formData.entries());
 
     if (event.target.matches('#add-meal-form')) {
-
         // Stop meal from being submitted without an offering restaurant
         let selectedOption = document.querySelector('select[name="restaurant"] option:checked');
         if (selectedOption.value === 'default') {
@@ -13,6 +12,7 @@ document.addEventListener('submit', async (event) => {
             return;
         }
 
+        // Saving in db
         console.log('Meal sent');
         const response = await fetch('/admin/meal', {
             method: 'POST',
@@ -25,15 +25,32 @@ document.addEventListener('submit', async (event) => {
         if (response.ok) {
             console.log('Meal added');
         }
-
     } else if (event.target.matches('#remove-meal-form')) {
+        const button = event.submitter;
+        const mealId = button.dataset['id'];
 
-        return;
+        console.log('Request sent');
+        const response = await fetch('/admin/meal', {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ mealId })
+        });
+
+        const body = await response.json();
+
+        if (response.ok) {
+            if (body['success']) {
+                console.log('Meal removed');
+                document.querySelector(`#meal-${mealId}`).remove();
+            } else {
+                console.log('Meal not found');
+            }
+        }
     } else if (event.target.matches('#add-restaurant-form')) {
-
         return;
     } else if (event.target.matches('#remove-restaurant-form')) {
-
         return;
     }
 });

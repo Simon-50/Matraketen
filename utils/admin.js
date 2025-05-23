@@ -16,8 +16,11 @@ const admin = {
         }
         res.sendStatus(200);
     },
+    async removeMeal(req, res) {
+        const result = await database.removeMeal(req.body['mealId']);
+        res.json({ success: result['rowCount'] > 0 });
+    },
     async addRestaurant(req, res) {},
-    async removeMeal(req, res) {},
     async removeRestaurant(req, res) {}
 };
 

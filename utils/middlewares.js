@@ -1,9 +1,21 @@
 import express from 'express';
 import session from 'express-session';
 import passport from 'passport';
-import { dirname, join } from 'path';
+import { join } from 'path';
 
 export default function applyMiddlewares(app, __dirname) {
+    // Admin override
+    if (process.env.NODE_ENV !== 'production' && process.env.ADMIN) {
+        console.warn('⚠️  ADMIN OVERRIDE IS ENABLED ⚠️');
+        app.use((req, res, next) => {
+            if (!req.user) {
+                req.user = { id: 1, is_admin: true };
+                req.isAuthenticated = () => true;
+            }
+            next();
+        });
+    }
+
     // Serve public
     app.use(express.static(join(__dirname, 'public')));
 

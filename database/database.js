@@ -1,5 +1,6 @@
 import dotenv from 'dotenv';
 import { readdirSync, readFileSync } from 'fs';
+import { type } from 'os';
 import { join, parse } from 'path';
 import pg from 'pg';
 
@@ -40,6 +41,7 @@ function ifExists(result) {
 }
 
 const database = {
+    //* Meals
     async getMeal(id) {
         // Get product info
         let result = await db.query(queries['getMeal'], [id]);
@@ -55,6 +57,24 @@ const database = {
         }
 
         return product;
+    },
+    async addMeal(data) {
+        const restaurant = await this.getRestaurant(data['restaurant']);
+
+        const mealData = [
+            restaurant['id'],
+            data['name'],
+            data['cost'],
+            data['description'],
+            data['imageName']
+        ];
+
+        const result = await db.query(queries['addMeal'], mealData);
+        return result.rows[0];
+    },
+    async removeMeal(id) {
+        const result = await db.query(queries['removeMeal'], [id])
+        return result;
     },
     async getMenu() {
         const menu = [];
@@ -114,20 +134,6 @@ const database = {
         ];
 
         const result = await db.query(queries['addUser'], userData);
-        return result.rows[0];
-    },
-    async addMeal(data) {
-        const restaurant = await this.getRestaurant(data['restaurant']);
-
-        const mealData = [
-            restaurant['id'],
-            data['name'],
-            data['cost'],
-            data['description'],
-            data['imageName']
-        ];
-
-        const result = await db.query(queries['addMeal'], mealData);
         return result.rows[0];
     },
     async addIngredient(ingredient) {

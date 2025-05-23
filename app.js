@@ -15,15 +15,6 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-//! Don't commit this
-// app.use((req, res, next) => {
-//     if (!req.user) {
-//         req.user = { id: 1, is_admin: true };
-//         req.isAuthenticated = () => true;
-//     }
-//     next();
-// });
-
 // Apply all middlewares
 applyMiddlewares(app, __dirname);
 
@@ -94,5 +85,7 @@ app.delete('/admin/restarant', security.requireAdmin, admin.removeRestaurant);
 
 // Start server
 app.listen(PORT, () => {
-    console.log(`Server running on http://localhost:${PORT}`);
+    if (process.env.NODE_ENV !== 'production') {
+        console.log(`Server running on http://localhost:${PORT}`);
+    }
 });

@@ -68,11 +68,12 @@ En ingrediens per rad"
                 <form id="remove-meal-form">
                     <% for (const restaurant of menu) { %>
                         <% for (const meal of restaurant['meals']) {%>
-                            <div>
+                            <div id="meal-<%= meal['id'] %>">
                                 <p><%= restaurant['name'] %> - <%= meal['name'] %></p>
                                 <button
                                     type="submit"
                                     name="removeItem"
+                                    data-id="<%= meal['id'] %>"
                                     value="<%= restaurant['name'] %> - <%= meal['name'] %>">
                                     Ta bort
                                 </button>

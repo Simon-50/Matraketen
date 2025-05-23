@@ -1,7 +1,7 @@
 document.addEventListener('submit', async (event) => {
-    if (event.target.matches('#register-form')) {
-        event.preventDefault();
+    event.preventDefault();
 
+    if (event.target.matches('#register-form')) {
         const formData = new FormData(event.target);
         const data = Object.fromEntries(formData.entries());
 
@@ -21,7 +21,6 @@ document.addEventListener('submit', async (event) => {
             alert(body['error']);
         }
     } else if (event.target.matches('#login-form')) {
-        event.preventDefault();
 
         const formData = new FormData(event.target);
         const data = Object.fromEntries(formData.entries());
