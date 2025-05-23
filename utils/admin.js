@@ -20,7 +20,15 @@ const admin = {
         const result = await database.removeMeal(req.body['mealId']);
         res.json({ success: result['rowCount'] > 0 });
     },
-    async addRestaurant(req, res) {},
+    async addRestaurant(req, res) {
+        const result = await database.addRestaurant(req.body);
+
+        if (result) {
+            res.sendStatus(200);
+        } else {
+            res.sendStatus(409);
+        }
+    },
     async removeRestaurant(req, res) {}
 };
 

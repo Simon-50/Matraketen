@@ -1,6 +1,5 @@
 import dotenv from 'dotenv';
 import { readdirSync, readFileSync } from 'fs';
-import { type } from 'os';
 import { join, parse } from 'path';
 import pg from 'pg';
 
@@ -22,14 +21,14 @@ for (const file of readdirSync(queriesDir)) {
 const db = new pg.Pool(
     process.env.DATABASE_URL
         ? {
-            connectionString: process.env.DATABASE_URL
-        }
+              connectionString: process.env.DATABASE_URL
+          }
         : {
-            connectionString: process.env.RENDER_DATABASE_URL,
-            ssl: {
-                rejectUnauthorized: false
-            }
-        }
+              connectionString: process.env.RENDER_DATABASE_URL,
+              ssl: {
+                  rejectUnauthorized: false
+              }
+          }
 );
 
 function ifExists(result) {
@@ -73,8 +72,28 @@ const database = {
         return result.rows[0];
     },
     async removeMeal(id) {
-        const result = await db.query(queries['removeMeal'], [id])
+        const result = await db.query(queries['removeMeal'], [id]);
         return result;
+    },
+    async getRestaurant(name) {
+        const result = await db.query(queries['getRestaurant'], [name]);
+
+        return ifExists(result);
+    },
+    async addRestaurant(data) {
+        const restarantData = [data['name'], data['logotypeName']];
+
+        try {
+            const result = await db.query(queries['addRestaurant'], restarantData);
+            return result;
+        } catch (err) {
+            // UNIQUE violation
+            if (err.code === '23505') {
+                return false;
+            } else {
+                throw err;
+            }
+        }
     },
     async getMenu() {
         const menu = [];
@@ -114,11 +133,6 @@ const database = {
 
         return ifExists(result);
     },
-    async getRestaurant(name) {
-        const result = await db.query(queries['getRestaurant'], [name]);
-
-        return ifExists(result);
-    },
     async addUser(data) {
         const userData = [
             data['firstName'],
@@ -141,8 +155,13 @@ const database = {
             const result = await db.query(queries['addIngredient'], [ingredient]);
             return result.rows[0];
         } catch (err) {
-            const result = await db.query(queries['getIngredientId'], [ingredient]);
-            return result.rows[0];
+            // UNIQUE violation
+            if (err.code === '23505') {
+                const result = await db.query(queries['getIngredientId'], [ingredient]);
+                return result.rows[0];
+            } else {
+                throw err;
+            }
         }
     },
     async addMealIngredientBinding(mealId, ingredientId) {

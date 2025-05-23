@@ -49,7 +49,22 @@ document.addEventListener('submit', async (event) => {
             }
         }
     } else if (event.target.matches('#add-restaurant-form')) {
-        return;
+        console.log('Restaurant sent');
+        const response = await fetch('/admin/restarant', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        });
+
+        if (response.ok) {
+            console.log('Restaurant added');
+        }
+        if (response.status === 409) {
+            console.log('Restaurant already added');
+            alert('Restaurangen finns redan');
+        }
     } else if (event.target.matches('#remove-restaurant-form')) {
         return;
     }
