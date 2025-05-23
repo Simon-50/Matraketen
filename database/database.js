@@ -81,10 +81,10 @@ const database = {
         return ifExists(result);
     },
     async addRestaurant(data) {
-        const restarantData = [data['name'], data['logotypeName']];
+        const restaurantData = [data['name'], data['logotypeName']];
 
         try {
-            const result = await db.query(queries['addRestaurant'], restarantData);
+            const result = await db.query(queries['addRestaurant'], restaurantData);
             return result;
         } catch (err) {
             // UNIQUE violation
@@ -95,21 +95,25 @@ const database = {
             }
         }
     },
+    async removeRestaurant(id) {
+        const result = await db.query(queries['removeRestaurant'], [id]);
+        return result;
+    },
     async getMenu() {
         const menu = [];
 
-        // Get restarants
+        // Get restaurants
         const result = await db.query(queries['getRestaurants']);
 
-        for (const restarant of result.rows) {
+        for (const restaurant of result.rows) {
             // Get meals for restaurant
-            const result = await db.query(queries['getMeals'], [restarant['id']]);
+            const result = await db.query(queries['getMeals'], [restaurant['id']]);
 
             // Add them to object
-            restarant['meals'] = result.rows;
+            restaurant['meals'] = result.rows;
 
-            // Add complete restarant to menu
-            menu.push(restarant);
+            // Add complete restaurant to menu
+            menu.push(restaurant);
         }
 
         return menu;

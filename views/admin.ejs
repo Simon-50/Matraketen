@@ -48,7 +48,11 @@
                             Erbjuds av
                         </option>
                         <% for (const restaurant of menu) { %>
-                            <option value="<%= restaurant['name'] %>"><%= restaurant['name'] %></option>
+                        <option
+                            class="restaurant-<%= restaurant['id'] %>"
+                            value="<%= restaurant['name'] %>">
+                            <%= restaurant['name'] %>
+                        </option>
                         <% } %>
                     </select>
                     <textarea
@@ -66,20 +70,19 @@ En ingrediens per rad"
             <div id="remove-meal">
                 <h1>Ta bort måltid</h1>
                 <form id="remove-meal-form">
-                    <% for (const restaurant of menu) { %>
-                        <% for (const meal of restaurant['meals']) {%>
-                            <div id="meal-<%= meal['id'] %>">
-                                <p><%= restaurant['name'] %> - <%= meal['name'] %></p>
-                                <button
-                                    type="submit"
-                                    name="removeItem"
-                                    data-id="<%= meal['id'] %>"
-                                    value="<%= restaurant['name'] %> - <%= meal['name'] %>">
-                                    Ta bort
-                                </button>
-                            </div>
-                        <% } %>
-                    <% } %>
+                    <% for (const restaurant of menu) { %> <% for (const meal of
+                    restaurant['meals']) {%>
+                    <div class="meal-<%= meal['id'] %>">
+                        <p><%= restaurant['name'] %> - <%= meal['name'] %></p>
+                        <button
+                            type="submit"
+                            name="removeItem"
+                            data-id="<%= meal['id'] %>"
+                            value="<%= restaurant['name'] %> - <%= meal['name'] %>">
+                            Ta bort
+                        </button>
+                    </div>
+                    <% } %> <% } %>
                 </form>
             </div>
             <div id="add-restaurant">
@@ -104,11 +107,12 @@ En ingrediens per rad"
                     id="remove-restaurant-form"
                     method="POST">
                     <% for (const restaurant of menu) { %>
-                    <div>
+                    <div class="restaurant-<%= restaurant['id'] %>">
                         <p><%= restaurant['name'] %></p>
                         <button
                             type="submit"
                             name="removeRestaurant"
+                            data-id="<%= restaurant['id'] %>"
                             value="<%= restaurant['name'] %>">
                             Ta bort
                         </button>

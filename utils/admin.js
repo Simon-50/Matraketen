@@ -29,7 +29,10 @@ const admin = {
             res.sendStatus(409);
         }
     },
-    async removeRestaurant(req, res) {}
+    async removeRestaurant(req, res) {
+        const result = await database.removeRestaurant(req.body['restaurantId']);
+        res.json({ success: result['rowCount'] > 0 });
+    }
 };
 
 export default admin;

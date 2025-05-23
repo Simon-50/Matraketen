@@ -29,7 +29,7 @@ document.addEventListener('submit', async (event) => {
         const button = event.submitter;
         const mealId = button.dataset['id'];
 
-        console.log('Request sent');
+        console.log('Deletion request sent');
         const response = await fetch('/admin/meal', {
             method: 'DELETE',
             headers: {
@@ -43,14 +43,14 @@ document.addEventListener('submit', async (event) => {
         if (response.ok) {
             if (body['success']) {
                 console.log('Meal removed');
-                document.querySelector(`#meal-${mealId}`).remove();
+                document.querySelector(`.meal-${mealId}`).remove();
             } else {
                 console.log('Meal not found');
             }
         }
     } else if (event.target.matches('#add-restaurant-form')) {
         console.log('Restaurant sent');
-        const response = await fetch('/admin/restarant', {
+        const response = await fetch('/admin/restaurant', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -66,6 +66,31 @@ document.addEventListener('submit', async (event) => {
             alert('Restaurangen finns redan');
         }
     } else if (event.target.matches('#remove-restaurant-form')) {
-        return;
+        const button = event.submitter;
+        const restaurantId = button.dataset['id'];
+
+        console.log('Deletion request sent');
+        const response = await fetch('/admin/restaurant', {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ restaurantId })
+        });
+
+        const body = await response.json();
+
+        if (response.ok) {
+            if (body['success']) {
+                console.log('Restaurant removed');
+
+                // Remove option from add meal and remove restaurant
+                for (const element of document.querySelectorAll(`.restaurant-${restaurantId}`)) {
+                    element.remove();
+                }
+            } else {
+                console.log('Restaurant not found');
+            }
+        }
     }
 });

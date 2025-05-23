@@ -80,8 +80,8 @@ app.delete('/cart/remove', cart.remove);
 // Admin routes
 app.post('/admin/meal', security.requireAdmin, admin.addMeal);
 app.delete('/admin/meal', security.requireAdmin, admin.removeMeal);
-app.post('/admin/restarant', security.requireAdmin, admin.addRestaurant);
-app.delete('/admin/restarant', security.requireAdmin, admin.removeRestaurant);
+app.post('/admin/restaurant', security.requireAdmin, admin.addRestaurant);
+app.delete('/admin/restaurant', security.requireAdmin, admin.removeRestaurant);
 
 // Start server
 app.listen(PORT, () => {
