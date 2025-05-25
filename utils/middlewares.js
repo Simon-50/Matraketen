@@ -9,7 +9,19 @@ export default function applyMiddlewares(app, __dirname) {
         console.warn('⚠️  ADMIN OVERRIDE IS ENABLED ⚠️');
         app.use((req, res, next) => {
             if (!req.user) {
-                req.user = { id: 1, is_admin: true };
+                req.user = {
+                    id: 0,
+                    first_name: 'admin',
+                    last_name: 'admin',
+                    email: 'admin@matraketen.com',
+                    phone_number: 1000000000,
+                    address: 'administratörsvägen 123',
+                    postcode: 4567654,
+                    password: '$2b$12$oYlLcmSzMckf5jCMTL4BduabrsigSGL0ITvLtNQVbl292avG6nsQO',
+                    newsletter: false,
+                    privacy_policy_accepted: true,
+                    is_admin: true
+                };
                 req.isAuthenticated = () => true;
             }
             next();
