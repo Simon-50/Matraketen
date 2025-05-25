@@ -11,52 +11,71 @@
         <link
             rel="stylesheet"
             href="/css/profile.css" />
-        <title>Document</title>
+        <script
+            src="/js/user.js"
+            async></script>
+        <title>Profil - Matraketen</title>
     </head>
     <body>
         <%- include('partials/header') -%>
         <main>
             <div id="update-details">
                 <h1>Uppdatera personuppgifter</h1>
-                <form
-                    method="POST"
-                    id="update-details-form">
+                <form id="update-details-form">
                     <input
                         type="text"
                         name="firstName"
                         placeholder="Förnamn"
+                        value="<%= user['first_name'] %>"
                         required />
                     <input
                         type="text"
                         name="lastName"
                         placeholder="Efternamn"
-                        required />
-                    <input
-                        type="tel"
-                        name="phoneNumber"
-                        placeholder="Telefonnummer"
+                        value="<%= user['last_name'] %>"
                         required />
                     <input
                         type="email"
                         name="email"
                         placeholder="e-postadress"
+                        value="<%= user['email'] %>"
+                        required />
+                    <input
+                        type="tel"
+                        name="phoneNumber"
+                        placeholder="Telefonnummer"
+                        value="<%= user['phone_number'] %>"
                         required />
                     <input
                         type="text"
                         name="address"
                         placeholder="Adress"
+                        value="<%= user['address'] %>"
                         required />
                     <input
                         type="text"
                         name="postcode"
                         placeholder="Postnummer"
+                        value="<%= user['postcode'] %>"
                         required />
+                    <div>
+                        <input
+                            type="checkbox"
+                            name="newsletter"
+                            <%= user['newsletter'] ? 'checked' : '' %>
+                            id="cb-news"/>
+                        <label for="cb-news">
+                            Jag prenumererar på Matraketens nyhetsbrev och får information om
+                            rabatter och erbjudanden
+                        </label>
+                        <span class="checkmark"></span>
+                    </div>
                     <button type="submit">Uppdatera</button>
                 </form>
             </div>
             <div id="change-password">
                 <h1>Byt lösenord</h1>
-                <form method="POST">
+                <form id="change-password-form">
                     <input
                         type="password"
                         name="currentPassword"

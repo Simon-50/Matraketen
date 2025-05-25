@@ -148,27 +148,41 @@ const database = {
 
         return ifExists(result);
     },
-    async addUser(data) {
-        const userData = [
-            data['firstName'],
-            data['lastName'],
-            data['email'],
-            data['phoneNumber'],
-            data['address'],
-            data['postcode'],
-            data['password'],
-            data['newsletter'],
-            data['privacyPolicy'],
-            data['isAdmin']
+    async addUser(userData) {
+        const queryOrder = [
+            userData['firstName'],
+            userData['lastName'],
+            userData['email'],
+            userData['phoneNumber'],
+            userData['address'],
+            userData['postcode'],
+            userData['password'],
+            userData['newsletter'],
+            userData['privacyPolicy'],
+            userData['isAdmin']
         ];
 
-        const result = await db.query(queries['addUser'], userData);
+        const result = await db.query(queries['addUser'], queryOrder);
         return result.rows[0];
     },
     async getUserById(id) {
         const result = await db.query(queries['getUserById'], [id]);
 
         return ifExists(result);
+    },
+    async updateDetails(userDetails) {
+        const queryOrder = [
+            userDetails['id'],
+            userDetails['firstName'],
+            userDetails['lastName'],
+            userDetails['email'],
+            userDetails['phoneNumber'],
+            userDetails['address'],
+            userDetails['postcode'],
+            userDetails['newsletter']
+        ];
+
+        return db.query(queries['updateDetails'], queryOrder)
     },
     async updatePassword(email, hash) {
         return db.query(queries['updatePassword'], [email, hash]);

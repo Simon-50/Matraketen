@@ -3,6 +3,7 @@ import passport from 'passport';
 import { Strategy } from 'passport-local';
 import database from '../database/database.js';
 import mailer from './mailer.js';
+import { json } from 'express';
 
 const saltRounds = 12;
 
@@ -141,9 +142,32 @@ const security = {
         const hash = await bcrypt.hash(newPassword, 12);
         const result = await database.updatePassword(email, hash);
 
-        console.log(result);
-
         res.status(200).json({ redirectTo: '/login' });
+    },
+    async updateDetails(req, res) {
+        const userDetails = { ...req.body };
+        userDetails['newsletter'] = Boolean(req.body['newsletter']);
+
+        await database.updateDetails(req.body);
+
+        res.sendStatus(200);
+    },
+    async updatePassword(req, res) {
+        // Check that passwords match
+        if (req.body['newPassword'] !== req.body['repeatPassword']) {
+            return res.status(400).json({ error: 'Lösenorden matchar inte' });
+        }
+
+        // Correct current password
+        if (!(await bcrypt.compare(req.body['currentPassword'], req.user['password']))) {
+            return res.status(401).json({ error: 'Fel nuvarande lösenord' });
+        }
+
+        // Actually update it
+        const hash = await bcrypt.hash(req.body['newPassword'], saltRounds);
+        await database.updatePassword(req.user['email'], hash);
+
+        res.sendStatus(200);
     }
 };
 

@@ -59,11 +59,13 @@ app.get('/admin', security.requireAdmin, async (req, res) => {
     res.render('admin', { menu });
 });
 
-// User routes
+// User post routes
 app.post('/register', security.register);
 app.post('/login', security.login);
 app.post('/password/get', security.getResetCode);
 app.post('/password/verify', security.verifyCode);
+app.post('/profile/details', security.requireAuth, security.updateDetails);
+app.post('/profile/password', security.requireAuth, security.updatePassword);
 
 //* API routes
 // Cart routes

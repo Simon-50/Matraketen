@@ -75,7 +75,36 @@ document.addEventListener('submit', async (event) => {
         } else if (response.status === 400) {
             alert(body['error']);
         } else if (response.status === 500) {
-            alert('Fel vid försök att skicka e-post. Försök igen senare');
+            alert('Fel vid försändelse av e-post. Försök igen om 24h');
+        }
+    } else if (event.target.matches('#update-details-form')) {
+        console.log('Updated details sent');
+        const response = await fetch('/profile/details', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        });
+
+        if (response.ok) {
+            location.reload();
+        }
+    } else if (event.target.matches('#change-password-form')) {
+        console.log('Updated details sent');
+        const response = await fetch('/profile/password', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        });
+
+        if (response.ok) {
+            alert('Lösenord uppdaterat');
+        } else if (response.status === 400 || response.status === 401) {
+            const body = await response.json();
+            alert(body['error']);
         }
     }
 });
