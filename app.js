@@ -21,13 +21,6 @@ applyMiddlewares(app, __dirname);
 // Setup passport strategies
 setupPassport();
 
-//* Misc
-// Session - Debug
-// app.use((req, res, next) => {
-//     console.log(req.session);
-//     next();
-// });
-
 //* Page get routes
 app.get('/', (req, res) => {
     res.render('index');
@@ -54,7 +47,7 @@ app.get('/login', (req, res) => {
 app.get('/register', (req, res) => {
     res.render('register');
 });
-app.get('/reset-password', security.requireAuth, (req, res) => {
+app.get('/reset-password', (req, res) => {
     res.render('password');
 });
 app.get('/profile', security.requireAuth, (req, res) => {
@@ -69,6 +62,8 @@ app.get('/admin', security.requireAdmin, async (req, res) => {
 // User routes
 app.post('/register', security.register);
 app.post('/login', security.login);
+app.post('/password/get', security.getResetCode);
+app.post('/password/verify', security.verifyCode);
 
 //* API routes
 // Cart routes

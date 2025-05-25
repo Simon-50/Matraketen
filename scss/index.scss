@@ -40,7 +40,7 @@
 
     background-color: initial;
     position: relative;
-    width: 80%;
+    width: 100%;
 
     padding: 0 3rem;
 
@@ -84,6 +84,8 @@ main {
     }
 
     #order-now {
+        width: 80%;
+
         p {
             font-size: min(5vw);
         }

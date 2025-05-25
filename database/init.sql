@@ -37,9 +37,9 @@ CREATE TABLE
         PRIMARY KEY (meal_id, ingredient_id)
     );
 
--- Customers
+-- Users
 CREATE TABLE
-    customers (
+    users (
         id SERIAL PRIMARY KEY,
         first_name TEXT,
         last_name TEXT,
@@ -210,7 +210,7 @@ VALUES
     (9, 23);
 
 INSERT INTO
-    customers (
+    users (
         first_name,
         last_name,
         email,

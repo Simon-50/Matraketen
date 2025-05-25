@@ -1,6 +1,6 @@
 SELECT
     *
 FROM
-    customers
+    users
 WHERE
     email = $1;

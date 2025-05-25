@@ -4,8 +4,8 @@ import passport from 'passport';
 import { join } from 'path';
 
 export default function applyMiddlewares(app, __dirname) {
-    // Admin override
-    if (process.env.NODE_ENV !== 'production' && process.env.ADMIN) {
+    // Admin override only allowed on local database
+    if (process.env.ADMIN && process.env.NODE_ENV !== 'production' && process.env.DATABASE_URL) {
         console.warn('⚠️  ADMIN OVERRIDE IS ENABLED ⚠️');
         app.use((req, res, next) => {
             if (!req.user) {
@@ -29,11 +29,11 @@ export default function applyMiddlewares(app, __dirname) {
     app.use(
         session({
             name: 'session.matraketen',
-            secret: '13af98c158e9779573884a57542f50ddc12f83a098f18c6a7f530a14cfd42a11acccb73ab19773a04f609e11548f3004fb42351bcf46c16fb0de6bc9a2c04875',
+            secret: process.env.SESSION_SECRET,
             resave: false,
             saveUninitialized: true,
             cookie: {
-                maxAge: 1000 * 60 * 60 // 1h
+                maxAge: 1000 * 60 * 60 * 2 // 2h
             }
         })
     );
@@ -51,4 +51,10 @@ export default function applyMiddlewares(app, __dirname) {
     // Set EJS as templating engine
     app.set('view engine', 'ejs');
     app.set('views', join(__dirname, 'views'));
+
+    // Session - Debug
+    // app.use((req, res, next) => {
+    //     console.log(req.session);
+    //     next();
+    // });
 }

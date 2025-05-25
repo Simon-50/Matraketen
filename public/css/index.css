@@ -31,7 +31,7 @@
   transition: all 0.3s ease-in-out;
   background-color: initial;
   position: relative;
-  width: 80%;
+  width: 100%;
   padding: 0 3rem;
 }
 #order-now:hover {
@@ -71,6 +71,9 @@ main > div {
   }
   #info-text {
     font-size: 3.8vw;
+  }
+  #order-now {
+    width: 80%;
   }
   #order-now p {
     font-size: 5vw;

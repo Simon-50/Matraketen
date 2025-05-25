@@ -1,6 +1,6 @@
 SELECT
     *
 FROM
-    customers
+    users
 WHERE
     id = $1;

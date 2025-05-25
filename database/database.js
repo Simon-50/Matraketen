@@ -41,6 +41,20 @@ function ifExists(result) {
 
 const database = {
     //* Meals
+    async addMeal(data) {
+        const restaurant = await this.getRestaurant(data['restaurant']);
+
+        const mealData = [
+            restaurant['id'],
+            data['name'],
+            data['cost'],
+            data['description'],
+            data['imageName']
+        ];
+
+        const result = await db.query(queries['addMeal'], mealData);
+        return result.rows[0];
+    },
     async getMeal(id) {
         // Get product info
         let result = await db.query(queries['getMeal'], [id]);
@@ -57,28 +71,25 @@ const database = {
 
         return product;
     },
-    async addMeal(data) {
-        const restaurant = await this.getRestaurant(data['restaurant']);
-
-        const mealData = [
-            restaurant['id'],
-            data['name'],
-            data['cost'],
-            data['description'],
-            data['imageName']
-        ];
-
-        const result = await db.query(queries['addMeal'], mealData);
-        return result.rows[0];
-    },
     async removeMeal(id) {
-        const result = await db.query(queries['removeMeal'], [id]);
-        return result;
+        return db.query(queries['removeMeal'], [id]);
     },
-    async getRestaurant(name) {
-        const result = await db.query(queries['getRestaurant'], [name]);
-
-        return ifExists(result);
+    async addIngredient(ingredient) {
+        try {
+            const result = await db.query(queries['addIngredient'], [ingredient]);
+            return result.rows[0];
+        } catch (err) {
+            // UNIQUE violation
+            if (err.code === '23505') {
+                const result = await db.query(queries['getIngredientId'], [ingredient]);
+                return result.rows[0];
+            } else {
+                throw err;
+            }
+        }
+    },
+    async addMealIngredientBinding(mealId, ingredientId) {
+        await db.query(queries['addMealIngredientBinding'], [mealId, ingredientId]);
     },
     async addRestaurant(data) {
         const restaurantData = [data['name'], data['logotypeName']];
@@ -94,6 +105,11 @@ const database = {
                 throw err;
             }
         }
+    },
+    async getRestaurant(name) {
+        const result = await db.query(queries['getRestaurant'], [name]);
+
+        return ifExists(result);
     },
     async removeRestaurant(id) {
         const result = await db.query(queries['removeRestaurant'], [id]);
@@ -132,11 +148,6 @@ const database = {
 
         return ifExists(result);
     },
-    async getUserById(id) {
-        const result = await db.query(queries['getUserById'], [id]);
-
-        return ifExists(result);
-    },
     async addUser(data) {
         const userData = [
             data['firstName'],
@@ -154,22 +165,13 @@ const database = {
         const result = await db.query(queries['addUser'], userData);
         return result.rows[0];
     },
-    async addIngredient(ingredient) {
-        try {
-            const result = await db.query(queries['addIngredient'], [ingredient]);
-            return result.rows[0];
-        } catch (err) {
-            // UNIQUE violation
-            if (err.code === '23505') {
-                const result = await db.query(queries['getIngredientId'], [ingredient]);
-                return result.rows[0];
-            } else {
-                throw err;
-            }
-        }
+    async getUserById(id) {
+        const result = await db.query(queries['getUserById'], [id]);
+
+        return ifExists(result);
     },
-    async addMealIngredientBinding(mealId, ingredientId) {
-        await db.query(queries['addMealIngredientBinding'], [mealId, ingredientId]);
+    async updatePassword(email, hash) {
+        return db.query(queries['updatePassword'], [email, hash]);
     }
 };
 
