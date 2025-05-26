@@ -8,14 +8,18 @@ section {
 }
 section img {
   position: absolute;
-  left: 0px;
+  left: 1%;
+  top: 50%;
+  transform: translateY(-50%);
   height: auto;
   width: 35px;
-  justify-content: center;
 }
 
 button {
-  transition: all 0.2s ease-in-out;
+  outline-offset: -1px;
+  outline: none;
+  box-shadow: inset 0 0 0 0 #323c46;
+  transition: box-shadow 0.2s ease-in-out;
   border-radius: 0.5rem;
   cursor: pointer;
   font-family: inherit;
@@ -28,8 +32,7 @@ button {
   padding-bottom: 0;
 }
 button:focus, button:hover {
-  outline: 0.25rem solid #bc2632;
-  outline-offset: -0.125rem;
+  box-shadow: inset 0 0 0 0.1875rem #bc2632;
 }
 
 form {
@@ -46,15 +49,17 @@ form textarea::placeholder {
   color: #778a9e;
 }
 form input {
-  transition: all 0.2s ease-in-out;
+  outline-offset: -1px;
+  outline: none;
+  box-shadow: inset 0 0 0 0 #323c46;
+  transition: box-shadow 0.2s ease-in-out;
   color: #323c46;
   font-family: inherit;
   padding: 0.3rem;
   border-radius: 0.5rem;
 }
 form input:focus, form input:hover {
-  outline: 0.25rem solid #bc2632;
-  outline-offset: -0.125rem;
+  box-shadow: inset 0 0 0 0.1875rem #bc2632;
 }
 form div:has(input[type=checkbox]) {
   display: flex;
@@ -93,16 +98,21 @@ form div:has(input[type=checkbox]) input[type=checkbox]:checked ~ .checkmark::af
   transform: translate(0, -10%) rotate(40deg);
 }
 form select {
-  transition: all 0.2s ease-in-out;
+  outline-offset: -1px;
+  outline: none;
+  box-shadow: inset 0 0 0 0 #323c46;
+  transition: box-shadow 0.2s ease-in-out;
   padding: 0.3rem;
   border-radius: 0.5rem;
 }
 form select:focus, form select:hover {
-  outline: 0.25rem solid #bc2632;
-  outline-offset: -0.125rem;
+  box-shadow: inset 0 0 0 0.1875rem #bc2632;
 }
 form button {
-  transition: all 0.2s ease-in-out;
+  outline-offset: -1px;
+  outline: none;
+  box-shadow: inset 0 0 0 0 #323c46;
+  transition: box-shadow 0.2s ease-in-out;
   border-radius: 0.5rem;
   cursor: pointer;
   font-family: inherit;
@@ -112,17 +122,19 @@ form button {
   outline: 0.125rem solid #bc2632;
 }
 form button:focus, form button:hover {
-  outline: 0.25rem solid #bc2632;
-  outline-offset: -0.125rem;
+  box-shadow: inset 0 0 0 0.1875rem #bc2632;
 }
 form textarea {
-  transition: all 0.2s ease-in-out;
+  outline-offset: -1px;
+  outline: none;
+  box-shadow: inset 0 0 0 0 #323c46;
+  transition: box-shadow 0.2s ease-in-out;
   padding: 0.25rem;
   min-height: 5rem;
+  border-radius: 0.5rem;
 }
 form textarea:focus, form textarea:hover {
-  outline: 0.25rem solid #bc2632;
-  outline-offset: -0.125rem;
+  box-shadow: inset 0 0 0 0.1875rem #bc2632;
 }
 form > div {
   background-color: #d9d9d9;
@@ -132,7 +144,7 @@ form > div {
   justify-content: center;
   display: flex;
   position: relative;
-  height: 10vh;
+  height: 11vh;
   background: linear-gradient(to right, #323c46 40px, #b8b8b8 0);
 }
 form a {

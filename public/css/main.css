@@ -39,7 +39,10 @@ header {
 }
 header nav > *,
 header .hamburger-icon {
-  transition: all 0.2s ease-in-out;
+  outline-offset: -1px;
+  outline: none;
+  box-shadow: inset 0 0 0 0 #323c46;
+  transition: box-shadow 0.2s ease-in-out;
   border-radius: 0.5rem;
   cursor: pointer;
   font-family: inherit;
@@ -49,8 +52,7 @@ header .hamburger-icon {
 header nav > *:focus, header nav > *:hover,
 header .hamburger-icon:focus,
 header .hamburger-icon:hover {
-  outline: 0.25rem solid #bc2632;
-  outline-offset: -0.125rem;
+  box-shadow: inset 0 0 0 0.1875rem #bc2632;
 }
 header h1,
 header .hamburger-icon {

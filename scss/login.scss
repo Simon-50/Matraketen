@@ -9,11 +9,14 @@ section {
     margin: 0 auto;
 
     img {
+        // Center image to the left
         position: absolute;
-        left: 0px;
+        left: 1%;
+        top: 50%;
+        transform: translateY(-50%);
+
         height: auto;
         width: 35px;
-        justify-content: center;
     }
 }
 
@@ -36,7 +39,7 @@ form {
         display: flex;
         position: relative;
 
-        height: 10vh;
+        height: 11vh;
         background: linear-gradient(
             to right,
             base.$primary 40px,
@@ -50,13 +53,12 @@ form {
     }
 
     .remember-me {
-        height: 6vh
+        height: 6vh;
     }
 }
 
 input[type='text'],
 input[type='password'] {
-
     border-bottom: 5px solid base.$secondary;
     width: 70%;
 }

@@ -12,7 +12,12 @@
 }
 
 @mixin outline-effect($type: 'standard') {
-    transition: all 0.2s ease-in-out;
+    // Push outline slightly inward to overlap with shadow
+    outline-offset: -1px;
+    outline: none;
+
+    box-shadow: inset 0 0 0 0 base.$primary;
+    transition: box-shadow 0.2s ease-in-out;
 
     &:focus,
     &:hover {
@@ -20,12 +25,11 @@
 
         @if $type == standard {
             $color: base.$secondary;
+            box-shadow: inset 0 0 0 calc(base.$outline-width * (3 / 4)) base.$secondary;
         } @else if $type == inverted {
             $color: base.$primary;
+            box-shadow: inset 0 0 0 calc(base.$outline-width * (3 / 4)) base.$primary;
         }
-
-        outline: base.$outline-width solid $color;
-        outline-offset: calc(-1 * base.$outline-width / 2);
     }
 }
 
@@ -82,6 +86,8 @@
 
     padding: base.$outline-width;
     min-height: 5rem;
+
+    border-radius: base.$br-sm;
 }
 
 @mixin checkbox() {
