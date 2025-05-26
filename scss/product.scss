@@ -28,7 +28,7 @@
 }
 
 #product-info {
-    @include components.element-spacing();
+    @include components.element-spacing($only-mobile: true);
 }
 
 main {
@@ -57,10 +57,6 @@ main {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: base.$main-spacing;
-        }
-
-        #product-contents {
-            margin-bottom: 0 !important;
         }
 
         #description {

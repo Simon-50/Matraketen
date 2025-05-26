@@ -46,7 +46,7 @@
 
     @if $add-spacing {
         margin: base.$outline-width;
-        padding: min(1.6vw, 0.6rem) min(5vw, 2.4rem);
+        padding: min(1.6vw, 0.6rem) min(5vw, 0.8rem);
     }
 
     @if $type == standard {
@@ -64,7 +64,7 @@
     color: base.$primary;
     font-family: inherit;
 
-    padding: 0.3rem;
+    padding: 0.4rem;
 
     border-radius: base.$br-sm;
 
@@ -75,6 +75,8 @@
 
 @mixin dropdown-input() {
     @include outline-effect();
+
+    color: inherit;
 
     padding: 0.3rem;
 
@@ -88,6 +90,8 @@
     min-height: 5rem;
 
     border-radius: base.$br-sm;
+
+    resize: vertical;
 }
 
 @mixin checkbox() {
@@ -189,9 +193,28 @@
 }
 
 // Layout
-@mixin element-spacing($spacing: base.$main-spacing) {
+@mixin element-spacing($spacing: base.$main-spacing, $only-mobile: false, $include-last: false) {
     > *:not(:last-child) {
         margin-bottom: $spacing;
+    }
+
+    @if $include-last {
+        > *:last-child {
+            margin-bottom: $spacing;
+        }
+    }
+
+    @media screen and (min-width: base.$breakpoint) {
+        @if $only-mobile {
+            > *:not(:last-child) {
+                margin-bottom: 0;
+            }
+        }
+        @if not $include-last {
+            > *:last-child {
+                margin-bottom: 0;
+            }
+        }
     }
 }
 

@@ -5,9 +5,7 @@
 $item-dist: 12%, 30%, 20%, 10%;
 
 #cart-items {
-    @include components.element-spacing;
-
-    margin-bottom: calc(base.$main-spacing * 2);
+    @include components.element-spacing($include-last: true);
 }
 
 .item {
@@ -96,7 +94,7 @@ $item-dist: 12%, 30%, 20%, 10%;
     $item-dist: 15%, 25%, 35%, 15%;
 
     #cart-items {
-        margin-bottom: 0;
+        @include components.element-spacing();
     }
 
     .item {

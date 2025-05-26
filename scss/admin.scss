@@ -2,7 +2,7 @@
 @use 'components';
 
 main {
-    @include components.element-spacing();
+    @include components.element-spacing($only-mobile: true);
 
     #remove-meal-form,
     #remove-restaurant-form {
@@ -14,7 +14,7 @@ main {
             justify-content: space-between;
 
             p {
-                font-size: min(3.8vw);
+                font-size: min(3.8vw, 1.2rem);
             }
         }
     }
@@ -30,6 +30,56 @@ form {
     @include components.form();
 }
 
-@media screen and (min-width: base.$breakpoint){
-    
+@media screen and (min-width: base.$breakpoint) {
+    main {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: base.$main-spacing;
+    }
+
+    form button {
+        font-size: 1rem;
+    }
+
+    #add-meal {
+        grid-column: 1 / 3;
+
+        form {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            flex-wrap: wrap;
+
+            input,
+            select {
+                width: 20%;
+            }
+
+            textarea {
+                width: 45%;
+            }
+        }
+    }
+
+    #add-restaurant {
+        grid-area: 2 / 1 / 3 / 3;
+
+        form {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            flex-wrap: wrap;
+
+            input {
+                width: 45%;
+            }
+        }
+    }
+
+    #add-meal,
+    #add-restaurant {
+        button {
+            margin: 0 auto;
+        }
+    }
 }

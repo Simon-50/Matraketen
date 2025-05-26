@@ -27,7 +27,7 @@
   font-family: inherit;
   font-size: min(1.5rem, 2.5vw);
   margin: 0.25rem;
-  padding: min(1.6vw, 0.6rem) min(5vw, 2.4rem);
+  padding: min(1.6vw, 0.6rem) min(5vw, 0.8rem);
   background-color: #bc2632;
   color: white;
   outline: 0.125rem solid #323c46;
@@ -46,9 +46,22 @@
 #product-info > *:not(:last-child) {
   margin-bottom: 4vw;
 }
+@media screen and (min-width: 768px) {
+  #product-info > *:not(:last-child) {
+    margin-bottom: 0;
+  }
+  #product-info > *:last-child {
+    margin-bottom: 0;
+  }
+}
 
 main > *:not(:last-child) {
   margin-bottom: 4vw;
+}
+@media screen and (min-width: 768px) {
+  main > *:last-child {
+    margin-bottom: 0;
+  }
 }
 main h1,
 main h2 {
@@ -69,9 +82,6 @@ main h2 {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 4vw;
-  }
-  main #product-contents {
-    margin-bottom: 0 !important;
   }
   main #description p {
     font-size: 20px;

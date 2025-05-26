@@ -65,6 +65,11 @@ main > div {
     margin-bottom: 4vw;
   }
 }
+@media screen and (max-width: 767px) and (min-width: 768px) {
+  main > *:last-child {
+    margin-bottom: 0;
+  }
+}
 @media screen and (min-width: 768px) {
   #name {
     display: block;

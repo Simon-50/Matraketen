@@ -110,6 +110,11 @@ header nav {
 header nav > *:not(:last-child) {
   margin-bottom: 5vh;
 }
+@media screen and (min-width: 768px) {
+  header nav > *:last-child {
+    margin-bottom: 0;
+  }
+}
 header nav a {
   color: black;
   background-color: white;

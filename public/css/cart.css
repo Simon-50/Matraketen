@@ -1,10 +1,9 @@
-#cart-items {
-  margin-bottom: 8vw;
-}
 #cart-items > *:not(:last-child) {
   margin-bottom: 4vw;
 }
-
+#cart-items > *:last-child {
+  margin-bottom: 4vw;
+}
 .item {
   background-color: #d9d9d9;
   color: #323c46;
@@ -75,7 +74,7 @@
   font-family: inherit;
   font-size: min(1.5rem, 2.5vw);
   margin: 0.25rem;
-  padding: min(1.6vw, 0.6rem) min(5vw, 2.4rem);
+  padding: min(1.6vw, 0.6rem) min(5vw, 0.8rem);
   background-color: #bc2632;
   color: white;
   outline: 0.125rem solid #323c46;
@@ -88,9 +87,16 @@
 }
 
 @media screen and (min-width: 768px) {
-  #cart-items {
+  #cart-items > *:not(:last-child) {
+    margin-bottom: 4vw;
+  }
+}
+@media screen and (min-width: 768px) and (min-width: 768px) {
+  #cart-items > *:last-child {
     margin-bottom: 0;
   }
+}
+@media screen and (min-width: 768px) {
   .item p {
     font-size: 1.8vw;
     width: 35%;

@@ -7,6 +7,11 @@ p {
 main > *:not(:last-child) {
   margin-bottom: 8vw;
 }
+@media screen and (min-width: 768px) {
+  main > *:last-child {
+    margin-bottom: 0;
+  }
+}
 
 .resturang {
   border-radius: 1rem;
