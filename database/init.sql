@@ -1,3 +1,5 @@
+--* Generate initial database for development and testing with a single file
+
 -- Reset database
 DROP SCHEMA public CASCADE;
 CREATE SCHEMA public;

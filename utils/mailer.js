@@ -3,6 +3,7 @@ import { readFileSync } from 'fs';
 import nodemailer from 'nodemailer';
 import { join } from 'path';
 
+// Create transporter object
 const transporter = nodemailer.createTransport({
     host: 'smtp.gmail.com',
     port: 465,
@@ -13,11 +14,20 @@ const transporter = nodemailer.createTransport({
     }
 });
 
+/**
+ * Generates random code
+ * @returns six-digit code
+ */
 function generateCode() {
-    return crypto.randomInt(100000, 999999).toString(); // e.g. '348921'
+    return crypto.randomInt(100000, 999999).toString();
 }
 
 const mailer = {
+    /**
+     * Generate code and send to given email adress
+     * @param {string} recipientEmail
+     * @returns Code sent to given email
+     */
     async sendReset(recipientEmail) {
         const code = generateCode();
 

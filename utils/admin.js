@@ -1,8 +1,10 @@
 import database from '../database/database.js';
 
 const admin = {
+    /**
+     * Add meal, ingredients, and their bindings to the db. Handles already added ingredients.
+     */
     async addMeal(req, res) {
-        // Add the meal itself
         const mealResult = await database.addMeal(req.body);
 
         // Add ingredients and meal-ingredient binding
@@ -16,10 +18,16 @@ const admin = {
         }
         res.sendStatus(200);
     },
+    /**
+     * Remove meal from db.
+     */
     async removeMeal(req, res) {
         const result = await database.removeMeal(req.body['mealId']);
-        res.json({ success: result['rowCount'] > 0 });
+        res.json({ success: result });
     },
+    /**
+     * Add restaurant to db.
+     */
     async addRestaurant(req, res) {
         const result = await database.addRestaurant(req.body);
 
@@ -29,9 +37,12 @@ const admin = {
             res.sendStatus(409);
         }
     },
+    /**
+     * Remove restaurant from db. Sends true if removed, false otherwise.
+     */
     async removeRestaurant(req, res) {
         const result = await database.removeRestaurant(req.body['restaurantId']);
-        res.json({ success: result['rowCount'] > 0 });
+        res.json({ success: result });
     }
 };
 

@@ -1,6 +1,9 @@
 import database from '../database/database.js';
 
 const cart = {
+    /**
+     * Initializes the cart in the session and renders the cart page with product info.
+     */
     async init(req, res) {
         if (!req.session.cart) {
             req.session.cart = {};
@@ -26,6 +29,9 @@ const cart = {
             shipping: 75
         });
     },
+    /**
+     * Adds a meal to the cart or increments its count.
+     */
     async add(req, res) {
         const { mealId } = req.body;
         if (!req.session['cart']) {
@@ -38,6 +44,9 @@ const cart = {
         }
         res.sendStatus(200);
     },
+    /**
+     * Decrements the count of a meal in the cart or removes it if count reaches zero.
+     */
     async remove(req, res) {
         const { mealId } = req.body;
         try {
@@ -50,6 +59,9 @@ const cart = {
         }
         res.sendStatus(200);
     },
+    /**
+     * Clears all items from the cart
+     */
     async clear(req, res) {
         req.session['cart'] = {};
         res.sendStatus(200);
