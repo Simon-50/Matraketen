@@ -8,8 +8,8 @@ const saltRounds = 12;
 
 export function setupPassport() {
     // Use user id as identification
-    passport.serializeUser((user, cb) => {
-        cb(null, user['id']);
+    passport.serializeUser((userId, cb) => {
+        cb(null, userId);
     });
 
     // Make entire user accessible in backend
@@ -100,9 +100,9 @@ const security = {
             return res.status(500).json({ error: errorMessage });
         }
 
-        const newUser = await database.addUser(req.body);
+        const newUserId = await database.addUser(req.body);
 
-        req.logIn(newUser, (err) => {
+        req.logIn(newUserId, (err) => {
             if (err) {
                 return res.status(500).json({ error: errorMessage });
             }
@@ -118,7 +118,7 @@ const security = {
             if (err || !user) {
                 return res.status(400).json({ error: info['message'] });
             }
-            req.logIn(user, (err) => {
+            req.logIn(user['id'], (err) => {
                 if (err) {
                     return res.status(500).json({ error: 'Fel vid inloggning. Försök igen' });
                 }

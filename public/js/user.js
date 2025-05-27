@@ -18,7 +18,7 @@ document.addEventListener('submit', async (event) => {
 
         if (response.ok) {
             window.location.href = body['redirectTo'];
-        } else if (response.status === 500) {
+        } else if (response.status === 400 || response.status === 500) {
             alert(body['error']);
         }
     } else if (event.target.matches('#login-form')) {
