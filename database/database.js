@@ -139,7 +139,7 @@ const database = {
     /**
      * Add restaurant to db
      * @param {RestaurantData} data Data required for db insertion
-     * @returns {Promise<pg.QueryArrayResult|null>} Promise resolving to query result or null
+     * @returns {Promise<pg.QueryArrayResult | null>} Promise resolving to query result or null
      */
     async addRestaurant(data) {
         const restaurantData = [data['name'], data['logotypeName']];
@@ -158,7 +158,7 @@ const database = {
     /**
      * Get restaurant from db
      * @param {String} name Name of requested restaurant
-     * @returns {Promise<Object|null>} Promise resolving to query result if there is a restaurant with that name otherwise null
+     * @returns {Promise<Object | null>} Promise resolving to query result if there is a restaurant with that name otherwise null
      */
     async getRestaurant(name) {
         const result = await db.query(queries['getRestaurant'], [name]);
@@ -236,7 +236,7 @@ const database = {
     /**
      * Get user by email
      * @param {String} email
-     * @returns {Promise<Object|null>} Promise resolving to query result if there is a user with that email otherwise null
+     * @returns {Promise<Object | null>} Promise resolving to query result if there is a user with that email otherwise null
      */
     async getUserByEmail(email) {
         const result = await db.query(queries['getUserByEmail'], [email]);
@@ -246,7 +246,7 @@ const database = {
     /**
      *  Get user by id
      * @param {Number} id
-     * @returns {Promise<Object|null>} Promise resolving to query result if there is a user with that id otherwise null
+     * @returns {Promise<Object | null>} Promise resolving to query result if there is a user with that id otherwise null
      */
     async getUserById(id) {
         const result = await db.query(queries['getUserById'], [id]);

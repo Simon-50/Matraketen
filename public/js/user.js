@@ -88,7 +88,8 @@ document.addEventListener('submit', async (event) => {
         });
 
         if (response.ok) {
-            location.reload();
+            console.log('Details updated');
+            alert('Personuppgifter uppdaterade');
         }
     } else if (event.target.matches('#change-password-form')) {
         console.log('Updated details sent');

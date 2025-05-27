@@ -174,9 +174,13 @@ const security = {
      */
     async updateDetails(req, res) {
         const userDetails = { ...req.body };
-        userDetails['newsletter'] = Boolean(req.body['newsletter']);
 
-        await database.updateDetails(req.body);
+        userDetails['id'] = req.user['id'];
+        userDetails['newsletter'] = Boolean(userDetails['newsletter']);
+
+        console.log(userDetails);
+
+        await database.updateDetails(userDetails);
 
         res.sendStatus(200);
     },
