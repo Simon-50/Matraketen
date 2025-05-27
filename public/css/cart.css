@@ -82,7 +82,7 @@
   margin-top: 4vw;
   width: 100%;
 }
-#summary button:focus, #summary button:hover {
+#summary button:focus-visible, #summary button:hover {
   box-shadow: inset 0 0 0 0.1875rem #323c46;
 }
 

@@ -6,6 +6,7 @@
 @mixin hover-scale($strength: 1.1) {
     transition: all 0.3s ease-in-out;
 
+    &:focus-visible,
     &:hover {
         transform: scale($strength);
     }
@@ -19,7 +20,7 @@
     box-shadow: inset 0 0 0 0 base.$primary;
     transition: box-shadow 0.2s ease-in-out;
 
-    &:focus,
+    &:focus-visible,
     &:hover {
         $color: none;
 

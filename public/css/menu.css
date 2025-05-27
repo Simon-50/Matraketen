@@ -46,7 +46,7 @@ main > *:not(:last-child) {
   border-radius: 2rem;
   align-items: center;
 }
-.resturang .menu-items .item:focus, .resturang .menu-items .item:hover {
+.resturang .menu-items .item:focus-visible, .resturang .menu-items .item:hover {
   box-shadow: inset 0 0 0 0.1875rem #bc2632;
 }
 .resturang .menu-items .item a {

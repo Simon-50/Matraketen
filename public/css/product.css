@@ -1,3 +1,24 @@
+.floating-plus {
+  position: absolute;
+  color: #323c46;
+  font-family: sans-serif;
+  font-size: min(5vw, 2rem);
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  animation: floatUp 2s ease-out forwards;
+}
+
+@keyframes floatUp {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-20vh);
+  }
+}
 #item {
   color: #323c46;
 }
@@ -32,7 +53,7 @@
   color: white;
   outline: 0.125rem solid #323c46;
 }
-#nav-buttons button:focus, #nav-buttons button:hover {
+#nav-buttons button:focus-visible, #nav-buttons button:hover {
   box-shadow: inset 0 0 0 0.1875rem #323c46;
 }
 
