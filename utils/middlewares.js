@@ -5,8 +5,12 @@ import { join } from 'path';
 
 export default function applyMiddlewares(app, __dirname) {
     // Admin override only allowed on local database
-    if (process.env.ADMIN && process.env.NODE_ENV !== 'production' && process.env.DATABASE_URL) {
-        console.warn('⚠️  ADMIN OVERRIDE IS ENABLED ⚠️');
+    if (
+        process.env.ADMIN === 'true' &&
+        process.env.NODE_ENV !== 'production' &&
+        process.env.DATABASE_URL
+    ) {
+        console.warn('⚠️  ADMIN OVERRIDE ENABLED ⚠️');
         app.use((req, res, next) => {
             if (!req.user) {
                 req.user = {
@@ -24,6 +28,16 @@ export default function applyMiddlewares(app, __dirname) {
                 };
                 req.isAuthenticated = () => true;
             }
+            next();
+        });
+    }
+
+    // Debug
+    if (process.env.DEBUG === 'true') {
+        // Session logging
+        console.info('ℹ️  DEBUG MODE ENABLED ℹ️');
+        app.use((req, res, next) => {
+            console.log(req.session);
             next();
         });
     }
@@ -63,10 +77,4 @@ export default function applyMiddlewares(app, __dirname) {
     // Set EJS as templating engine
     app.set('view engine', 'ejs');
     app.set('views', join(__dirname, 'views'));
-
-    // Session - Debug
-    // app.use((req, res, next) => {
-    //     console.log(req.session);
-    //     next();
-    // });
 }
