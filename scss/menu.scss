@@ -41,6 +41,10 @@ main {
         gap: base.$main-spacing / 2;
 
         .item {
+            @include components.outline-effect();
+            padding: base.$outline-width;
+            border-radius: base.$br-lg;
+
             align-items: center;
 
             a {
