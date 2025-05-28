@@ -1,4 +1,5 @@
 import database from '../database/database.js';
+import mailer from './mailer.js';
 
 const cart = {
     /**
@@ -10,7 +11,7 @@ const cart = {
         }
 
         // Cart testing
-        if (process.env.DEBUG === 'true') {
+        if (process.env.DEBUG === 'true' || false) {
             req.session.cart = {
                 1: { count: 2 },
                 4: { count: 4 },
@@ -61,9 +62,11 @@ const cart = {
         res.sendStatus(200);
     },
     /**
-     * Clears all items from the cart
+     * Clears all items from the cart after sending order confirmation if logged in
      */
     async clear(req, res) {
+        await mailer.sendConfirmation(req.body['email'], req.session['cart'])
+
         req.session['cart'] = {};
         res.sendStatus(200);
     }

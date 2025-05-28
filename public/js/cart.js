@@ -1,7 +1,17 @@
+/**
+ * Generate random whole number between min and max
+ * @param {Number} min
+ * @param {Number} max
+ * @returns {Number}
+ */
 function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
+/**
+ * Spawn + icon on event element
+ * @param {MouseEvent} event Event to animate at
+ */
 function additionAnimation(event) {
     button = event.target;
 
@@ -26,10 +36,20 @@ function additionAnimation(event) {
     });
 }
 
+/**
+ * Update element with value
+ * @param {Element} element
+ * @param {String | Number} value
+ */
 function updateElement(element, value) {
     element.textContent = value;
 }
 
+/**
+ * Update element with given id by delta
+ * @param {String} id
+ * @param {Number} delta
+ */
 function updateCounter(id, delta) {
     // Visually decrement without forcing full page update
 
@@ -43,6 +63,9 @@ function updateCounter(id, delta) {
     updateTotal();
 }
 
+/**
+ * Update total cost
+ */
 function updateTotal() {
     let sum = shipping;
 
@@ -97,11 +120,22 @@ document.addEventListener('click', async (event) => {
             }
         }
     } else if (event.target.matches('.confirm-order')) {
+
+        let email = null
+        if (!window.currentUser) {
+            email = prompt(
+                'Du är inte inloggad, välj en address att skicka orderbekräftelse till'
+            );
+        } else {
+            email = window.currentUser['email'];
+        }
+
         const response = await fetch('/cart', {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json'
-            }
+            },
+            body: JSON.stringify({ email})
         });
 
         if (response.ok) {

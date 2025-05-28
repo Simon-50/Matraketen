@@ -1,13 +1,22 @@
 <meta charset="UTF-8" />
-
 <meta
     name="viewport"
     content="width=device-width, initial-scale=1.0" />
+
 <link
     rel="shortcut icon"
     href="/icons/favicon.ico"
     type="image/x-icon" />
+
+<!-- Global stylesheet -->
 <link
     rel="stylesheet"
     href="/css/main.css" />
+
+<!-- Expose user info to js scripts if logged in -->
+<script>
+    window.currentUser = <%- JSON.stringify(user) %>;
+</script>
+
+<!-- Standardized dynamic title -->
 <title><%= title %> - Matraketen</title>
