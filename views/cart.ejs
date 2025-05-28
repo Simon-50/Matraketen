@@ -1,13 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="UTF-8" />
-        <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1.0" />
-        <link
-            rel="stylesheet"
-            href="/css/main.css" />
+        <%- include('partials/head') %>
         <link
             rel="stylesheet"
             href="/css/cart.css" />
@@ -20,8 +14,6 @@
         <script
             src="/js/cart.js"
             async></script>
-
-        <title>Kundvagn - Matraketen</title>
     </head>
     <body>
         <%- include('partials/header') -%>
@@ -41,12 +33,12 @@
                         <p><%= item['name'] %></p>
                         <div class="item-counter">
                             <img
-                                src="/images/increment_item.webp"
+                                src="/icons/increment_item.webp"
                                 class="add-to-cart"
                                 data-id="<%= id %>" />
                             <p id="item-count-<%= id %>"><%= item['count'] %></p>
                             <img
-                                src="/images/decrement_item.webp"
+                                src="/icons/decrement_item.webp"
                                 class="remove-from-cart"
                                 data-id="<%= id %>" />
                         </div>

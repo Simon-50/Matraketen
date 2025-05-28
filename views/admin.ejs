@@ -1,20 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="UTF-8" />
-        <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1.0" />
-        <link
-            rel="stylesheet"
-            href="/css/main.css" />
+        <%- include('partials/head') %>
         <link
             rel="stylesheet"
             href="/css/admin.css" />
         <script
             src="/js/admin.js"
             async></script>
-        <title>Administratör - Matraketen</title>
     </head>
     <body>
         <%- include('partials/header') -%>
@@ -64,7 +57,7 @@
                         placeholder="Innehållsförteckning
 En ingrediens per rad"
                         required></textarea>
-                        <button type="submit">Lägg till</button>
+                    <button type="submit">Lägg till</button>
                 </form>
             </div>
             <div id="remove-meal">

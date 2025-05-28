@@ -25,8 +25,9 @@ const cart = {
         await database.getCart(cart);
 
         res.render('cart', {
-            cart,
-            shipping: 75
+            title: 'Kundvagn',
+            shipping: 75,
+            cart
         });
     },
     /**
