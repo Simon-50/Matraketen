@@ -4,6 +4,11 @@
 #cart-items > *:last-child {
   margin-bottom: 4vw;
 }
+#current-time {
+  text-align: center;
+  width: 100%;
+}
+
 .item {
   background-color: #d9d9d9;
   color: #323c46;

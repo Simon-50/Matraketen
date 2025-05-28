@@ -8,6 +8,11 @@ $item-widths: 12%, 30%, 20%, 10%;
     @include components.element-spacing($include-last: true);
 }
 
+#current-time {
+    text-align: center;
+    width: 100%;
+}
+
 .item {
     @include components.card;
 
