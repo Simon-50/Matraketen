@@ -1,8 +1,8 @@
 @use 'base';
 @use 'components';
 
-// Item spacing in card element (logo, image, text, counter)
-$item-dist: 12%, 30%, 20%, 10%;
+// Item width in card element (logo, image, text, counter)
+$item-widths: 12%, 30%, 20%, 10%;
 
 #cart-items {
     @include components.element-spacing($include-last: true);
@@ -19,11 +19,11 @@ $item-dist: 12%, 30%, 20%, 10%;
 
     .image-container {
         display: flex;
-        width: nth($item-dist, 2);
+        width: nth($item-widths, 2);
     }
 
     .logo {
-        width: nth($item-dist, 1);
+        width: nth($item-widths, 1);
 
         img {
             border-radius: base.$br-sm;
@@ -31,13 +31,13 @@ $item-dist: 12%, 30%, 20%, 10%;
     }
 
     .item-counter {
-        width: nth($item-dist, 4);
+        width: nth($item-widths, 4);
 
         display: flex;
         flex-direction: column;
 
         img {
-            width: 100%;
+            @include components.hover-scale();
 
             cursor: pointer;
         }
@@ -50,7 +50,7 @@ $item-dist: 12%, 30%, 20%, 10%;
 
     p {
         text-align: center;
-        width: nth($item-dist, 3);
+        width: nth($item-widths, 3);
     }
 
     img {
@@ -90,8 +90,8 @@ $item-dist: 12%, 30%, 20%, 10%;
 }
 
 @media screen and (min-width: base.$breakpoint) {
-    // Item spacing in card element (logo, image, text, counter)
-    $item-dist: 15%, 25%, 35%, 15%;
+    // Item widths in card element (logo, image, text, counter)
+    $item-widths: 15%, 25%, 35%, 15%;
 
     #cart-items {
         @include components.element-spacing();
@@ -101,15 +101,15 @@ $item-dist: 12%, 30%, 20%, 10%;
         p {
             font-size: 1.8vw;
 
-            width: nth($item-dist, 3);
+            width: nth($item-widths, 3);
         }
 
         .image-container {
-            width: nth($item-dist, 2);
+            width: nth($item-widths, 2);
         }
 
         .logo {
-            width: nth($item-dist, 1);
+            width: nth($item-widths, 1);
 
             img {
                 border-radius: base.$br-sm;
@@ -131,6 +131,6 @@ $item-dist: 12%, 30%, 20%, 10%;
         display: grid;
         grid-template-columns: 1fr 1fr;
 
-        gap: base.$main-spacing * 2;
+        gap: calc(base.$main-spacing * 2);
     }
 }

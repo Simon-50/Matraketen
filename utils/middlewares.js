@@ -32,16 +32,6 @@ export default function applyMiddlewares(app, __dirname) {
         });
     }
 
-    // Debug
-    if (process.env.DEBUG === 'true') {
-        // Session logging
-        console.info('ℹ️  DEBUG MODE ENABLED ℹ️');
-        app.use((req, res, next) => {
-            console.log(req.session);
-            next();
-        });
-    }
-
     // Serve public
     app.use(express.static(join(__dirname, 'public')));
 
@@ -77,4 +67,14 @@ export default function applyMiddlewares(app, __dirname) {
     // Set EJS as templating engine
     app.set('view engine', 'ejs');
     app.set('views', join(__dirname, 'views'));
+
+    // Debug
+    if (process.env.DEBUG === 'true') {
+        // Session logging
+        console.info('ℹ️  DEBUG MODE ENABLED ℹ️');
+        app.use((req, res, next) => {
+            console.log(req.session);
+            next();
+        });
+    }
 }

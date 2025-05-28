@@ -39,20 +39,20 @@ header {
 }
 header nav > *,
 header .hamburger-icon {
-  outline-offset: -1px;
+  transition: box-shadow 0.3s ease-in-out;
   outline: none;
+  outline-offset: -1px;
   box-shadow: inset 0 0 0 0 #323c46;
-  transition: box-shadow 0.2s ease-in-out;
   border-radius: 0.5rem;
   cursor: pointer;
   font-family: inherit;
   font-size: min(1.5rem, 2.5vw);
-  outline: 0.125rem solid #bc2632;
+  outline: 0.15rem solid #bc2632;
 }
 header nav > *:focus-visible, header nav > *:hover,
 header .hamburger-icon:focus-visible,
 header .hamburger-icon:hover {
-  box-shadow: inset 0 0 0 0.1875rem #bc2632;
+  box-shadow: inset 0 0 0 0.225rem #bc2632;
 }
 header h1,
 header .hamburger-icon {
@@ -122,7 +122,7 @@ header nav a {
   text-align: center;
   font-size: 2rem;
   padding: 1.5vh 0;
-  width: calc(100% - 0.25rem);
+  width: calc(100% - 0.3rem);
   height: calc(2rem + 3vh);
   border-radius: 0;
 }
@@ -130,7 +130,7 @@ header nav a img {
   height: 100%;
 }
 header nav :first-child {
-  margin-top: 0.125rem;
+  margin-top: 0.15rem;
 }
 header nav a:has(img) {
   padding: 0.375vh 0;

@@ -10,7 +10,7 @@ const cart = {
         }
 
         // Cart testing
-        if (false) {
+        if (process.env.DEBUG === 'true') {
             req.session.cart = {
                 1: { count: 2 },
                 4: { count: 4 },

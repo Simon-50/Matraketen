@@ -20,17 +20,17 @@ form textarea::placeholder {
   color: #778a9e;
 }
 form input {
-  outline-offset: -1px;
+  transition: box-shadow 0.3s ease-in-out;
   outline: none;
+  outline-offset: -1px;
   box-shadow: inset 0 0 0 0 #323c46;
-  transition: box-shadow 0.2s ease-in-out;
   color: #323c46;
   font-family: inherit;
   padding: 0.4rem;
   border-radius: 0.5rem;
 }
 form input:focus-visible, form input:hover {
-  box-shadow: inset 0 0 0 0.1875rem #bc2632;
+  box-shadow: inset 0 0 0 0.225rem #bc2632;
 }
 form div:has(input[type=checkbox]) {
   display: flex;
@@ -48,7 +48,7 @@ form div:has(input[type=checkbox]) input[type=checkbox] {
      -moz-appearance: none;
           appearance: none;
   cursor: pointer;
-  border: 0.125rem solid #bc2632;
+  border: 0.15rem solid #bc2632;
   border-radius: 0.7692307692rem;
 }
 form div:has(input[type=checkbox]) input[type=checkbox] ~ .checkmark {
@@ -69,45 +69,45 @@ form div:has(input[type=checkbox]) input[type=checkbox]:checked ~ .checkmark::af
   transform: translate(0, -10%) rotate(40deg);
 }
 form select {
-  outline-offset: -1px;
+  transition: box-shadow 0.3s ease-in-out;
   outline: none;
+  outline-offset: -1px;
   box-shadow: inset 0 0 0 0 #323c46;
-  transition: box-shadow 0.2s ease-in-out;
   color: inherit;
   padding: 0.3rem;
   border-radius: 0.5rem;
 }
 form select:focus-visible, form select:hover {
-  box-shadow: inset 0 0 0 0.1875rem #bc2632;
+  box-shadow: inset 0 0 0 0.225rem #bc2632;
 }
 form button {
-  outline-offset: -1px;
+  transition: box-shadow 0.3s ease-in-out;
   outline: none;
+  outline-offset: -1px;
   box-shadow: inset 0 0 0 0 #323c46;
-  transition: box-shadow 0.2s ease-in-out;
   border-radius: 0.5rem;
   cursor: pointer;
   font-family: inherit;
   font-size: min(1.5rem, 2.5vw);
-  margin: 0.25rem;
+  margin: 0.3rem;
   padding: min(1.6vw, 0.6rem) min(5vw, 0.8rem);
-  outline: 0.125rem solid #bc2632;
+  outline: 0.15rem solid #bc2632;
 }
 form button:focus-visible, form button:hover {
-  box-shadow: inset 0 0 0 0.1875rem #bc2632;
+  box-shadow: inset 0 0 0 0.225rem #bc2632;
 }
 form textarea {
-  outline-offset: -1px;
+  transition: box-shadow 0.3s ease-in-out;
   outline: none;
+  outline-offset: -1px;
   box-shadow: inset 0 0 0 0 #323c46;
-  transition: box-shadow 0.2s ease-in-out;
-  padding: 0.25rem;
+  padding: 0.3rem;
   min-height: 5rem;
   border-radius: 0.5rem;
   resize: vertical;
 }
 form textarea:focus-visible, form textarea:hover {
-  box-shadow: inset 0 0 0 0.1875rem #bc2632;
+  box-shadow: inset 0 0 0 0.225rem #bc2632;
 }
 form input[name=email],
 form input[name=password] {

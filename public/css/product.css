@@ -39,22 +39,22 @@
   justify-content: space-between;
 }
 #nav-buttons button {
-  outline-offset: -1px;
+  transition: box-shadow 0.3s ease-in-out;
   outline: none;
+  outline-offset: -1px;
   box-shadow: inset 0 0 0 0 #323c46;
-  transition: box-shadow 0.2s ease-in-out;
   border-radius: 0.5rem;
   cursor: pointer;
   font-family: inherit;
   font-size: min(1.5rem, 2.5vw);
-  margin: 0.25rem;
+  margin: 0.3rem;
   padding: min(1.6vw, 0.6rem) min(5vw, 0.8rem);
   background-color: #bc2632;
   color: white;
-  outline: 0.125rem solid #323c46;
+  outline: 0.15rem solid #323c46;
 }
 #nav-buttons button:focus-visible, #nav-buttons button:hover {
-  box-shadow: inset 0 0 0 0.1875rem #323c46;
+  box-shadow: inset 0 0 0 0.225rem #323c46;
 }
 
 #description {

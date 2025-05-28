@@ -37,8 +37,8 @@ main {
         grid-template-columns: repeat(2, 1fr);
         place-items: center;
 
-        padding: base.$main-spacing / 2;
-        gap: base.$main-spacing / 2;
+        padding: calc(base.$main-spacing / 2);
+        gap: calc(base.$main-spacing / 2);
 
         .item {
             @include components.outline-effect();
