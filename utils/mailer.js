@@ -78,7 +78,7 @@ const mailer = {
         }
 
         // Add order and sum together
-        const orderSummary = `<ul>${orderHtml}</ul><p>Totalt: ${sum} kr</p>`;
+        const orderSummary = `<ul>${orderHtml}</ul><p>Totalt: ${sum.toFixed(2)} kr</p>`;
 
         html = html.replace('{{ORDER}}', orderSummary);
 
